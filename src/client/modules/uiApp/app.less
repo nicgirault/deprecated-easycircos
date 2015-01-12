@@ -1,0 +1,205 @@
+@asideWidth: 250px;
+@headerHeight: 50px;
+
+@greenish: #0ac2d2;
+@green: #60d7a9;
+@blue: #7bb7fa;
+@yellow: #fdc162;
+@red: #fd6a62;
+@pink: #f68dbb;
+
+body {
+  background-color: #f1f1f1;
+}
+.circos {
+  display: block;
+  position: absolute;
+  top: @headerHeight + 20px;
+  right: 100px;
+  z-index: 1;
+}
+header {
+  position: fixed;
+  display: block;
+  top: 0;
+  height: @headerHeight;
+  width: 100%;
+  box-shadow: 0 .0625em .3125em rgba(0,0,0,.15);
+  background-color: rgba(255,255,255,.94);
+  padding-top: .4em;
+  text-align: center;
+  z-index: 10;
+  .branding {
+    float: left;
+  }
+  .feedback {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    span {
+      font-size: 30px;
+      transition: all .2s ease-in-out;
+      color: #000;
+    }
+    span:hover {
+      transform: scale(1.2);
+      color: @greenish;
+      cursor: pointer;
+    }
+  }
+  div {
+    display: inline-block;
+  }
+    
+  a.disabled-link,
+  a.disabled-link:visited ,
+  a.disabled-link:active,
+  a.disabled-link:hover {
+      background-color: #fff !important;
+      color:#aaa !important;
+      cursor: default;
+  }
+}
+
+aside {
+  position: fixed;
+  display: block;
+  z-index: 10;
+  width: @asideWidth;
+  top: @headerHeight + 2px;
+  bottom: 0;
+  box-shadow: 0 0.2em 0.3125em rgba(0, 0, 0, 0.15);
+  background-color: rgba(255,255,255,.94);
+  overflow-y: scroll;
+  .easy-circos-blue .panel-title{
+    color: @blue;
+  }
+  .easy-circos-red .panel-title{
+    color: @red;
+  }
+  .easy-circos-green .panel-title{
+    color: @green;
+  }
+  .easy-circos-yellow .panel-title{
+    color: @yellow;
+  }
+  .easy-circos-pink .panel-title{
+    color: @pink;
+  }
+
+  .panel-heading {
+    color: #333;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    font-size: 13px;
+    font-weight: normal;
+    position: relative;
+  }
+  .panel-default > .panel-heading {
+    color: #333;
+    background: none; 
+    border: none; 
+  }
+  .panel {
+    margin-bottom: 0; 
+    background: none; 
+    border: none; 
+    border-radius: none; 
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05); 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  }
+  .panel-title {
+    line-height: 36px;
+    width: 100%;
+  }
+  .panel-title > a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-indent: 0px;
+    text-decoration: none;
+    font-weight: normal;
+  }
+  .panel-title > a > span.text-muted{
+    color: #DDD;
+    text-indent: 0px;
+  }
+  .panel-title > a > span:not(.text-muted){
+    margin-left: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .panel-title > a:hover > span:not(.text-muted){
+    margin-left: 20px;
+  }
+  .panel-title > a:hover {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  form.easy-circos-form {
+    input {
+      padding: 7px 5px;
+      color: #626262;
+      font-family: "Helvetica", "Arial", "FreeSans", "Verdana", "Tahoma", "Lucida Sans", "Lucida Sans Unicode", "Luxi Sans", sans-serif;
+      font-size: 1em;
+      background: #F6F6F6;
+      border: solid 1px #C0C0C0;
+      box-shadow: inset 0 1px 2px #e4e4e4;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .custom-upload {
+      cursor: pointer;
+      display: table-cell;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1;
+      color: #555;
+      text-align: center;
+      background-color: #F6F6F6;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      border-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: 100%;
+      border: solid 1px #C0C0C0;
+      box-shadow: inset 0 1px 2px #e4e4e4;
+      outline: none;
+      height: 34px;
+      vertical-align: middle;
+    }
+    .custom-upload input {
+      left: -9999px; 
+      position: absolute;
+    }
+    .hover-cursor:hover {
+      cursor: pointer;
+    }
+    .glyphicon {
+      font-size: 15px;
+      color: #000;
+      vertical-align: middle;
+      padding-left: 5px;
+    }
+    .glyphicon:hover {
+      color: @red;
+      cursor: pointer;
+    }
+    .glyphicon.tcell {
+      display: table-cell;
+    }
+  }
+.tt-code {
+  text-align: left;
+  color: red;
+}
+}

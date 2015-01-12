@@ -1,0 +1,17 @@
+form
+    .modal-header
+        h3.modal-title Feedback
+    .modal-body
+        p I'm extremely interested in your feedbacks. If you've an opinion about this tool, please let me know.
+        .form-group
+            label E-mail
+            input.form-control
+        .form-group
+            label Subject
+            select.form-control
+                option Most urgent feature to implement
+                option Other
+        textarea.form-control(rows='4')
+    .modal-footer
+        button.btn.btn-primary(ng-click='send()') Send
+        button.btn.btn-warning(ng-click='cancel()') Cancel

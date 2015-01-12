@@ -1,0 +1,4 @@
+project_root: "/var/www/easyCircos"
+project_deploy_strategy: "git"
+project_git_repo: "git@github.com:nicgirault/easyCircos.git"
+project_version: "master"

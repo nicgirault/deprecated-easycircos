@@ -1,0 +1,71 @@
+div.branding EasyCircos
+
+div
+  button.btn.btn-primary.dropdown-toggle(
+    type='button'
+    ng-click='showLayout()'
+    ng-class='{active: status.active == "layout"}'
+  ) Layout
+
+  .btn-group(
+    dropdown
+    is-open='status.new_track_isopen'
+  )
+    button.btn.btn-warning.dropdown-toggle(
+      dropdown-toggle
+      type='button'
+      ng-class='{active: status.active == "newTrack"}'
+      ng-disabled='false'
+    )
+      | New track
+      span.caret
+    ul.dropdown-menu(role='menu')
+      li(ng-click='newTrack("heatmap");')
+        a(href='#') Heatmap
+      li
+        a.disabled-link(href='#') Chords
+      li
+        a.disabled-link(href='#') Histogram
+      li
+        a.disabled-link(href='#') Connectors
+      li
+        a.disabled-link(href='#') Highlight
+      li
+        a.disabled-link(href='#') Line
+      li
+        a.disabled-link(href='#') Scatter
+      li
+        a.disabled-link(href='#') Text
+      li
+        a.disabled-link(href='#') Tiles
+
+  .btn-group(
+    dropdown
+    is-open='status.track_isopen'
+  )
+    button.btn.btn-danger.dropdown-toggle(
+      dropdown-toggle
+      type='button'
+      ng-disabled='false'
+    )
+      | Edit track
+      span.caret
+    ul.dropdown-menu(role='menu')
+      li
+        a.disabled-link(href='#') Heatmaps
+      li(
+        ng-repeat='track in tracks | filter:{type: "heatmap"}'
+        ng-click='editTrack(track.id, track.type)'
+      )
+        a(href='#') {{ track.name }}
+      li.divider
+      li
+        a.disabled-link(href='#') Chords
+      li(ng-repeat='track in tracks | filter:{type: "chord"}')
+        a(href='#') {{ track.name }}
+      li.divider
+      li
+        a.disabled-link(href='#') Histograms
+
+div.feedback(ng-click='openFeedbackModal()')
+  span.glyphicon.glyphicon-comment

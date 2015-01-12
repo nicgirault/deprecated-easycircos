@@ -1,0 +1,10 @@
+---
+# file: playbook.yml
+
+- name: Deploy
+  hosts: all
+  sudo: yes
+  vars_files:
+    - vars/f500.yml
+  roles:
+    - { role: vendors/roles/f500.project_deploy, tags: 'f500' }

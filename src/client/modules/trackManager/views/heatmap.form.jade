@@ -1,0 +1,108 @@
+form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
+  accordion(close-others='true')
+    accordion-group.easy-circos-green
+      accordion-heading Track Name
+      input.form-control(
+        ng-model = 'currentTrack.name'
+        type = 'text'
+        ng-change='updateTrackName()'
+      )
+
+    accordion-group.easy-circos-blue
+      accordion-heading Data
+      div.form-group
+        div.input-group
+          label.custom-upload
+            input(
+              type="file"
+              id="import-heatmap-file"
+              on-read-file="parseData($fileContent)"
+            )
+            | Select a file...
+          span.input-group-addon.hover-cursor(ng-click='toggleDataFormat()') {{ dataFormat }}
+          span.glyphicon.glyphicon-question-sign.tcell(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.heatmapData[dataFormat] }}'
+            aria-hidden='true'
+          )
+
+    accordion-group.easy-circos-red
+      accordion-heading Position
+      div.form-group
+        label Inner radius
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.innerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+
+      div.form-group
+        label Outer radius
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.outerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+    
+    accordion-group.easy-circos-yellow
+      accordion-heading Color-Scale
+      div.form-group
+        label Palette
+        div
+          {{currentTrack.conf.colorPalette}}
+        color-brewer-picker-select(
+          cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
+          cb-size='20'
+          cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
+          cb-picker-callback='updatePalette(paletteName, range, palette)'
+        )
+
+      div.form-group
+        label Min
+          span.glyphicon.glyphicon-question-sign(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.min }}'
+            aria-hidden='true'
+          )
+        div
+          input.form-control(
+            ng-model = 'currentTrack.conf.min'
+            type = 'text'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        label Max
+          span.glyphicon.glyphicon-question-sign(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.max }}'
+            aria-hidden='true'
+          )
+        div
+          input.form-control(
+            ng-model = 'currentTrack.conf.max'
+            type = 'text'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        input(
+          ng-model = 'currentTrack.conf.logScale'
+          type = 'checkbox'
+          ng-change = 'render()'
+        )
+        label Log scale
+
+
+
+    

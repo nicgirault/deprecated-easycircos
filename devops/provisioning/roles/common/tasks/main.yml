@@ -1,0 +1,22 @@
+---
+# file: tasks/main.yml
+
+- name: Update Apt cache
+  apt: update_cache=yes
+
+- name: Update Apt packages, safe mode
+  apt: upgrade=safe
+
+- name: Install common packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - build-essential
+    - vim
+    - curl
+    - rsync
+    - wget
+    - htop
+    - iftop
+    - iotop
+    - zsh
+    - git

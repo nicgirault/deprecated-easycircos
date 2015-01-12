@@ -1,0 +1,273 @@
+form.easy-circos-form(ng-controller='layoutCtrl')
+  accordion(close-others='true')
+    accordion-group.easy-circos-blue
+      accordion-heading Data
+      div.form-group
+        label Select a layout
+        select.form-control(
+          ng-model = 'data.selectedLayout'
+          ng-options = 'layout.title group by layout.source for layout in layouts'
+          ng-change = 'selectLayout()'
+        )
+      div.form-group
+        label Custom layout
+          label.custom-upload
+            input(
+              type="file"
+              id="import-heatmap-file"
+              on-read-file="todo($fileContent)"
+            )
+            | Select a file...
+          span.input-group-addon .yml
+
+    accordion-group.easy-circos-red
+      accordion-heading Style
+      div.form-group
+        label Inner radius
+        div.input-group
+          input.form-control(
+            ng-model = 'conf.innerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+
+      div.form-group
+        label Outer radius
+        div.input-group
+          input.form-control(
+            ng-model = 'conf.outerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+
+      div.form-group
+        label Gap
+        div.input-group
+          input.form-control(
+            ng-model = 'conf.gap'
+            type = 'number'
+            step = '0.01'
+            ng-change = 'render()'
+            aria-describedby = 'basic-addon1'
+          )
+          span.input-group-addon rad
+
+    accordion-group.easy-circos-green
+      accordion-heading Labels
+        //- LABELS
+      div.form-group
+        div
+          input(
+            type='checkbox'
+            data-toggle='collapse'
+            data-target='#labels-form'
+            aria-expanded='true'
+            aria-controls='labels-form'
+            ng-model = 'conf.labels.display'
+            ng-change = 'render()'
+          )
+          label Display
+
+      div#labels-form.collapse.in
+        div.form-group
+          label Size
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.labels.size'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon px
+
+        div.form-group
+          label Color
+          div
+            input.form-control(
+              ng-model = 'conf.labels.color'
+              type = 'color'
+              ng-change = 'render()'
+            )
+
+        div.form-group
+          label Radial Offset
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.labels.radialOffset'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon px
+
+    //- div.btn-group(data-toggle='buttons')
+    //-   label.btn.btn-primary.active
+    //-     input#option1(
+    //-       type='radio'
+    //-       name='options'
+    //-       autocomplete='off'
+    //-       checked=''
+    //-       aria-label='Left Align'
+    //-       ng-model='labelAlignement'
+    //-       ng-change='test()'
+    //-       ng-true-value='"yes"'
+    //-       ng-false-value='"no"'
+    //-     )
+
+    //-     span.glyphicon.glyphicon-align-left(aria-hidden='true')
+    //-   label.btn.btn-primary
+    //-     input#option2(type='radio', name='options', autocomplete='off' aria-label='Center Align')
+    //-     span.glyphicon.glyphicon-align-center(aria-hidden='true')
+    //-   label.btn.btn-primary
+    //-     input#option3(type='radio', name='options', autocomplete='off' aria-label='Right Align')
+    //-     span.glyphicon.glyphicon-align-right(aria-hidden='true')
+    //-   label.btn.btn-primary
+    //-     input#option4(type='radio', name='options', autocomplete='off' aria-label='Justify')
+    //-     span.glyphicon.glyphicon-align-justify(aria-hidden='true')
+
+
+    //- Ticks
+    accordion-group.easy-circos-yellow
+      accordion-heading Ticks
+      div.form-group
+        div
+          input(
+            type='checkbox'
+            data-toggle='collapse'
+            data-target='#ticks-form'
+            aria-expanded='true'
+            aria-controls='ticks-form'
+            ng-model = 'conf.ticks.display'
+            ng-change = 'render()'
+          )
+          label Display
+
+      div#ticks-form.collapse.in
+        div.form-group
+          label Color
+          div
+            input.form-control(
+              ng-model = 'conf.ticks.color'
+              type = 'color'
+              ng-change = 'render()'
+            )
+
+        div.form-group
+          label Spacing
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.spacing'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon unit
+
+        div.form-group
+          label Major spacing
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.majorSpacing'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon minor unit
+
+        div.form-group
+          label Size (major)
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.size.major'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon px
+
+        div.form-group
+          label Size (minor)
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.size.minor'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon px
+
+    accordion-group.easy-circos-pink(heading='Tick labels' is-disabled='! conf.ticks.display')
+      //- TICKS LABELS
+      div.form-group
+        div
+          input(
+            type='checkbox'
+            data-toggle='collapse'
+            data-target='#ticks-labels-form'
+            aria-expanded='true'
+            aria-controls='ticks-labels-form'
+            ng-model = 'conf.ticks.labels'
+            ng-change = 'render()'
+          )
+          label Display
+
+      div#ticks-labels-form.collapse.in
+        div.form-group
+          label Size
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.labelSize'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon px
+
+        div.form-group
+          label Spacing
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.labelSpacing'
+              type = 'number'
+              ng-change = 'render()'
+            )
+            span.input-group-addon minor unit
+
+        div.form-group
+          label Color
+          div
+            input.form-control(
+              ng-model = 'conf.ticks.labelColor'
+              type = 'color'
+              ng-change = 'render()'
+            )
+        div.form-group
+          label Display first label
+          div
+            input(
+              type='checkbox'
+              ng-model = 'conf.ticks.labelDisplay0'
+              ng-change = 'render()'
+            )
+
+        div.form-group
+          label Denominator
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.labelDenominator'
+              type = 'number'
+              ng-change = 'render()'
+            )
+
+        div.form-group
+          label Suffix
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.labelSuffix'
+              type = 'text'
+              ng-change = 'render()'
+            )
+
+        div.form-group
+          label Label Font
+          div.input-group
+            input.form-control(
+              ng-model = 'conf.ticks.labelFont'
+              type = 'text'
+              ng-change = 'render()'
+            )

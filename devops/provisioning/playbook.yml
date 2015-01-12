@@ -1,0 +1,13 @@
+---
+# file: playbook.yml
+
+- name: Provisioning tasks
+  hosts: all
+  sudo: yes
+  vars_files:
+    - vars/node.yml
+    - vars/mongo.yml
+  roles:
+    - { role: roles/common, tags: 'common'}
+    - { role: vendors/roles/ANXS.nodejs, tags: 'nodejs' }
+    - { role: vendors/roles/enrise.mongodb, tags: 'mongodb' }

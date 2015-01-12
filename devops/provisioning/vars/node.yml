@@ -1,0 +1,2 @@
+# file: vars/node.yml
+nodejs_version: "0.10.26"

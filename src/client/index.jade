@@ -1,0 +1,42 @@
+doctype html
+html(lang='en', ng-app='easyCircos')
+  head
+    title= easyCircos
+    //bower:css
+    //endbower
+
+    //bower:js
+    //endbower
+
+    link(href='css/easyCircos.css', rel='stylesheet', type='text/css')
+    script(src='js/app.js')
+  body(ng-controller='mainCtrl')
+    header(ng-include='"modules/uiApp/header.html"')
+    aside(ng-include='"modules/uiApp/sidebar.html"')
+    .circos
+      svg#chart
+    
+    //- nav
+    //-   | easyCircos
+    //- sidebar
+    //-   | Global parameters
+    //-   br
+    //-   | Tracks
+    //-   ul
+    //-     li Chords
+    //-       ul
+    //-         li ...
+    //-         li ...
+    //-         li new
+    //-     li Heatmaps
+    //-       ul
+    //-         li ...
+    //-         li ...
+    //-         li new
+    //-     li Historgram
+    //-       ul
+    //-         li ...
+    //-         li ...
+    //-         li new
+    //- div(ng-controller='PalettesCtrlTest')
+    //-   {{ hello }}
