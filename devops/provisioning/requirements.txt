@@ -1,4 +1,4 @@
 Ansibles.build-essential,master
 ANXS.nodejs,master
 enrise.mongodb,master
-Ansibles.openssh,v1.0.0
+Stouts.supervisor,master

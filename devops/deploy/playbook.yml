@@ -8,3 +8,9 @@
     - vars/f500.yml
   roles:
     - { role: vendors/roles/f500.project_deploy, tags: 'f500' }
+  post_tasks:
+    - name: Build Easy Circos App
+      command: gulp build
+      chdir: /var/www/easyCircos
+    - name: Start server
+      command: supervisorctl restart easyCircosServer

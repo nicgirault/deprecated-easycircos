@@ -11,3 +11,4 @@
     - { role: roles/common, tags: 'common'}
     - { role: vendors/roles/ANXS.nodejs, tags: 'nodejs' }
     - { role: vendors/roles/enrise.mongodb, tags: 'mongodb' }
+    - { role: vendors/roles/Stouts.supervisor, tags: 'supervisor' }
