@@ -3,14 +3,22 @@
 
 - name: Deploy
   hosts: all
-  sudo: yes
   vars_files:
     - vars/f500.yml
   roles:
     - { role: vendors/roles/f500.project_deploy, tags: 'f500' }
   post_tasks:
+    - name: Install node modules
+      npm:
+        path=/var/www/easyCircos
+        state=present
+    - name: Install bower modules
+      shell: bower install
+      args:
+        - chdir: /var/www/easyCircos
     - name: Build Easy Circos App
-      command: gulp build
-      chdir: /var/www/easyCircos
+      shell: gulp build
+      args:
+        - chdir: /var/www/easyCircos
     - name: Start server
       command: supervisorctl restart easyCircosServer

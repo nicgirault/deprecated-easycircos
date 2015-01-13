@@ -1,0 +1,3 @@
+[submodule "angular-colorBrewer-picker"]
+	path = src/client/modules/angular-colorBrewer-picker
+	url = git@github.com:nicgirault/angular-colorBrewer-picker.git

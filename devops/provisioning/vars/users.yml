@@ -1,0 +1,8 @@
+users:
+  - username: www-data
+    name: www-data
+    groups: ['www-data']
+    uid: 1002
+    ssh_key:
+      # Nicolas Girault
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1VkeC0pgw5S0yahIz6eor9ZY/7bBoHERajEbfFdtdFUixGDdhzHOHR5j9V2Z+SrjTEiR/t5fW9tEk4adlVrpM/XUASrRHsCsnOiys4y986eoui9EaAhhZ3YMzD/RiZz9JTpr1aoncyDo2TOUQgVtFJU2DpNmWRXPXSP7LhQ7OgEEjpxV2R8+zHtyVkSbt1HWCqLVV3hhqdfJUVAFIdKfyDjBKO5ou2Zk1OGLEalyO81Kb2APUrIs7Lhkzq458kXtcyu3eSlRW1jKY6sr/6/xpuOaciqKVAqNn741IO51XGwAm3SJQ7+TH4v5guOuaWnOt7jGNKvjTV2DTAgbWyD2p nic.girault@gmail.com"

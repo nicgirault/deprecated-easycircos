@@ -7,8 +7,20 @@
   vars_files:
     - vars/node.yml
     - vars/mongo.yml
+    - vars/supervisor.yml
+    - vars/users.yml
   roles:
     - { role: roles/common, tags: 'common'}
-    - { role: vendors/roles/ANXS.nodejs, tags: 'nodejs' }
-    - { role: vendors/roles/enrise.mongodb, tags: 'mongodb' }
-    - { role: vendors/roles/Stouts.supervisor, tags: 'supervisor' }
+    - { role: ANXS.nodejs, tags: 'nodejs' }
+    - { role: ANXS.openssh, tags: 'openssh' }
+    - { role: enrise.mongodb, tags: 'mongodb' }
+    - { role: Stouts.supervisor, tags: 'supervisor' }
+    - { role: mivok0.users, tags: 'user' }
+
+  post_tasks:
+    - name: Fix rights on /var/www directory
+      file:
+        path=/var/www
+        owner=www-data
+        group=www-data
+        state=directory
