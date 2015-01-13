@@ -2,3 +2,7 @@ project_root: "/var/www/easyCircos"
 project_deploy_strategy: "git"
 project_git_repo: "git@github.com:nicgirault/easyCircos.git"
 project_version: "master"
+
+project_has_npm: true
+project_has_bower: true
+project_bower_binary: node_modules/bower/bin/bower

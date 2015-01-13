@@ -24,3 +24,5 @@
         owner=www-data
         group=www-data
         state=directory
+    - name: Install Bower
+      npm: name=bower state=present global=yes
