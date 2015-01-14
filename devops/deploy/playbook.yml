@@ -5,11 +5,12 @@
   hosts: all
   vars_files:
     - vars/f500.yml
-  roles:
-    - { role: vendors/roles/f500.project_deploy, tags: 'f500' }
+  # roles:
+  #   - { role: vendors/roles/f500.project_deploy, tags: 'f500' }
   post_tasks:
     - name: Build easy Circos
-      command: /var/www/easyCircos/current/node_modules/gulp/bin/gulp build
-
+      command: node_modules/gulp/bin/gulp.js build
+      args:
+        chdir: /var/www/easyCircos/current
     - name: Start server
       command: supervisorctl restart easyCircosServer

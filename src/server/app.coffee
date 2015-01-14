@@ -14,4 +14,4 @@ app.use '/', express.static 'www/client'
 db.once 'open', -> 
   require('./layoutManager.js').init(app, mongoose)
 
-app.listen 80
+app.listen 3000

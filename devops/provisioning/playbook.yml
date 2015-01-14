@@ -9,10 +9,12 @@
     - vars/mongo.yml
     - vars/supervisor.yml
     - vars/users.yml
+    - vars/nginx.yml
   roles:
     - { role: roles/common, tags: 'common'}
     - { role: ANXS.nodejs, tags: 'nodejs' }
     - { role: ANXS.openssh, tags: 'openssh' }
+    - { role: jdauphant.nginx, tags: 'nginx' }
     - { role: enrise.mongodb, tags: 'mongodb' }
     - { role: Stouts.supervisor, tags: 'supervisor' }
     - { role: mivok0.users, tags: 'user' }
