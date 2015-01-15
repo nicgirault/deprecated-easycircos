@@ -19,5 +19,10 @@
     "js-yaml": "^3.2.5",
     "mongoose": "^3.8.21",
     "wiredep": "^2.2.0"
+  },
+  "scripts": {
+    "test": "protractor --require coffee-script/register test/protractor.conf.coffee",
+    "deploy:init": "cd devops/deploy && ansible-galaxy install -r requirements.txt --force",
+    "deploy:prod": "cd devops/deploy && ansible-playbook -i prod playbook.yml"
   }
 }

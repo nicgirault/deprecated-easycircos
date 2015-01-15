@@ -12,12 +12,12 @@
     - vars/nginx.yml
   roles:
     - { role: roles/common, tags: 'common'}
-    - { role: ANXS.nodejs, tags: 'nodejs' }
+    - { role: mivok0.users, tags: 'user' }
     - { role: ANXS.openssh, tags: 'openssh' }
+    - { role: ANXS.nodejs, tags: 'nodejs' }
     - { role: jdauphant.nginx, tags: 'nginx' }
     - { role: enrise.mongodb, tags: 'mongodb' }
     - { role: Stouts.supervisor, tags: 'supervisor' }
-    - { role: mivok0.users, tags: 'user' }
 
   post_tasks:
     - name: Fix rights on /var/www directory
@@ -26,5 +26,3 @@
         owner=www-data
         group=www-data
         state=directory
-    - name: Install Bower
-      npm: name=bower state=present global=yes

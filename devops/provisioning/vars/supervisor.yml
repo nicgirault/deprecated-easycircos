@@ -1,5 +1,8 @@
 supervisor_tasks:
   - name: easyCircosServer
-    command: node /var/www/easyCircos/current/build/server/app.js
+    command: node build/server/app.js
     autostart: true
     autorestart: true
+    directory: /var/www/easyCircos/current
+    stderr_logfile: /var/log/easyCircos.err.log
+    stdout_logfile: /var/log/easyCircos.out.log
