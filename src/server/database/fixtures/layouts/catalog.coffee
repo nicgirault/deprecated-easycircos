@@ -8,9 +8,6 @@ exports.data = [
     description: 'Human genome with cytobands'
     source: 'Circos v0.64'
     version: 'GRCh37'
-    data: 
-      blocks: require('./data/GRCh37.js').data
-      subBlocks: []
-
+    data: require('./data/GRCh37.js').data
   }
 ]
