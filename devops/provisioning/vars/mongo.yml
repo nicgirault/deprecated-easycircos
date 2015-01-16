@@ -1,2 +1,2 @@
 mongodb_users:
- - { username: easyCircos, database: easyCircosDB, password: easyCircos }
+ - { username: easyCircos, database: easyCircosDB, password: 'easyCircos' }

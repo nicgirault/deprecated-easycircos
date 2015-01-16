@@ -23,6 +23,8 @@
   "scripts": {
     "test": "protractor --require coffee-script/register test/protractor.conf.coffee",
     "deploy:init": "cd devops/deploy && ansible-galaxy install -r requirements.txt --force",
-    "deploy:prod": "cd devops/deploy && ansible-playbook -i prod playbook.yml"
+    "deploy:prod": "cd devops/deploy && ansible-playbook -i prod playbook.yml",
+    "provision:prod": "cd devops/provisioning && ansible-playbook -i prod playbook.yml",
+    "provisioning:init": "cd devops/provisioning && ansible-galaxy install -r requirements.txt --force"
   }
 }

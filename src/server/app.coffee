@@ -5,13 +5,16 @@ mongoose = require 'mongoose'
 
 app = express()
 
-mongoose.connect 'mongodb://localhost/easyCircos2'
+mongoose.connect 'mongodb://easyCircos:easyCircos@localhost/easyCircosDB'
 db = mongoose.connection
 db.on 'error', console.error.bind(console, 'connection error:')
 app.use '/bower_components', express.static 'bower_components'
 app.use '/', express.static 'www/client'
 
 db.once 'open', -> 
-  require('./layoutManager.js').init(app, mongoose)
+  model = require('./database/model.js').model mongoose
+  
+  # define Layout routes
+  require('./database/layoutManager.js').init app, model.Layout
 
 app.listen 3000
