@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: 'Nicolas Girault (forked Rohan Liston)'
+  description: 'Installs the specified locales and language packs.'
+  company: 'Theodo'
+  license: 'BSD'
+  min_ansible_version: 1.6
+  platforms:
+  - name: 'Ubuntu'
+    versions:
+      - 'precise'
+  categories:
+    - 'system'
+dependencies: []

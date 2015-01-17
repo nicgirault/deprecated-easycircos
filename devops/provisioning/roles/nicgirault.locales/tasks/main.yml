@@ -1,0 +1,72 @@
+---
+- name: 'Install locales'
+  tags: 'locales'
+  sudo: 'yes'
+  apt: >
+    pkg=locales
+    state=latest
+    update_cache=true
+
+- name: 'Install language packs'
+  tags: 'locales'
+  sudo: 'yes'
+  apt: >
+    pkg={{ item }}
+    state=latest
+    update_cache=true
+  with_items: 'locale_language_packs'
+  register: 'locale_languages'
+
+- name: 'Reconfigure dpkg'
+  tags: 'locales'
+  sudo: 'yes'
+  command: 'dpkg-reconfigure locales'
+  when: 'locale_languages.changed'
+
+- name: 'Detect locale configuration file'
+  tags: 'locales'
+  stat: 'path=/var/lib/locales/supported.d/local'
+  register: 'locale_configuration'
+
+- name: 'Create locale configuration file'
+  tags: 'locales'
+  sudo: 'yes'
+  file: >
+    path=/var/lib/locales/supported.d/local
+    state=touch
+  when: 'not locale_configuration.stat.exists'
+
+- name: 'Configure system locale'
+  tags: 'locales'
+  sudo: 'yes'
+  locale_gen: >
+    name={{ locale }}.{{ encoding }}
+    state=present
+  tags: 'locales'
+
+- name: 'Export LC_ALL environment variable in ~/.profile'
+  tags: 'locales'
+  lineinfile: >
+    dest={{ item }}/.profile
+    create=yes
+    line="export LC_ALL={{ locale }}.{{ encoding }}"
+  with_items: 'locales_home'
+
+- name: 'Set timezone'
+  sudo: 'yes'
+  tags:
+    - 'locales'
+    - 'timezone'
+  copy: >
+    content='Etc/UTC'
+    dest=/etc/timezone
+    owner=root
+    group=root
+    mode=0644
+
+- name: 'Update timezone'
+  sudo: 'yes'
+  tags:
+    - 'locales'
+    - 'timezone'
+  command: 'dpkg-reconfigure --frontend noninteractive tzdata'

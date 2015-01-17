@@ -1,0 +1,9 @@
+---
+locale: 'fr_FR'
+encoding: 'UTF-8'
+locales_home:
+  - '/var/www'
+  - '/home/ubuntu'
+locale_language_packs:
+  - 'language-pack-fr'
+  - 'language-pack-fr-base'

@@ -1,0 +1,7 @@
+---
+locale: 'en_US'
+encoding: 'UTF-8'
+locales_home: '{{ ansible_ssh_user }}'
+locale_language_packs:
+  - 'language-pack-en'
+  - 'language-pack-en-base'

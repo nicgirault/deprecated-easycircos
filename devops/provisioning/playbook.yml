@@ -6,6 +6,7 @@
   sudo: yes
   vars_files:
     - vars/node.yml
+    - vars/locale.yml
     - vars/mongo.yml
     - vars/supervisor.yml
     - vars/users.yml
@@ -16,6 +17,7 @@
     - { role: ANXS.openssh, tags: 'openssh' }
     - { role: ANXS.nodejs, tags: 'nodejs' }
     - { role: jdauphant.nginx, tags: 'nginx' }
+    - role: 'roles/nicgirault.locales'
     - { role: enrise.mongodb, tags: 'mongodb' }
     - { role: Stouts.supervisor, tags: 'supervisor' }
 
