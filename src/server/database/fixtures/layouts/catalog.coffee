@@ -5,6 +5,7 @@ exports.data = [
       type: 'karyotype'
       species: 'Homo Sapiens'
     title: 'Homo Sapiens GRCh37 - hg19'
+    code: 'GRCh37'
     description: 'Human genome with cytobands'
     source: 'Circos v0.64'
     version: 'GRCh37'

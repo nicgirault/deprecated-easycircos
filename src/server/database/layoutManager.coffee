@@ -12,3 +12,10 @@ exports.init = (app, Layout) ->
         res.send err
       else
         res.send doc
+
+  app.get '/layout-code/:code', (req, res) ->
+    Layout.findOne({code: req.params.code}).lean().exec (err, doc) ->
+      if err
+        res.send err
+      else
+        res.send doc

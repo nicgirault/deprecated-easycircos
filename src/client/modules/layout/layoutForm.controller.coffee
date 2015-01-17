@@ -52,10 +52,10 @@ do (angular) ->
       conf.ticks.labels.size = conf.ticks.labelSize.toString() + 'px' 
       conf.clickCallback = ->
         layoutFormService.toggleForm()
-      circosJS.easyCircos.layout(conf, $scope.layout.data.blocks).render()
+      circosJS.easyCircos.layout(conf, $scope.layout.data).render()
       
     # initialisation, get GRCh37 layout
-    layoutStore.getLayout '54a7ca06dc929b87b29de83b', (layout) ->
+    layoutStore.getLayoutByCode 'GRCh37', (layout) ->
         $scope.layout = layout
         $scope.render()
     

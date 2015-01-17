@@ -6,6 +6,7 @@ exports.model = (mongoose) ->
     source: String
     version: String
     data: Object
+    code: String
 
   return {
     Layout: mongoose.model 'Layout', layoutSchema

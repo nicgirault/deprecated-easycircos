@@ -9,3 +9,8 @@ do (angular) ->
       $http.get('/layout/' + id).
         success (layout) ->
           callback layout
+
+    getLayoutByCode: (code, callback) ->
+      $http.get('/layout-code/' + code).
+        success (layout) ->
+          callback layout
