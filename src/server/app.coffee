@@ -5,7 +5,7 @@ mongoose = require 'mongoose'
 
 app = express()
 
-mongoose.connect 'mongodb://easyCircos:easyCircos@localhost/easyCircosDB'
+mongoose.connect 'mongodb://localhost/easyCircosDB'
 db = mongoose.connection
 db.on 'error', console.error.bind(console, 'connection error:')
 app.use '/bower_components', express.static 'bower_components'
