@@ -11,6 +11,12 @@ html(lang='en', ng-app='easyCircos')
     link(href='css/easyCircos.css', rel='stylesheet', type='text/css')
     script(src='js/app.js')
   body(ng-controller='mainCtrl')
+    div(ng-controller='alertCtrl')
+      alert.browser-warning(
+        ng-repeat='alert in alerts'
+        type='{{alert.type}}'
+        close='closeAlert($index)'
+      ) {{ alert.message }}
     header(ng-include='"modules/uiApp/header.html"')
     aside(ng-include='"modules/uiApp/sidebar.html"')
     .circos

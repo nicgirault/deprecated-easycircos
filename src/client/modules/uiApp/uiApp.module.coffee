@@ -1,5 +1,5 @@
 do (angular) ->
-  angular.module 'ui.app', ['ui.bootstrap']
+  angular.module 'ui.app', ['ui.bootstrap', 'utils']
   require './uiApp.controller.js'
   require './sidebar.service.js'
   require './sidebar.controller.js'

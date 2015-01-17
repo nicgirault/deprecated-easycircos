@@ -8,6 +8,12 @@
 @red: #fd6a62;
 @pink: #f68dbb;
 
+.browser-warning {
+  position: absolute;
+  top: @headerHeight + 6px;
+  left: @asideWidth + 6px;
+  z-index: 100;
+}
 body {
   background-color: #f1f1f1;
 }
@@ -28,11 +34,14 @@ header {
   background-color: rgba(255,255,255,.94);
   padding-top: .4em;
   text-align: center;
-  z-index: 10;
+  // z-index: 10;
   .branding {
     position: absolute;
     left: 0;
     top: 0;
+    img {
+      height: @headerHeight;
+    }
   }
   .feedback {
     position: absolute;

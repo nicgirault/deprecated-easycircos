@@ -1,4 +1,4 @@
-angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, sidebar, $modal) ->
+angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, sidebar, $modal, browser) ->
   # buttons state in header
   $scope.status =
     new_track_isopen: false

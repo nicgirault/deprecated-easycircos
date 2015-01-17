@@ -1,17 +1,11 @@
 form
     .modal-header
-        h3.modal-title Feedback
+        h3.modal-title Feedbacks
     .modal-body
-        p I'm extremely interested in your feedbacks. If you've an opinion about this tool, please let me know.
-        .form-group
-            label E-mail
-            input.form-control
-        .form-group
-            label Subject
-            select.form-control
-                option Most urgent feature to implement
-                option Other
-        textarea.form-control(rows='4')
+        p 
+            | I'm extremely interested in your feedbacks. If you've an opinion about this tool or want to request a feature, please fill 
+            a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank') this form. 
+            | If you noticed a bug, please fill 
+            a(href='https://docs.google.com/forms/d/1qM4fLOc_2dLu7dpTEcXkcg3oqXPPbWoZMyhmh6H6DZE/viewform?usp=send_form' target='_blank') this form.
     .modal-footer
-        button.btn.btn-primary(ng-click='send()') Send
         button.btn.btn-warning(ng-click='cancel()') Cancel
