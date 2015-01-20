@@ -63,16 +63,12 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         div
           input(
             type='checkbox'
-            data-toggle='collapse'
-            data-target='#labels-form'
-            aria-expanded='true'
-            aria-controls='labels-form'
             ng-model = 'conf.labels.display'
             ng-change = 'render()'
           )
           label Display
 
-      div#labels-form.collapse.in
+      div(ng-show='conf.labels.display')
         div.form-group
           label Size
           div.input-group
@@ -135,16 +131,12 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         div
           input(
             type='checkbox'
-            data-toggle='collapse'
-            data-target='#ticks-form'
-            aria-expanded='true'
-            aria-controls='ticks-form'
             ng-model = 'conf.ticks.display'
             ng-change = 'render()'
           )
           label Display
 
-      div#ticks-form.collapse.in
+      div(ng-show='conf.ticks.display')
         div.form-group
           label Color
           div
@@ -200,16 +192,12 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         div
           input(
             type='checkbox'
-            data-toggle='collapse'
-            data-target='#ticks-labels-form'
-            aria-expanded='true'
-            aria-controls='ticks-labels-form'
             ng-model = 'conf.ticks.labels'
             ng-change = 'render()'
           )
           label Display
 
-      div#ticks-labels-form.collapse.in
+      div(ng-show='conf.ticks.labels')
         div.form-group
           label Size
           div.input-group
