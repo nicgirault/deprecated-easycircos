@@ -15,9 +15,10 @@ db.once 'open', ->
   model = require('./database/model.js').model mongoose
 
   # if layout collection is empty, import fixtures
-  model.Layout.count (error, count) ->
-    if count == 0
-      model.Layout.create require('./database/fixtures/layouts/catalog.js').data
+  # model.Layout.count (error, count) ->
+    # if count == 0
+  model.Layout.remove {}, ->
+    model.Layout.create require('./database/fixtures/layouts/catalog.js').data
 
   # define Layout routes
   require('./database/layoutManager.js').init app, model.Layout

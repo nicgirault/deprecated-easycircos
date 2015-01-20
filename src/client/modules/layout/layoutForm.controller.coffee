@@ -1,15 +1,12 @@
 do (angular) ->
-  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, circosJS) ->
-    $scope.data = 
-      selectedLayout: null
-    #todo: use default layout conf of circosJS
-    $scope.conf = angular.copy circosJS.Layout.prototype._defaultConf
-
-    $scope.conf.labels.size = 14
-    $scope.conf.ticks.labelSize = 10
-    $scope.conf.innerRadius = 200
-    $scope.conf.outerRadius = 230
-    $scope.conf.labels.radialOffset = 10
+  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, circosJS, defaults) ->
+    defaultConf = angular.copy circosJS.Layout.prototype._defaultConf
+    defaultConf.labels.size = 14
+    defaultConf.ticks.labelSize = 10
+    defaultConf.innerRadius = 200
+    defaultConf.outerRadius = 230
+    defaultConf.labels.radialOffset = 10
+    defaultConf.labels.display = true
       # innerRadius: 150
       # outerRadius: 250
       # gap: 0.04
@@ -36,31 +33,30 @@ do (angular) ->
       #     minor: 2
       #     major: 5
       # cornerRadius: 10
-
     # get the list of available layouts on server
     $scope.layouts = []
     layoutStore.getStore (layouts) ->
       $scope.layouts = layouts
 
+      for layout in layouts
+        if layout.default
+          $scope.data =
+              selectedLayout: layout
+          layoutStore.getLayout layout._id, (layoutDoc) ->
+            $scope.layout = layoutDoc
+            $scope.conf = defaults(layoutDoc.conf, defaultConf)
+            $scope.render()
+    
+
     $scope.selectLayout = ->
       layoutStore.getLayout $scope.data.selectedLayout._id, (layout) ->
         $scope.layout = layout
+        $scope.conf = defaults(layout.conf, defaultConf)
         $scope.render()
     $scope.render = ->
       conf = angular.copy($scope.conf)
       conf.labels.size = conf.labels.size.toString() + 'px' 
       conf.ticks.labels.size = conf.ticks.labelSize.toString() + 'px' 
-      conf.clickCallback = ->
-        layoutFormService.toggleForm()
       circosJS.easyCircos.layout(conf, $scope.layout.data).render()
       
-    # initialisation, get GRCh37 layout
-    layoutStore.getLayoutByCode 'GRCh37', (layout) ->
-        $scope.layout = layout
-        $scope.render()
-    
-    
-    
     $scope.labelAlignement = null
-    $scope.test = ->
-      console.log $scope.labelAlignement
