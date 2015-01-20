@@ -19,3 +19,5 @@ require './modules/utils/utils.module.js'
 angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'layout', 'ui.app']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
+
+require './analytics.js'
