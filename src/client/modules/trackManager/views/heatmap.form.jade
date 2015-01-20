@@ -11,6 +11,15 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
     accordion-group.easy-circos-blue
       accordion-heading Data
       div.form-group
+        label Library
+        select.form-control(
+          ng-model = 'data.selectedTrack'
+          ng-options = 'track.title group by track.source for track in tracks'
+          ng-change = 'selectTrack()'
+        )
+      p {{ data.selectedTrack.description }} 
+        span.source(ng-if='data.selectedLayout.source') Source: {{ data.selectedTrack.source }}
+      div.form-group
         div.input-group
           label.custom-upload
             input(

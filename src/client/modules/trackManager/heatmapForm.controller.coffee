@@ -6,7 +6,7 @@
 # colorPalette: 'YlGnBu'
 # colorPaletteSize: 9
 do (angular) ->
-  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, yaml, tracks, sidebar, helpStore, $modal) ->
+  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, yaml, tracks, sidebar, helpStore, $modal, trackStore, defaults) ->
     $scope.currentTrack =
       id: undefined
       name: undefined
@@ -80,3 +80,15 @@ do (angular) ->
         backdrop: true
 
     $scope.help = helpStore
+
+    $scope.tracks = []
+    trackStore.getStore (tracks) ->
+      $scope.tracks = tracks
+      $scope.data =
+        selectedTrack: null
+
+    $scope.selectTrack = ->
+      trackStore.getTrack $scope.data.selectedTrack._id, (track) ->
+        $scope.currentTrack.conf = defaults(track.conf, $scope.currentTrack.conf)
+        $scope.currentTrack.data = track.data
+        $scope.render()

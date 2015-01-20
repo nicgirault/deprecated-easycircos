@@ -42,6 +42,6 @@ do(angular) ->
       return @tracks[ trackId ]
 
     getSmartInnerBorder: ->
-      100
+      180
     getSmartOuterBorder: ->
-      110
+      200

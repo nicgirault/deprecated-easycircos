@@ -20,7 +20,11 @@ db.once 'open', ->
   model.Layout.remove {}, ->
     model.Layout.create require('./database/fixtures/layouts/catalog.js').data
 
-  # define Layout routes
+  model.Track.remove {}, ->
+    model.Track.create require('./database/fixtures/tracks/catalog.js').data
+
+  # define routes
   require('./database/layoutManager.js').init app, model.Layout
+  require('./database/tracksManager.js').init app, model.Track
 
 app.listen 3000
