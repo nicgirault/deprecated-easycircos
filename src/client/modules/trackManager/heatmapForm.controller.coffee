@@ -6,7 +6,7 @@
 # colorPalette: 'YlGnBu'
 # colorPaletteSize: 9
 do (angular) ->
-  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, yaml, tracks, sidebar, helpStore) ->
+  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, yaml, tracks, sidebar, helpStore, $modal) ->
     $scope.currentTrack =
       id: undefined
       name: undefined
@@ -70,5 +70,11 @@ do (angular) ->
       $scope.currentTrack.conf.colorPalette = paletteName
       $scope.currentTrack.conf.colorPaletteSize = range
       $scope.render()
+
+    $scope.showHeatmapDataModal = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/help/heatmapData.modal.html'
+        controller: 'ModalCancelCtrl'
+        backdrop: true
 
     $scope.help = helpStore

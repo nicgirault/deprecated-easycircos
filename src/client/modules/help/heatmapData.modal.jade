@@ -1,0 +1,65 @@
+.modal-header
+    h3.modal-title Track data formats
+.modal-body
+  p Your file should be a table of records. Each record should have 4 fields corresponding to:
+    ul
+      li The id of the corresponding layout block (see layout data formating)
+      li It's starting position
+      li It's ending position
+      li it's value (the heatmap color results from this value)
+
+  tabset(justified='true')
+    tab.myTabs(heading='yml')
+      .myTabsContent
+        p The YAML format is a bit different from the others since it allows 
+          | hierachical data structure. Records are gathered by layout block ids.
+        pre.myCode
+          code
+            | - parent: chr1
+            |   data:
+            |     - start: 1
+            |       end: 10
+            |       value: 7
+            |     - start: 11
+            |       end: 20
+            |       value: 3
+            | - parent: chr2
+            |   data:
+            |     - start: 1
+            |       end: 10
+            |       value: 7
+            | ...
+    tab.myTabs(heading='csv')
+      .myTabsContent
+        pre.myCode
+          code
+            | chr1,1,10,7
+            | chr1,11,20,3
+            | chr2,1,10,7
+            | ...
+    tab.myTabs(heading='tsv')
+      .myTabsContent
+        pre.myCode
+          code
+            | chr1  1   10  7
+            | chr1  11  20  3
+            | chr2  1   10  7
+            | ...
+    tab.myTabs(heading='dsv ";"')
+      .myTabsContent
+        pre.myCode
+          code
+            | chr1;1;10;7
+            | chr1;11;20;3
+            | chr2;1;10;7
+            | ...
+    tab.myTabs(heading='dsv " "')
+      .myTabsContent
+        pre.myCode
+          code
+            | chr1 1 10 7
+            | chr1 11 20 3
+            | chr2 1 10 7
+            | ...
+.modal-footer
+    button.btn.btn-warning(ng-click='cancel()') Cancel
