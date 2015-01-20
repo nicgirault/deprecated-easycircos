@@ -4,8 +4,10 @@ module.exports = do(angular, circosJS) ->
   # require './color.directives.js'
   
   angular.module('circosJS').factory 'circosJS', ->
+    size = Math.min window.innerHeight, window.innerWidth
+    size = size - 60
     circosJS.easyCircos = new circosJS
-        width: 600
-        height: 600
+        width: size
+        height: size
         container: '#chart'
     circosJS

@@ -2,6 +2,7 @@ do(angular) ->
   angular.module('ui.app').factory 'tracks', ($rootScope) ->
     tracks: {}
     counter: 0
+    circosSize: Math.min(window.innerHeight, window.innerWidth) - 60
 
     addTrack: (trackName, trackType) ->
       # check name does not exist
@@ -21,13 +22,12 @@ do(angular) ->
         id: trackId
         type: trackType
         name: trackName
+        borders:
+          inner: @getSmartInnerBorder()
+          outer: @getSmartOuterBorder()
 
       $rootScope.$broadcast 'tracks-update'
-      return {
-        id: trackId
-        name: trackName
-        type: trackType
-      }
+      return @tracks[ trackId ]
 
     updateName: (trackId, newName) ->
       @tracks[ trackId ].name = newName
@@ -40,3 +40,8 @@ do(angular) ->
 
     getTrack: (trackId) ->
       return @tracks[ trackId ]
+
+    getSmartInnerBorder: ->
+      100
+    getSmartOuterBorder: ->
+      110

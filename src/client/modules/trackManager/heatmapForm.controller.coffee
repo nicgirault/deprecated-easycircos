@@ -22,6 +22,8 @@ do (angular) ->
       $scope.currentTrack.name = sidebar.currentTrack.name
       if message.isNew
         $scope.currentTrack.conf = angular.copy circosJS.Heatmap.prototype._defaultConf
+        $scope.currentTrack.conf.innerRadius = sidebar.currentTrack.borders.inner
+        $scope.currentTrack.conf.outerRadius = sidebar.currentTrack.borders.outer
         $scope.currentTrack.data = []
       else
         $scope.currentTrack.conf = angular.copy circosJS.easyCircos._heatmaps[sidebar.currentTrack.id]._conf

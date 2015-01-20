@@ -19,30 +19,5 @@ html(lang='en', ng-app='easyCircos')
       ) {{ alert.message }}
     header(ng-include='"modules/uiApp/header.html"')
     aside(ng-include='"modules/uiApp/sidebar.html"')
-    .circos
+    .circos(style='border: solid 1px black;')
       svg#chart
-    
-    //- nav
-    //-   | easyCircos
-    //- sidebar
-    //-   | Global parameters
-    //-   br
-    //-   | Tracks
-    //-   ul
-    //-     li Chords
-    //-       ul
-    //-         li ...
-    //-         li ...
-    //-         li new
-    //-     li Heatmaps
-    //-       ul
-    //-         li ...
-    //-         li ...
-    //-         li new
-    //-     li Historgram
-    //-       ul
-    //-         li ...
-    //-         li ...
-    //-         li new
-    //- div(ng-controller='PalettesCtrlTest')
-    //-   {{ hello }}
