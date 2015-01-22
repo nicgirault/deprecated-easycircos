@@ -1,5 +1,9 @@
 form.easy-circos-form(ng-controller='layoutCtrl')
   accordion(close-others='true')
+    accordion-group.easy-circos-pink(is-open='true')
+      accordion-heading Help
+      p {{ help.layoutMenu }}
+      
     accordion-group.easy-circos-blue
       accordion-heading Data
       div.form-group
@@ -186,7 +190,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
             )
             span.input-group-addon px
 
-    accordion-group.easy-circos-pink(heading='Tick labels' is-disabled='! conf.ticks.display')
+    accordion-group.easy-circos-greenish(heading='Tick labels' is-disabled='! conf.ticks.display')
       //- TICKS LABELS
       div.form-group
         div

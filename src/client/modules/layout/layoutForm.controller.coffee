@@ -1,5 +1,5 @@
 do (angular) ->
-  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, circosJS, defaults) ->
+  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, circosJS, defaults, helpStore) ->
     defaultConf = angular.copy circosJS.Layout.prototype._defaultConf
     defaultConf.labels.size = 14
     defaultConf.ticks.labelSize = 10
@@ -60,3 +60,4 @@ do (angular) ->
       circosJS.easyCircos.layout(conf, $scope.layout.data).render()
       
     $scope.labelAlignement = null
+    $scope.help = helpStore
