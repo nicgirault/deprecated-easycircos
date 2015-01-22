@@ -40,7 +40,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, sidebar, $modal
 
   $scope.openFeedbackModal = ->
     modalInstance = $modal.open
-      templateUrl: 'modules/uiApp/feedback.form.html'
+      templateUrl: 'modules/uiApp/feedback.modal.html'
+      controller: 'feedbackCtrl'
+  $scope.openHelpModal = ->
+    modalInstance = $modal.open
+      templateUrl: 'modules/uiApp/help.modal.html'
       controller: 'feedbackCtrl'
     # modalInstance.result.then ((selectedItem) ->
     #   $scope.selected = selectedItem

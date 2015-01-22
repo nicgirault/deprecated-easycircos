@@ -43,19 +43,29 @@ header {
       height: @headerHeight;
     }
   }
-  .feedback {
+  .header-icons {
     position: absolute;
-    right: 10px;
     top: 10px;
     span {
       font-size: 30px;
       transition: all .2s ease-in-out;
-      color: #000;
+      color: #aaa;
     }
     span:hover {
       transform: scale(1.2);
-      color: @greenish;
       cursor: pointer;
+    }
+  }
+  .feedback {
+    right: 10px;
+    span:hover {
+      color: @greenish;
+    }
+  }
+  .help {
+    right: 50px;
+    span:hover {
+      color: @red;
     }
   }
   div {
