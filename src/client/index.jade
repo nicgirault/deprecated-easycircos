@@ -17,7 +17,7 @@ html(lang='en', ng-app='easyCircos')
         type='{{alert.type}}'
         close='closeAlert($index)'
       ) {{ alert.message }}
-    header(ng-include='"modules/uiApp/header.html"')
-    aside(ng-include='"modules/uiApp/sidebar.html"')
+    header(ng-include='"modules/uiApp/views/header.html"')
+    aside(ng-include='"modules/uiApp/views/sidebar.html"')
     .circos
       svg#chart

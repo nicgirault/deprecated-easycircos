@@ -6,11 +6,11 @@
 # colorPalette: 'YlGnBu'
 # colorPaletteSize: 9
 do (angular) ->
-  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, yaml, tracks, sidebar, helpStore, $modal, trackStore, defaults) ->
+  angular.module('trackManager').controller 'heatmapFormCtrl', ($scope, circosJS, tracks, sidebar, helpStore, $modal, trackStore, defaults, dataParser) ->
     $scope.currentTrack =
       id: undefined
       name: undefined
-      conf: angular.copy circosJS.Heatmap.prototype._defaultConf
+      conf: angular.copy circosJS.Heatmap.prototype._defaultConf #*****************
       data: []
 
     $scope.$on 'sidebar-update', (event, message) ->
@@ -21,7 +21,7 @@ do (angular) ->
       $scope.currentTrack.id = sidebar.currentTrack.id
       $scope.currentTrack.name = sidebar.currentTrack.name
       if message.isNew
-        $scope.currentTrack.conf = angular.copy circosJS.Heatmap.prototype._defaultConf
+        $scope.currentTrack.conf = angular.copy circosJS.Heatmap.prototype._defaultConf #**********************
         $scope.currentTrack.conf.innerRadius = sidebar.currentTrack.borders.inner
         $scope.currentTrack.conf.outerRadius = sidebar.currentTrack.borders.outer
         $scope.currentTrack.data = []
@@ -29,40 +29,19 @@ do (angular) ->
         $scope.currentTrack.conf = angular.copy circosJS.easyCircos._heatmaps[sidebar.currentTrack.id]._conf
         $scope.currentTrack.data = angular.copy circosJS.easyCircos._heatmaps[sidebar.currentTrack.id]._data
 
-    dataFormats = ['.yml', '.csv', '.tsv', '.dsv ";"', '.dsv " "'] 
-    $scope.dataFormat = dataFormats[0]
-    $scope.toggleDataFormat = ->
-      key = dataFormats.indexOf $scope.dataFormat
-      if key == dataFormats.length - 1
-        $scope.dataFormat = dataFormats[0]
-      else
-        $scope.dataFormat = dataFormats[key+1]
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
+    $scope.data = dataParser
     $scope.parseData = ($fileContent) ->
-      # todo: validate data
-      if $scope.dataFormat == '.yml'
-        $scope.currentTrack.data = yaml.load $fileContent
-      else
-        if $scope.dataFormat == '.csv ","'
-          delimiter = ','
-        else if $scope.dataFormat == '.dsv ";"'
-          delimiter = ';'
-        else if $scope.dataFormat == '.dsv " "'
-          delimiter = ' '
-        else if $scope.dataFormat == '.tsv'
-          delimiter = '\t'
-        Papa.parse($fileContent, {
-          complete: (results) ->
-            $scope.currentTrack.data = results.data
-          delimiter: delimiter
-        })
-      $scope.render()
+      dataParser.parse($fileContent, (parsedData) ->
+        $scope.currentTrack.data = parsedData
+        $scope.render()
+      )
 
     $scope.render = ->
       conf = angular.copy($scope.currentTrack.conf)
-      circosJS.easyCircos.heatmap(
+      circosJS.easyCircos.heatmap( #**************************
         $scope.currentTrack.id,
         $scope.currentTrack.conf,
         $scope.currentTrack.data
@@ -84,11 +63,11 @@ do (angular) ->
     $scope.tracks = []
     trackStore.getStore (tracks) ->
       $scope.tracks = tracks
-      $scope.data =
+      $scope.dd =
         selectedTrack: null
 
     $scope.selectTrack = ->
-      trackStore.getTrack $scope.data.selectedTrack._id, (track) ->
+      trackStore.getTrack $scope.dd.selectedTrack._id, (track) ->
         $scope.currentTrack.conf = defaults(track.conf, $scope.currentTrack.conf)
         $scope.currentTrack.data = track.data
         $scope.render()

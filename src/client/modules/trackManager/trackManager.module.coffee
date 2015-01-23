@@ -1,5 +1,5 @@
 module.exports = do(angular) ->
   angular.module 'trackManager', ['html5FileReader', 'ui.app', 'help']
 
-  require './heatmapForm.controller.js'
-  require './trackStore.service.js'
+  require './controllers/heatmap.js'
+  require './services/dataParser.js'

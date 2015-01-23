@@ -8,6 +8,7 @@ yaml = require 'js-yaml'
 
 # Load modules
 require './modules/angular-colorBrewer-picker/src/colorBrewer.module.js'
+require './modules/track/track.module.js'
 require './modules/layout/layout.module.js'
 require './modules/circosJS/circosJS.module.js'
 require './modules/trackManager/trackManager.module.js'
@@ -16,7 +17,7 @@ require './modules/uiApp/uiApp.module.js'
 require './modules/help/help.module.js'
 require './modules/utils/utils.module.js'
 
-angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'layout', 'ui.app']
+angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'ui.app']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 

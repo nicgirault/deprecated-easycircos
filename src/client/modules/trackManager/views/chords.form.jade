@@ -1,6 +1,6 @@
-form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
+form#chords-form.easy-circos-form(ng-controller='chordsFormCtrl')
   accordion(close-others='true')
-    accordion-group.easy-circos-green(is-open='true')
+    accordion-group.easy-circos-green
       accordion-heading Track Name
       input.form-control(
         ng-model = 'currentTrack.name'
@@ -11,15 +11,6 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
     accordion-group.easy-circos-blue
       accordion-heading Data
       div.form-group
-        label Library
-        select.form-control(
-          ng-model = 'dd.selectedTrack'
-          ng-options = 'track.title group by track.source for track in tracks'
-          ng-change = 'selectTrack()'
-        )
-      p {{ dd.selectedTrack.description }} 
-        span.source(ng-if='dd.selectedLayout.source') Source: {{ dd.selectedTrack.source }}
-      div.form-group
         div.input-group
           label.custom-upload
             input(
@@ -28,9 +19,13 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
               on-read-file="parseData($fileContent)"
             )
             | Select a file...
-          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
+          span.input-group-addon.hover-cursor(ng-click='toggleDataFormat()') {{ dataFormat }}
           span.glyphicon.glyphicon-question-sign.tcell(
-            ng-click='showHeatmapDataModal()'
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.heatmapData[dataFormat] }}'
+            aria-hidden='true'
           )
 
     accordion-group.easy-circos-red
@@ -59,8 +54,7 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
       accordion-heading Color-Scale
       div.form-group
         label Palette
-        div
-          {{currentTrack.conf.colorPalette}}
+        div {{currentTrack.conf.colorPalette}}
         color-brewer-picker-select(
           cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
           cb-size='20'

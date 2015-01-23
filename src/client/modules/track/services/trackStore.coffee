@@ -1,5 +1,5 @@
 do (angular) ->
-  angular.module('trackManager').factory 'trackStore', ($http) ->
+  angular.module('track').factory 'trackStore', ($http) ->
     getStore: (callback) ->
       $http.get('/tracks').
         success (tracks) ->

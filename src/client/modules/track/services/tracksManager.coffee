@@ -1,5 +1,5 @@
-do(angular) ->
-  angular.module('ui.app').factory 'tracks', ($rootScope) ->
+do (angular) ->
+  angular.module('track').factory 'tracks', ($rootScope) ->
     tracks: {}
     counter: 0
     circosSize: Math.min(window.innerHeight, window.innerWidth) - 60
