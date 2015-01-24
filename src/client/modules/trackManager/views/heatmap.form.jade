@@ -1,4 +1,4 @@
-form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
+form#heatmap-form.easy-circos-form
   accordion(close-others='true')
     accordion-group.easy-circos-green(is-open='true')
       accordion-heading Track Name
@@ -13,12 +13,12 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
       div.form-group
         label Library
         select.form-control(
-          ng-model = 'dd.selectedTrack'
+          ng-model = 'selected.track'
           ng-options = 'track.title group by track.source for track in tracks'
           ng-change = 'selectTrack()'
         )
-      p {{ dd.selectedTrack.description }} 
-        span.source(ng-if='dd.selectedLayout.source') Source: {{ dd.selectedTrack.source }}
+      p {{ selected.track.description }} 
+        span.source(ng-if='selected.track.source') Source: {{ selected.track.source }}
       div.form-group
         div.input-group
           label.custom-upload
@@ -59,8 +59,7 @@ form#heatmap-form.easy-circos-form(ng-controller='heatmapFormCtrl')
       accordion-heading Color-Scale
       div.form-group
         label Palette
-        div
-          {{currentTrack.conf.colorPalette}}
+        div {{currentTrack.conf.colorPalette}}
         color-brewer-picker-select(
           cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
           cb-size='20'

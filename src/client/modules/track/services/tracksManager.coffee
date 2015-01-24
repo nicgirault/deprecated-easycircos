@@ -1,10 +1,11 @@
 do (angular) ->
-  angular.module('track').factory 'tracks', ($rootScope) ->
+  angular.module('track').factory 'tracks', ($rootScope, confManager) ->
     tracks: {}
     counter: 0
     circosSize: Math.min(window.innerHeight, window.innerWidth) - 60
+    currentTrackId: undefined
 
-    addTrack: (trackName, trackType) ->
+    addTrack: (trackName, trackType, callback) ->
       # check name does not exist
       if trackName in (track.name for key,track of @tracks)
         return null
@@ -22,12 +23,10 @@ do (angular) ->
         id: trackId
         type: trackType
         name: trackName
-        borders:
-          inner: @getSmartInnerBorder()
-          outer: @getSmartOuterBorder()
+        conf: null
 
-      $rootScope.$broadcast 'tracks-update'
-      return @tracks[ trackId ]
+      # $rootScope.$broadcast 'tracks-update'
+      callback trackId
 
     updateName: (trackId, newName) ->
       @tracks[ trackId ].name = newName
@@ -41,7 +40,13 @@ do (angular) ->
     getTrack: (trackId) ->
       return @tracks[ trackId ]
 
-    getSmartInnerBorder: ->
-      180
-    getSmartOuterBorder: ->
-      200
+    setCurrentTrack: (trackId) ->
+      @currentTrackId = trackId
+      $rootScope.$broadcast 'current-track-update'
+
+    getCurrentTrack: (callback) ->
+      currentTrack = @tracks[ @currentTrackId ]
+      currentTrack.conf = confManager.getConf @currentTrackId, currentTrack.type
+      callback(currentTrack)
+
+    
