@@ -1,9 +1,6 @@
-div(ng-controller='sidebarCtrl')
-  div(
-    ng-include='"modules/layout/views/layout.form.html"'
-    ng-show='sidebar.show == "layout"'
-  )
-  div(
-    ng-include='"modules/trackManager/views/heatmap.form.html"'
-    ng-show='sidebar.show == "heatmap"'
-  )
+div(ng-controller='trackCtrl')
+  div(ng-switch='currentForm')
+    div(ng-switch-when='layout')
+      div(ng-include='"modules/layout/views/layout.form.html"')
+    div(ng-switch-when='heatmap')
+      div(ng-include='"modules/trackManager/views/heatmap.form.html"')

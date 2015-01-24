@@ -10,6 +10,7 @@ div
 
   .btn-group(
     dropdown
+    id='newTrack'
     is-open='status.new_track_isopen'
   )
     button.btn.btn-warning.dropdown-toggle(
@@ -21,24 +22,8 @@ div
       | New track
       span.caret
     ul.dropdown-menu(role='menu')
-      li(ng-click='newTrack("heatmap");')
-        a(href='#') Heatmap
-      li
-        a.disabled-link(href='#') Chords
-      li
-        a.disabled-link(href='#') Histogram
-      li
-        a.disabled-link(href='#') Connectors
-      li
-        a.disabled-link(href='#') Highlight
-      li
-        a.disabled-link(href='#') Line
-      li
-        a.disabled-link(href='#') Scatter
-      li
-        a.disabled-link(href='#') Text
-      li
-        a.disabled-link(href='#') Tiles
+      li(ng-repeat='trackType in trackTypes' ng-click='newTrack(trackType.type);')
+        a(href='#' ng-class='{"disabled-link": !trackType.enabled}') {{ trackType.label }}
 
   .btn-group(
     dropdown
