@@ -7,7 +7,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
 
   $scope.showLayout = ->
     $scope.status.active = 'layout'
-    sidebar.load('layout')
+    tracks.setCurrentTrack 'layout' 
 
   $scope.newTrack = (trackType) ->
     tracks.addTrack(null, trackType, (trackId) ->

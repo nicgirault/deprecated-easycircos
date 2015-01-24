@@ -9,12 +9,12 @@ form.easy-circos-form(ng-controller='layoutCtrl')
       div.form-group
         label Select a layout
         select.form-control(
-          ng-model = 'data.selectedLayout'
+          ng-model = 'selected.layout'
           ng-options = 'layout.title group by layout.category.field for layout in layouts'
           ng-change = 'selectLayout()'
         )
-      p {{ data.selectedLayout.description }} 
-        span.source(ng-if='data.selectedLayout.source') Source: {{ data.selectedLayout.source }}
+      p {{ selected.layout.description }} 
+        span.source(ng-if='selected.layout.source') Source: {{ selected.layout.source }}
       div.form-group
         label Custom layout
           label.custom-upload

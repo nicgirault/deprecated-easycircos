@@ -8,4 +8,11 @@ module.exports = do(angular, circosJS) ->
       width: size
       height: size
       container: '#chart'
+    circosJS.easyCircos.layout({
+      innerRadius: 200
+      outerRadius: 230
+      labels:
+        radialOffset: 10
+        display: true
+    },[])
     circosJS

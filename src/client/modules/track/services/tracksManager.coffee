@@ -1,9 +1,13 @@
 do (angular) ->
   angular.module('track').factory 'tracks', ($rootScope, confManager) ->
     tracks: {}
+    layout:
+      id: 'layout'
+      type: 'layout'
+      library_id: undefined
     counter: 0
     circosSize: Math.min(window.innerHeight, window.innerWidth) - 60
-    currentTrackId: undefined
+    currentTrackId: 'layout'
 
     addTrack: (trackName, trackType, callback) ->
       # check name does not exist
@@ -45,8 +49,14 @@ do (angular) ->
       $rootScope.$broadcast 'current-track-update'
 
     getCurrentTrack: (callback) ->
-      currentTrack = @tracks[ @currentTrackId ]
-      currentTrack.conf = confManager.getConf @currentTrackId, currentTrack.type
-      callback(currentTrack)
+      if @currentTrackId == 'layout'
+        layout = @layout
+        layout.conf = confManager.getConf 'layout'
+        layout.data = confManager.getData 'layout'
+        callback(layout)
+      else
+        currentTrack = @tracks[ @currentTrackId ]
+        currentTrack.conf = confManager.getConf @currentTrackId, currentTrack.type
+        callback(currentTrack)
 
     

@@ -29,12 +29,21 @@ do (angular) ->
 
     $scope.render = ->
       conf = angular.copy($scope.currentTrack.conf)
-      circosJS.easyCircos.heatmap( #**************************
-        $scope.currentTrack.id,
-        $scope.currentTrack.conf,
-        $scope.currentTrack.data
-      ).render()
+      if $scope.currentTrack.type == 'heatmap'
+        circosJS.easyCircos.heatmap(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
+      else if $scope.currentTrack.type == 'chords'
+        circosJS.easyCircos.chords(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
+      circosJS.easyCircos.render()
 
+    # TODO: move trackType dependency in confManager
     $scope.updatePalette = (paletteName, range, palette) ->
       $scope.currentTrack.conf.colorPalette = paletteName #**************************
       $scope.currentTrack.conf.colorPaletteSize = range #**************************

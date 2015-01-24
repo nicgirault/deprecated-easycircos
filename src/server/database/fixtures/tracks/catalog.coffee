@@ -2,8 +2,8 @@ exports.data = [
   {
     layout_compatibility: ['GRCh37']
     track_compatibility: ['heatmap']
-    title: 'Repartition of SNPs in Stem cells'
-    description: 'Repartition of SNPs in Stem cells'
+    title: 'example 1'
+    description: 'An example to see how easy circos can render data'
     source: 'SeaDB'
     version: '2015-01-20'
     data: require('./data/seadb.js').data
