@@ -39,18 +39,37 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       type: 'histogram'
       enabled: false
     }
+    {
+      label: 'Connectors'
+      type: 'Connectors'
+      enabled: false
+    }
+    {
+      label: 'Tiles'
+      type: 'Tiles'
+      enabled: false
+    }
+    {
+      label: 'Highlight'
+      type: 'Highlight'
+      enabled: false
+    }
+    {
+      label: 'Line'
+      type: 'Line'
+      enabled: false
+    }
+    {
+      label: 'Scatter'
+      type: 'Scatter'
+      enabled: false
+    }
+    {
+      label: 'Text'
+      type: 'Text'
+      enabled: false
+    }
   ]
-  # a.disabled-link(href='#') Connectors
-  #     li
-  #       a.disabled-link(href='#') Highlight
-  #     li
-  #       a.disabled-link(href='#') Line
-  #     li
-  #       a.disabled-link(href='#') Scatter
-  #     li
-  #       a.disabled-link(href='#') Text
-  #     li
-  #       a.disabled-link(href='#') Tiles
   $scope.trackType = null
 
   $scope.openFeedbackModal = ->
