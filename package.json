@@ -22,6 +22,7 @@
     "wiredep": "^2.2.0"
   },
   "scripts": {
+    "start": "gulp server",
     "test": "protractor --require coffee-script/register test/protractor.conf.coffee",
     "deploy:init": "cd devops/deploy && ansible-galaxy install -r requirements.txt --force",
     "deploy:prod": "cd devops/deploy && ansible-playbook -i prod playbook.yml",
