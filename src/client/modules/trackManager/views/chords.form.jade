@@ -8,7 +8,7 @@
 //- colorPalette: 'YlGnBu'
 form#chords-form.easy-circos-form
   accordion(close-others='true')
-    accordion-group.easy-circos-green
+    accordion-group.easy-circos-green(is-open='true')
       accordion-heading Track Name
       input.form-control(
         ng-model = 'currentTrack.name'
@@ -101,7 +101,4 @@ form#chords-form.easy-circos-form
       //-     ng-change = 'render()'
       //-   )
       //-   label Log scale
-
-
-
-    
+  a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank' style='margin: 10px;') Missing a parameter?

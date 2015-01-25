@@ -41,13 +41,16 @@ div
         a.disabled-link(href='#') Heatmaps
       li(
         ng-repeat='track in tracks | filter:{type: "heatmap"}'
-        ng-click='editTrack(track.id, track.type)'
+        ng-click='editTrack(track.id)'
       )
         a(href='#') {{ track.name }}
       li.divider
       li
         a.disabled-link(href='#') Chords
-      li(ng-repeat='track in tracks | filter:{type: "chord"}')
+      li(
+        ng-repeat='track in tracks | filter:{type: "chord"}'
+        ng-click='editTrack(track.id)'
+      )
         a(href='#') {{ track.name }}
       li.divider
       //- li
