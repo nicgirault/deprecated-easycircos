@@ -5,7 +5,7 @@
     "d3": "~3.5.2",
     "colorBrewer": "https://raw.githubusercontent.com/mbostock/d3/master/lib/colorbrewer/colorbrewer.css",
     "colorBrewerJS": "http://d3js.org/colorbrewer.v1.min.js",
-    "circosJS": "https://raw.githubusercontent.com/nicgirault/circosJS/v1.2.10/dist/circosJS.js",
+    "circosJS": "https://raw.githubusercontent.com/nicgirault/circosJS/v1.2.11/dist/circosJS.js",
     "bootstrap": "~3.3.1",
     "angular-bootstrap": "~0.12.0",
     "papaparse": "~4.1.0"
