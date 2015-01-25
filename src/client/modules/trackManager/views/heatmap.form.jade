@@ -14,7 +14,7 @@ form#heatmap-form.easy-circos-form
         label Library
         select.form-control(
           ng-model = 'selected.track'
-          ng-options = 'track.title group by track.source for track in tracks'
+          ng-options = 'track.title group by track.group for track in tracks'
           ng-change = 'selectTrack()'
         )
       p {{ selected.track.description }} 
@@ -56,7 +56,7 @@ form#heatmap-form.easy-circos-form
           span.input-group-addon px
     
     accordion-group.easy-circos-yellow
-      accordion-heading Color-Scale
+      accordion-heading Color & Scale
       div.form-group
         label Palette
         div {{currentTrack.conf.colorPalette}}

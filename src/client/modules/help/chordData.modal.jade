@@ -1,0 +1,47 @@
+.modal-header
+    h3.modal-title Track data formats (chords)
+.modal-body
+  p Your file should be a table of records. Each record should have 4 fields corresponding to:
+    ul
+      li The id of the corresponding layout block (see layout data formating)
+      li It's starting position
+      li It's ending position
+      li it's value (the heatmap color results from this value)
+  tabset(justified='true')
+    tab.myTabs(heading='yml')
+      .myTabsContent
+        p Your file should be a table of records. Each record should have 3 fields corresponding to:
+          ul
+            li The source of the link. It's defined thanks to 3 attributes
+              ul
+                li the id of the layout block (see layout data format)
+                li the start position on the layout block (optional)
+                li the end position on the layout block (optional)
+            li The target of the link (idem).
+            li The value corresponding to the link (optional)
+        pre.myCode
+          code
+            | - source:
+            |     id: chr1
+            |     start: 1
+            |     end: 100000000
+            |   target:
+            |     id: chr15
+            |     start: 2000
+            |     end: 10000000
+            |   value: 4
+            | - source:
+            |     id: chr3
+            |     start: 1
+            |     end: 100000000
+            |   target:
+            |     id: chr10
+            |     start: 2000
+            |     end: 10000000
+            |   value: 8
+            | ...
+    tab.myTabs(heading='csv')
+      .myTabsContent
+        p Not yet available
+.modal-footer
+    button.btn.btn-warning(ng-click='cancel()') Cancel

@@ -32,7 +32,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     {
       label: 'Chords'
       type: 'chords'
-      enabled: false
+      enabled: true
     }
     {
       label: 'Histogram'

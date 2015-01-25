@@ -17,6 +17,14 @@ do (angular) ->
         $scope.currentForm = currentTrack.type
         $scope.currentTrack = currentTrack
 
+        # dealing with track library
+        $scope.tracks = []
+        trackStore.getStore currentTrack.type, (tracks) ->
+          $scope.tracks = tracks
+          $scope.selected =
+            track: null
+
+
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
@@ -36,7 +44,7 @@ do (angular) ->
           $scope.currentTrack.data
         )
       else if $scope.currentTrack.type == 'chords'
-        circosJS.easyCircos.chords(
+        circosJS.easyCircos.chord(
           $scope.currentTrack.id,
           conf,
           $scope.currentTrack.data
@@ -55,14 +63,13 @@ do (angular) ->
         controller: 'ModalCancelCtrl'
         backdrop: true
 
-    $scope.help = helpStore
+    $scope.showChordDataModal = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/help/chordData.modal.html'
+        controller: 'ModalCancelCtrl'
+        backdrop: true
 
-    # dealing with track library
-    $scope.tracks = []
-    trackStore.getStore (tracks) ->
-      $scope.tracks = tracks
-      $scope.selected =
-        track: null
+    $scope.help = helpStore
 
     $scope.selectTrack = ->
       trackStore.getTrack $scope.selected.track._id, (track) ->

@@ -1,4 +1,12 @@
-form#chords-form.easy-circos-form(ng-controller='chordsFormCtrl')
+//- innerRadius: 150
+//- outerRadius: 200
+//- min: 'smart'
+//- max: 'smart'
+//- direction: 'out'
+//- color: 'green'
+//- colorPaletteSize: 9
+//- colorPalette: 'YlGnBu'
+form#chords-form.easy-circos-form
   accordion(close-others='true')
     accordion-group.easy-circos-green
       accordion-heading Track Name
@@ -11,6 +19,13 @@ form#chords-form.easy-circos-form(ng-controller='chordsFormCtrl')
     accordion-group.easy-circos-blue
       accordion-heading Data
       div.form-group
+        label Library
+        select.form-control(
+          ng-model = 'selected.track'
+          ng-options = 'track.title group by track.group for track in tracks'
+          ng-change = 'selectTrack()'
+        )
+      div.form-group
         div.input-group
           label.custom-upload
             input(
@@ -19,39 +34,13 @@ form#chords-form.easy-circos-form(ng-controller='chordsFormCtrl')
               on-read-file="parseData($fileContent)"
             )
             | Select a file...
-          span.input-group-addon.hover-cursor(ng-click='toggleDataFormat()') {{ dataFormat }}
+          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
           span.glyphicon.glyphicon-question-sign.tcell(
-            tooltip-placement="right"
-            tooltip-append-to-body='true'
-            tooltip-trigger='mouseenter : mouseleave'
-            tooltip-html-unsafe='{{ help.heatmapData[dataFormat] }}'
-            aria-hidden='true'
+            ng-click='showChordDataModal()'
           )
 
-    accordion-group.easy-circos-red
-      accordion-heading Position
-      div.form-group
-        label Inner radius
-        div.input-group
-          input.form-control(
-            ng-model = 'currentTrack.conf.innerRadius'
-            type = 'number'
-            ng-change = 'render()'
-          )
-          span.input-group-addon px
-
-      div.form-group
-        label Outer radius
-        div.input-group
-          input.form-control(
-            ng-model = 'currentTrack.conf.outerRadius'
-            type = 'number'
-            ng-change = 'render()'
-          )
-          span.input-group-addon px
-    
     accordion-group.easy-circos-yellow
-      accordion-heading Color-Scale
+      accordion-heading Color & Scale
       div.form-group
         label Palette
         div {{currentTrack.conf.colorPalette}}
@@ -61,46 +50,57 @@ form#chords-form.easy-circos-form(ng-controller='chordsFormCtrl')
           cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
           cb-picker-callback='updatePalette(paletteName, range, palette)'
         )
-
       div.form-group
-        label Min
-          span.glyphicon.glyphicon-question-sign(
-            tooltip-placement="right"
-            tooltip-append-to-body='true'
-            tooltip-trigger='mouseenter : mouseleave'
-            tooltip-html-unsafe='{{ help.min }}'
-            aria-hidden='true'
-          )
-        div
-          input.form-control(
-            ng-model = 'currentTrack.conf.min'
-            type = 'text'
-            ng-change = 'render()'
-          )
-
-      div.form-group
-        label Max
-          span.glyphicon.glyphicon-question-sign(
-            tooltip-placement="right"
-            tooltip-append-to-body='true'
-            tooltip-trigger='mouseenter : mouseleave'
-            tooltip-html-unsafe='{{ help.max }}'
-            aria-hidden='true'
-          )
-        div
-          input.form-control(
-            ng-model = 'currentTrack.conf.max'
-            type = 'text'
-            ng-change = 'render()'
-          )
-
-      div.form-group
+        label Opacity
         input(
-          ng-model = 'currentTrack.conf.logScale'
-          type = 'checkbox'
-          ng-change = 'render()'
+          ng-model="currentTrack.conf.opacity"
+          min="0"
+          max="1"
+          step="0.01"
+          type="range"
+          ng-change="render()"
         )
-        label Log scale
+        
+
+      //- div.form-group
+      //-   label Min
+      //-     span.glyphicon.glyphicon-question-sign(
+      //-       tooltip-placement="right"
+      //-       tooltip-append-to-body='true'
+      //-       tooltip-trigger='mouseenter : mouseleave'
+      //-       tooltip-html-unsafe='{{ help.min }}'
+      //-       aria-hidden='true'
+      //-     )
+      //-   div
+      //-     input.form-control(
+      //-       ng-model = 'currentTrack.conf.min'
+      //-       type = 'text'
+      //-       ng-change = 'render()'
+      //-     )
+
+      //- div.form-group
+      //-   label Max
+      //-     span.glyphicon.glyphicon-question-sign(
+      //-       tooltip-placement="right"
+      //-       tooltip-append-to-body='true'
+      //-       tooltip-trigger='mouseenter : mouseleave'
+      //-       tooltip-html-unsafe='{{ help.max }}'
+      //-       aria-hidden='true'
+      //-     )
+      //-   div
+      //-     input.form-control(
+      //-       ng-model = 'currentTrack.conf.max'
+      //-       type = 'text'
+      //-       ng-change = 'render()'
+      //-     )
+
+      //- div.form-group
+      //-   input(
+      //-     ng-model = 'currentTrack.conf.logScale'
+      //-     type = 'checkbox'
+      //-     ng-change = 'render()'
+      //-   )
+      //-   label Log scale
 
 
 

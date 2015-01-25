@@ -1,6 +1,7 @@
 exports.init = (app, Track) ->
-  app.get '/tracks', (req, res) ->
-    Track.find().select('title description source version layout_compatibility track_compatibility').lean().exec (err, docs) ->
+  app.get '/tracks/:trackType', (req, res) ->
+    Track.find({ track_compatibility: req.params.trackType })
+    .select('title description source version group').lean().exec (err, docs) ->
       if err
         res.send err
       else

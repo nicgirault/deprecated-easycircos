@@ -10,9 +10,10 @@ exports.model = (mongoose) ->
     conf: Object
 
   TrackSchema = mongoose.Schema
-    layout_compatibility: Object
-    track_compatibility: Object
+    layout_compatibility: [String]
+    track_compatibility: [String]
     title: String
+    group: String
     description: String
     source: String
     version: String

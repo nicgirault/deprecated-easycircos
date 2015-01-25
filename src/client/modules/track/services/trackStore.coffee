@@ -1,7 +1,7 @@
 do (angular) ->
   angular.module('track').factory 'trackStore', ($http) ->
-    getStore: (callback) ->
-      $http.get('/tracks').
+    getStore: (trackType, callback) ->
+      $http.get('/tracks/' + trackType).
         success (tracks) ->
           callback tracks
         
