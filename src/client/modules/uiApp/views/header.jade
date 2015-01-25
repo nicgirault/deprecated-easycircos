@@ -50,8 +50,8 @@ div
       li(ng-repeat='track in tracks | filter:{type: "chord"}')
         a(href='#') {{ track.name }}
       li.divider
-      li
-        a.disabled-link(href='#') Histograms
+      //- li
+      //-   a.disabled-link(href='#') Histograms
 
 div.header-icons.help(ng-click='openHelpModal()')
   span.glyphicon.glyphicon-question-sign

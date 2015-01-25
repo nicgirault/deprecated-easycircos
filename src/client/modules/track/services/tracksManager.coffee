@@ -34,7 +34,7 @@ do (angular) ->
 
     updateName: (trackId, newName) ->
       @tracks[ trackId ].name = newName
-      $rootScope.$broadcast 'tracks-update'
+      $rootScope.$broadcast 'track-name-update'
 
 
     deleteTrack: (trackId) ->

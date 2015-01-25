@@ -9,6 +9,9 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     $scope.status.active = 'layout'
     tracks.setCurrentTrack 'layout' 
 
+  $scope.$on 'track-name-update', ->
+    $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
+
   $scope.newTrack = (trackType) ->
     tracks.addTrack(null, trackType, (trackId) ->
       # the new track becomes the currentTrack
