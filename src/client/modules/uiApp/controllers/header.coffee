@@ -5,6 +5,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     track_isopen: false
     active: 'layout'
 
+  $scope.atLeastOne =
+    heatmap: false
+    chords: false
+    histogram: false
+
   $scope.showLayout = ->
     $scope.status.active = 'layout'
     tracks.setCurrentTrack 'layout' 
@@ -19,6 +24,8 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
 
       # update list of tracks in edit button
       $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
+
+      $scope.atLeastOne[trackType] = true
     )
     $scope.status.active = ''
 
@@ -40,7 +47,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     {
       label: 'Histogram'
       type: 'histogram'
-      enabled: false
+      enabled: true
     }
     {
       label: 'Connectors'

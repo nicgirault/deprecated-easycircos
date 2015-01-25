@@ -16,7 +16,6 @@ do (angular) ->
       tracks.getCurrentTrack (currentTrack) ->
         $scope.currentForm = currentTrack.type
         $scope.currentTrack = currentTrack
-
         # dealing with track library
         $scope.tracks = []
         trackStore.getStore currentTrack.type, (tracks) ->
@@ -45,6 +44,12 @@ do (angular) ->
         )
       else if $scope.currentTrack.type == 'chords'
         circosJS.easyCircos.chord(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
+      else if $scope.currentTrack.type == 'histogram'
+        circosJS.easyCircos.histogram(
           $scope.currentTrack.id,
           conf,
           $scope.currentTrack.data

@@ -1,7 +1,7 @@
 exports.data = [
   {
     layout_compatibility: ['GRCh37']
-    track_compatibility: ['heatmap']
+    track_compatibility: ['heatmap', 'histogram']
     title: 'Heatmap 1'
     group: 'Test'
     description: 'Dummy data for testing'
