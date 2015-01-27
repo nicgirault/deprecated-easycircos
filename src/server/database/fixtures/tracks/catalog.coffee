@@ -2,7 +2,7 @@ exports.data = [
   {
     layout_compatibility: ['GRCh37']
     track_compatibility: ['heatmap', 'histogram']
-    title: 'Heatmap 1'
+    title: 'Test 1'
     group: 'Test'
     description: 'Dummy data for testing'
     source: 'Easy Circos'
@@ -23,6 +23,19 @@ exports.data = [
     source: 'Easy Circos'
     version: '2015-01-20'
     data: require('./data/chords.js').data
+    conf:
+      colorPalette: 'Blues'
+      colorPaletteSize: 9
+  }
+  {
+    layout_compatibility: ['GRCh37']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Range'
+    group: 'Test'
+    description: 'Dummy data for testing'
+    source: 'Easy Circos'
+    version: '2015-01-20'
+    data: require('./data/range.js').data
     conf:
       colorPalette: 'Blues'
       colorPaletteSize: 9
