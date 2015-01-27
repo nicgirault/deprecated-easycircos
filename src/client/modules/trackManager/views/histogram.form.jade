@@ -74,22 +74,38 @@ form#heatmap-form.easy-circos-form
     accordion-group.easy-circos-yellow
       accordion-heading Color & Scale
       div.form-group
-          label Color
-          div
-            input.form-control(
-              ng-model = 'currentTrack.conf.color'
-              type = 'color'
-              ng-change = 'render()'
-            )
-
-      div.form-group
         label Palette
-        color-brewer-picker-select(
-          cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
-          cb-size='20'
-          cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
-          cb-picker-callback='updatePalette(paletteName, range, palette)'
-        )
+        div.input-group
+          span.input-group-addon
+            input(
+              type='radio'
+              name='colorStrategy'
+              ng-model='currentTrack.conf.usePalette'
+              ng-value='true'
+              ng-change='render()'
+            )
+          color-brewer-picker-select(
+            cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
+            cb-size='15'
+            cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
+            cb-picker-callback='updatePalette(paletteName, range, palette)'
+          )
+      div.form-group
+        label Color
+        div.input-group
+          span.input-group-addon
+            input(
+              type='radio'
+              name='colorStrategy'
+              ng-model='currentTrack.conf.usePalette'
+              ng-value='false'
+              ng-change='render()'
+            )
+          input.form-control(
+            ng-model = 'currentTrack.conf.color'
+            type = 'color'
+            ng-change = 'render()'
+          )
 
       div.form-group
         label Min
