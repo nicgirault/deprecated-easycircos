@@ -1,10 +1,9 @@
 do (angular) ->
-  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, tracks, defaults, helpStore) ->
+  angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, tracks, defaults, helpStore, dataParser, $modal) ->
     tracks.getCurrentTrack (layout) ->
-      $scope.conf = layout.conf
-      $scope.conf.labels.size = 14
-      $scope.conf.ticks.labelSize = 10
-      $scope.data = layout.data
+      $scope.layout = layout
+      $scope.layout.conf.labels.size = 14
+      $scope.layout.conf.ticks.labelSize = 10
       # innerRadius: 150
       # outerRadius: 250
       # gap: 0.04
@@ -43,16 +42,16 @@ do (angular) ->
       layoutStore.getStore (layouts) ->
         $scope.layouts = layouts
 
-        if $scope.data.length == 0
+        if $scope.layout.data.length == 0
           for layout in layouts
             if layout.default
               $scope.selected =
                 layout: layout
               break
           layoutStore.getLayout $scope.selected.layout._id, (layoutDoc) ->
+            buffer = $scope.layout.conf
             $scope.layout = layoutDoc
-            $scope.conf = defaults(layoutDoc.conf, $scope.conf)
-            $scope.data = layoutDoc.data
+            $scope.layout.conf = defaults(layoutDoc.conf, buffer)
             tracks.layout.library_id = layoutDoc._id
             $scope.render()
         else
@@ -63,23 +62,37 @@ do (angular) ->
                   layout: layout
                 break
             layoutStore.getLayout $scope.selected.layout._id, (layoutDoc) ->
+              buffer = $scope.layout.conf
               $scope.layout = layoutDoc
-              $scope.conf = defaults(layoutDoc.conf, $scope.conf)
-              $scope.data = layoutDoc.data
+              $scope.layout.conf = defaults(layoutDoc.conf, buffer)
               $scope.render()
+
+    $scope.data = dataParser
+    $scope.parseData = ($fileContent) ->
+      dataParser.parse($fileContent, (parsedData) ->
+        $scope.layout.data = parsedData
+        $scope.render()
+      )
 
     $scope.selectLayout = ->
       layoutStore.getLayout $scope.selected.layout._id, (layout) ->
+        buffer = $scope.layout.conf
         $scope.layout = layout
-        $scope.data = layout.data
-        $scope.conf = defaults(layout.conf, $scope.conf)
+        $scope.layout.conf = defaults(layout.conf, buffer)
         tracks.layout.library_id = layout._id
         $scope.render()
+
     $scope.render = ->
-      conf = angular.copy($scope.conf)
+      conf = angular.copy($scope.layout.conf)
       conf.labels.size = conf.labels.size.toString() + 'px' 
       conf.ticks.labels.size = conf.ticks.labelSize.toString() + 'px' 
-      circosJS.easyCircos.layout(conf, $scope.data).render()
-      
+      circosJS.easyCircos.layout(conf, $scope.layout.data).render()
+    
+    $scope.showLayoutDataModal = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/help/layoutData.modal.html'
+        controller: 'ModalCancelCtrl'
+        backdrop: true
+
     $scope.labelAlignement = null
     $scope.help = helpStore

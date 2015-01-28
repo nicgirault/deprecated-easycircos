@@ -23,17 +23,3 @@ module.exports = do(angular) ->
       }
     $scope.closeAlert = (index) ->
       $scope.alerts.splice index, 1
-
-  angular.module('utils').factory 'defaults', ->
-    defaults = (conf, defaultConf) ->
-      newConf = {}
-      for key, value of defaultConf
-        if key of conf
-          if typeof value == 'object'
-            newConf[key] = defaults(conf[key], value)
-          else
-            newConf[key] = conf[key]
-        else
-          newConf[key] = value
-      return newConf
-    return defaults

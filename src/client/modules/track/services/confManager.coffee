@@ -1,8 +1,25 @@
 do (angular) ->
-  angular.module('track').factory 'confManager', (circosJS) ->
+  angular.module('track').factory 'defaults', ->
+    defaults = (conf, defaultConf) ->
+      newConf = {}
+      for key, value of defaultConf
+        if key of conf
+          if typeof value == 'object'
+            newConf[key] = defaults(conf[key], value)
+          else
+            newConf[key] = conf[key]
+        else
+          newConf[key] = value
+      return newConf
+    return defaults
+
+  angular.module('track').factory 'confManager', (circosJS, defaults) ->
     getConf: (trackId, trackType) ->
       if trackId == 'layout'
-          return angular.copy circosJS.easyCircos._layout._conf
+          return defaults(
+            angular.copy(circosJS.easyCircos._layout._conf),
+            circosJS.Layout.prototype._defaultConf
+          )
 
       if trackType == 'heatmap'
         if trackId of circosJS.easyCircos._heatmaps

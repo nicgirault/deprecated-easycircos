@@ -17,14 +17,18 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         span.source(ng-if='selected.layout.source') Source: {{ selected.layout.source }}
       div.form-group
         label Custom layout
+        div.input-group
           label.custom-upload
             input(
               type="file"
               id="import-heatmap-file"
-              on-read-file="todo($fileContent)"
+              on-read-file="parseData($fileContent)"
             )
             | Select a file...
-          span.input-group-addon .yml
+          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
+          span.glyphicon.glyphicon-question-sign.tcell(
+            ng-click='showLayoutDataModal()'
+          )
 
     accordion-group.easy-circos-red
       accordion-heading Style
@@ -32,7 +36,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         label Inner radius
         div.input-group
           input.form-control(
-            ng-model = 'conf.innerRadius'
+            ng-model = 'layout.conf.innerRadius'
             type = 'number'
             ng-change = 'render()'
           )
@@ -42,7 +46,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         label Outer radius
         div.input-group
           input.form-control(
-            ng-model = 'conf.outerRadius'
+            ng-model = 'layout.conf.outerRadius'
             type = 'number'
             ng-change = 'render()'
           )
@@ -52,7 +56,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         label Gap
         div.input-group
           input.form-control(
-            ng-model = 'conf.gap'
+            ng-model = 'layout.conf.gap'
             type = 'number'
             step = '0.01'
             ng-change = 'render()'
@@ -67,17 +71,17 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         div
           input(
             type='checkbox'
-            ng-model = 'conf.labels.display'
+            ng-model = 'layout.conf.labels.display'
             ng-change = 'render()'
           )
           label Display
 
-      div(ng-show='conf.labels.display')
+      div(ng-show='layout.conf.labels.display')
         div.form-group
           label Size
           div.input-group
             input.form-control(
-              ng-model = 'conf.labels.size'
+              ng-model = 'layout.conf.labels.size'
               type = 'number'
               ng-change = 'render()'
             )
@@ -87,7 +91,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Color
           div
             input.form-control(
-              ng-model = 'conf.labels.color'
+              ng-model = 'layout.conf.labels.color'
               type = 'color'
               ng-change = 'render()'
             )
@@ -96,7 +100,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Radial Offset
           div.input-group
             input.form-control(
-              ng-model = 'conf.labels.radialOffset'
+              ng-model = 'layout.conf.labels.radialOffset'
               type = 'number'
               ng-change = 'render()'
             )
@@ -135,17 +139,17 @@ form.easy-circos-form(ng-controller='layoutCtrl')
         div
           input(
             type='checkbox'
-            ng-model = 'conf.ticks.display'
+            ng-model = 'layout.conf.ticks.display'
             ng-change = 'render()'
           )
           label Display
 
-      div(ng-show='conf.ticks.display')
+      div(ng-show='layout.conf.ticks.display')
         div.form-group
           label Color
           div
             input.form-control(
-              ng-model = 'conf.ticks.color'
+              ng-model = 'layout.conf.ticks.color'
               type = 'color'
               ng-change = 'render()'
             )
@@ -154,7 +158,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Spacing
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.spacing'
+              ng-model = 'layout.conf.ticks.spacing'
               type = 'number'
               ng-change = 'render()'
             )
@@ -164,7 +168,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Major spacing
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.majorSpacing'
+              ng-model = 'layout.conf.ticks.majorSpacing'
               type = 'number'
               ng-change = 'render()'
             )
@@ -174,7 +178,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Size (major)
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.size.major'
+              ng-model = 'layout.conf.ticks.size.major'
               type = 'number'
               ng-change = 'render()'
             )
@@ -184,29 +188,29 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Size (minor)
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.size.minor'
+              ng-model = 'layout.conf.ticks.size.minor'
               type = 'number'
               ng-change = 'render()'
             )
             span.input-group-addon px
 
-    accordion-group.easy-circos-greenish(heading='Tick labels' is-disabled='! conf.ticks.display')
+    accordion-group.easy-circos-greenish(heading='Tick labels' is-disabled='! layout.conf.ticks.display')
       //- TICKS LABELS
       div.form-group
         div
           input(
             type='checkbox'
-            ng-model = 'conf.ticks.labels'
+            ng-model = 'layout.conf.ticks.labels'
             ng-change = 'render()'
           )
           label Display
 
-      div(ng-show='conf.ticks.labels')
+      div(ng-show='layout.conf.ticks.labels')
         div.form-group
           label Size
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.labelSize'
+              ng-model = 'layout.conf.ticks.labelSize'
               type = 'number'
               ng-change = 'render()'
             )
@@ -216,7 +220,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Spacing
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.labelSpacing'
+              ng-model = 'layout.conf.ticks.labelSpacing'
               type = 'number'
               ng-change = 'render()'
             )
@@ -226,7 +230,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Color
           div
             input.form-control(
-              ng-model = 'conf.ticks.labelColor'
+              ng-model = 'layout.conf.ticks.labelColor'
               type = 'color'
               ng-change = 'render()'
             )
@@ -235,7 +239,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           div
             input(
               type='checkbox'
-              ng-model = 'conf.ticks.labelDisplay0'
+              ng-model = 'layout.conf.ticks.labelDisplay0'
               ng-change = 'render()'
             )
 
@@ -243,7 +247,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Denominator
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.labelDenominator'
+              ng-model = 'layout.conf.ticks.labelDenominator'
               type = 'number'
               ng-change = 'render()'
             )
@@ -252,7 +256,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Suffix
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.labelSuffix'
+              ng-model = 'layout.conf.ticks.labelSuffix'
               type = 'text'
               ng-change = 'render()'
             )
@@ -261,7 +265,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           label Label Font
           div.input-group
             input.form-control(
-              ng-model = 'conf.ticks.labelFont'
+              ng-model = 'layout.conf.ticks.labelFont'
               type = 'text'
               ng-change = 'render()'
             )
