@@ -82,6 +82,12 @@ do (angular) ->
         controller: 'ModalCancelCtrl'
         backdrop: true
 
+    $scope.showScatterDataModal = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/help/scatterData.modal.html'
+        controller: 'ModalCancelCtrl'
+        backdrop: true
+
     $scope.help = helpStore
 
     $scope.selectTrack = ->

@@ -28,7 +28,7 @@ form.easy-circos-form
             | Select a file...
           span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
           span.glyphicon.glyphicon-question-sign.tcell(
-            ng-click='showChordDataModal()'
+            ng-click='showScatterDataModal()'
           )
 
     accordion-group.easy-circos-red
@@ -121,7 +121,7 @@ form.easy-circos-form
     accordion-group.easy-circos-greenish
       accordion-heading Glyph
       div.form-group
-        label Select a layout
+        label Shape
         select.form-control(
           ng-model = 'currentTrack.conf.glyph.shape'
           ng-options = 'shape for shape in glyph_shapes'

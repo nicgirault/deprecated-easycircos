@@ -1,0 +1,30 @@
+.modal-header
+    h3.modal-title Track data formats (scatter)
+.modal-body
+  tabset(justified='true')
+    tab.myTabs(heading='yml')
+      .myTabsContent
+        p Your file should be a table of records gathered by block. Each record should have 2 fields corresponding to:
+          ul
+            li The position of the glyph
+            li The value
+        pre.myCode
+          code
+            | - parent: chr1
+            |   data:
+            |     - position: 100000000
+            |       value: 18
+            |     - position: 200000000
+            |       value: 3
+            |     - position: 240000000
+            |       value: 43
+            | - parent: chr2
+            |   data:
+            |     - position: 4500
+            |       value: 23
+            | ...
+    tab.myTabs(heading='csv')
+      .myTabsContent
+        p Not yet available
+.modal-footer
+    button.btn.btn-warning(ng-click='cancel()') Cancel
