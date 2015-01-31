@@ -60,6 +60,14 @@ div
         ng-click='editTrack(track.id)'
       )
         a(href='#') {{ track.name }}
+      li.divider(ng-if='atLeastOne.scatter')
+      li(ng-if='atLeastOne.scatter')
+        a.disabled-link(href='#') Histograms
+      li(
+        ng-repeat='track in tracks | filter:{type: "scatter"}'
+        ng-click='editTrack(track.id)'
+      )
+        a(href='#') {{ track.name }}
 
 div.header-icons.help(ng-click='openHelpModal()')
   span.glyphicon.glyphicon-question-sign

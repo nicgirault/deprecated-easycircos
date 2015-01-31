@@ -54,6 +54,12 @@ do (angular) ->
           conf,
           $scope.currentTrack.data
         )
+      else if $scope.currentTrack.type == 'scatter'
+        circosJS.easyCircos.scatter(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
       circosJS.easyCircos.render()
 
     # TODO: move trackType dependency in confManager
@@ -61,6 +67,8 @@ do (angular) ->
       $scope.currentTrack.conf.colorPalette = paletteName #**************************
       $scope.currentTrack.conf.colorPaletteSize = range #**************************
       $scope.render()
+
+    $scope.glyph_shapes = ['cross', 'circle', 'dot', 'diamond', 'square', 'triangle-down', 'triangle-up']
 
     $scope.showHeatmapDataModal = ->
       modalInstance = $modal.open

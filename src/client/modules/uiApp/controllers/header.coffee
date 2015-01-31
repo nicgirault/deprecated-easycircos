@@ -12,7 +12,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
 
   $scope.showLayout = ->
     $scope.status.active = 'layout'
-    tracks.setCurrentTrack 'layout' 
+    tracks.setCurrentTrack 'layout'
 
   $scope.$on 'track-name-update', ->
     $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
@@ -50,6 +50,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       enabled: true
     }
     {
+      label: 'Scatter'
+      type: 'scatter'
+      enabled: true
+    }
+    {
       label: 'Connectors'
       type: 'Connectors'
       enabled: false
@@ -67,11 +72,6 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     {
       label: 'Line'
       type: 'Line'
-      enabled: false
-    }
-    {
-      label: 'Scatter'
-      type: 'Scatter'
       enabled: false
     }
     {
@@ -98,4 +98,4 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     #   return
 
     # return
-  
+
