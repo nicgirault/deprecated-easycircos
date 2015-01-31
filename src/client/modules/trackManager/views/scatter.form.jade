@@ -70,14 +70,7 @@ form.easy-circos-form
             span.onoffswitch-switch
 
     accordion-group.easy-circos-yellow
-      accordion-heading Color & Scale
-      div.form-group
-        label Color
-        input.form-control(
-          ng-model = 'currentTrack.conf.color'
-          type = 'color'
-          ng-change = 'render()'
-        )
+      accordion-heading Scale
       div.form-group
         label Min
           span.glyphicon.glyphicon-question-sign(
@@ -132,6 +125,39 @@ form.easy-circos-form
         input.form-control(
           ng-model = 'currentTrack.conf.glyph.size'
           type = 'number'
+          ng-change = 'render()'
+        )
+
+      div.form-group
+        label Color
+        div.input-group
+          span.input-group-addon
+            input(
+              type='checkbox'
+              ng-model='currentTrack.conf.glyph.fill'
+              ng-value='true'
+              ng-change='render()'
+            )
+          input.form-control(
+            ng-model = 'currentTrack.conf.glyph.color'
+            type = 'color'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        label Stroke width
+        input.form-control(
+          ng-model = 'currentTrack.conf.glyph.strokeWidth'
+          type = 'number'
+          step = '1'
+          ng-change = 'render()'
+        )
+
+      div.form-group
+        label Stroke color
+        input.form-control(
+          ng-model = 'currentTrack.conf.glyph.strokeColor'
+          type = 'color'
           ng-change = 'render()'
         )
 
