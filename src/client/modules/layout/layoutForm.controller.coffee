@@ -94,5 +94,12 @@ do (angular) ->
         controller: 'ModalCancelCtrl'
         backdrop: true
 
+    $scope.showHandsontableLayoutModal = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/inputData/views/layout.modal.html'
+        controller: 'DataModalCtrl'
+        backdrop: true
+        resolve:
+          data: -> $scope.layout.data
     $scope.labelAlignement = null
     $scope.help = helpStore

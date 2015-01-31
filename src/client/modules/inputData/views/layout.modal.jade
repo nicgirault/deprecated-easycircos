@@ -1,0 +1,17 @@
+.modal-header
+    h3.modal-title Layout data formats
+.modal-body
+  .easy-circos(style='witdh: 300px;')
+    hot-table(
+      settings="{colHeaders: true}",
+      rowheaders='false',
+      minsparerows='1',
+      datarows='data',
+      width='400'
+    )
+      hot-column(data='id', title="'ID'")
+      hot-column(data='label', title="'Label'", type="'checkbox'")
+      hot-column(data='len', title="'Length'")
+      hot-column(data='color', title="'Color'")
+.modal-footer
+    button.btn.btn-warning(ng-click='cancel()') Cancel

@@ -16,8 +16,9 @@ require './modules/html5FileReader/html5FileReader.module.js'
 require './modules/uiApp/uiApp.module.js'
 require './modules/help/help.module.js'
 require './modules/utils/utils.module.js'
+require './modules/inputData/inputdata.module.js'
 
-angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'ui.app']
+angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'ui.app', 'ngHandsontable']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 
