@@ -62,9 +62,17 @@ div
         a(href='#') {{ track.name }}
       li.divider(ng-if='atLeastOne.scatter')
       li(ng-if='atLeastOne.scatter')
-        a.disabled-link(href='#') Histograms
+        a.disabled-link(href='#') Scatters
       li(
         ng-repeat='track in tracks | filter:{type: "scatter"}'
+        ng-click='editTrack(track.id)'
+      )
+        a(href='#') {{ track.name }}
+      li.divider(ng-if='atLeastOne.line')
+      li(ng-if='atLeastOne.line')
+        a.disabled-link(href='#') Lines
+      li(
+        ng-repeat='track in tracks | filter:{type: "line"}'
         ng-click='editTrack(track.id)'
       )
         a(href='#') {{ track.name }}

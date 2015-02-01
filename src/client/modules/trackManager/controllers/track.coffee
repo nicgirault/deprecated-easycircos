@@ -60,6 +60,12 @@ do (angular) ->
           conf,
           $scope.currentTrack.data
         )
+      else if $scope.currentTrack.type == 'line'
+        circosJS.easyCircos.line(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
     # TODO: move trackType dependency in confManager

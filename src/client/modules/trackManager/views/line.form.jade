@@ -1,0 +1,150 @@
+form.easy-circos-form
+  accordion(close-others='true')
+    accordion-group.easy-circos-green(is-open='true')
+      accordion-heading Track Name
+      input.form-control(
+        ng-model = 'currentTrack.name'
+        type = 'text'
+        ng-change='updateTrackName()'
+      )
+
+    accordion-group.easy-circos-blue
+      accordion-heading Data
+      div.form-group
+        label Library
+        select.form-control(
+          ng-model = 'selected.track'
+          ng-options = 'track.title group by track.group for track in tracks'
+          ng-change = 'selectTrack()'
+        )
+      div.form-group
+        div.input-group
+          label.custom-upload
+            input(
+              type="file"
+              id="import-heatmap-file"
+              on-read-file="parseData($fileContent)"
+            )
+            | Select a file...
+          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
+          span.glyphicon.glyphicon-question-sign.tcell(
+            ng-click='showScatterDataModal()'
+          )
+
+    accordion-group.easy-circos-red
+      accordion-heading Position
+      div.form-group
+        label Inner radius
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.innerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+
+      div.form-group
+        label Outer radius
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.outerRadius'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+
+      div.form-group
+        label Direction
+        .onoffswitch
+          input#x1.onoffswitch-checkbox(
+            type='checkbox',
+            name='onoffswitch',
+            checked=''
+            ng-model = 'currentTrack.conf.direction'
+            ng-change = 'render()'
+            ng-true-value='"in"'
+            ng-false-value='"out"'
+          )
+          label.onoffswitch-label(for='x1')
+            span.onoffswitch-inner
+            span.onoffswitch-switch
+
+    accordion-group.easy-circos-yellow
+      accordion-heading Scale
+      div.form-group
+        label Min
+          span.glyphicon.glyphicon-question-sign(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.min }}'
+            aria-hidden='true'
+          )
+        div
+          input.form-control(
+            ng-model = 'currentTrack.conf.min'
+            type = 'text'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        label Max
+          span.glyphicon.glyphicon-question-sign(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.max }}'
+            aria-hidden='true'
+          )
+        div
+          input.form-control(
+            ng-model = 'currentTrack.conf.max'
+            type = 'text'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        input(
+          ng-model = 'currentTrack.conf.logScale'
+          type = 'checkbox'
+          ng-change = 'render()'
+        )
+        label Log scale
+
+    accordion-group.easy-circos-greenish
+      accordion-heading Line
+      div.form-group
+        label Color
+        input.form-control(
+          ng-model = 'currentTrack.conf.color'
+          type = 'color'
+          ng-change = 'render()'
+        )
+
+      div.form-group
+        label Fill color
+        div.input-group
+          span.input-group-addon
+            input(
+              type='checkbox'
+              ng-model='currentTrack.conf.fill'
+              ng-value='true'
+              ng-change='render()'
+            )
+          input.form-control(
+            ng-model = 'currentTrack.conf.fill_color'
+            type = 'color'
+            ng-change = 'render()'
+          )
+
+      div.form-group
+        label Thickness
+        input.form-control(
+          ng-model = 'currentTrack.conf.thickness'
+          type = 'number'
+          step = '1'
+          ng-change = 'render()'
+        )
+
+
+  a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank' style='margin: 10px;') Missing a parameter?

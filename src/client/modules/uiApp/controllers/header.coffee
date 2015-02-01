@@ -9,6 +9,8 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     heatmap: false
     chords: false
     histogram: false
+    scatter: false
+    line: false
 
   $scope.showLayout = ->
     $scope.status.active = 'layout'
@@ -55,6 +57,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       enabled: true
     }
     {
+      label: 'Line'
+      type: 'line'
+      enabled: true
+    }
+    {
       label: 'Connectors'
       type: 'Connectors'
       enabled: false
@@ -67,11 +74,6 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     {
       label: 'Highlight'
       type: 'Highlight'
-      enabled: false
-    }
-    {
-      label: 'Line'
-      type: 'Line'
       enabled: false
     }
     {

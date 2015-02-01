@@ -45,6 +45,12 @@ do (angular) ->
         else
           return angular.copy circosJS.Scatter.prototype._defaultConf
 
+      if trackType == 'line'
+        if trackId of circosJS.easyCircos._lines
+          return angular.copy circosJS.easyCircos._lines[ trackId ]._conf
+        else
+          return angular.copy circosJS.Line.prototype._defaultConf
+
     getData: (trackId, trackType) ->
       if trackId == 'layout'
           return angular.copy circosJS.easyCircos._layout._data
@@ -56,3 +62,5 @@ do (angular) ->
         return angular.copy circosJS.easyCircos._histograms[ trackId ]._data
       if trackType == 'scatter'
         return angular.copy circosJS.easyCircos._scatters[ trackId ]._data
+      if trackType == 'line'
+        return angular.copy circosJS.easyCircos._lines[ trackId ]._data
