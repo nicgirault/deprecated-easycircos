@@ -146,5 +146,21 @@ form.easy-circos-form
           ng-change = 'render()'
         )
 
+      div.form-group
+        label Interpolation
+          span.glyphicon.glyphicon-question-sign(
+            tooltip-placement="right"
+            tooltip-append-to-body='true'
+            tooltip-trigger='mouseenter : mouseleave'
+            tooltip-html-unsafe='{{ help.interpolation }}'
+            aria-hidden='true'
+          )
+        select.form-control(
+          ng-model = 'currentTrack.conf.interpolation'
+          ng-options = 'type for type in interpolationTypes'
+          ng-change = 'render()'
+        )
+        p {{ help[ currentTrack.conf.interpolation ] }}
+
 
   a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank' style='margin: 10px;') Missing a parameter?

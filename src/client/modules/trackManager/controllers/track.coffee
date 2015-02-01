@@ -75,6 +75,7 @@ do (angular) ->
       $scope.render()
 
     $scope.glyph_shapes = d3.svg.symbolTypes
+    $scope.interpolationTypes = ['linear', 'monotone', 'cardinal', 'basis']
 
     $scope.showHeatmapDataModal = ->
       modalInstance = $modal.open
