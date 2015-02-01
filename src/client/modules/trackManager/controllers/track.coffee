@@ -74,7 +74,7 @@ do (angular) ->
       $scope.currentTrack.conf.colorPaletteSize = range #**************************
       $scope.render()
 
-    $scope.glyph_shapes = ['cross', 'circle', 'diamond', 'square', 'triangle-down', 'triangle-up']
+    $scope.glyph_shapes = d3.svg.symbolTypes
 
     $scope.showHeatmapDataModal = ->
       modalInstance = $modal.open
