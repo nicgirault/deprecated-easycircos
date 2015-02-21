@@ -1,5 +1,5 @@
 do (angular) ->
-  angular.module('track').factory 'tracks', ($rootScope, confManager) ->
+  angular.module('track').factory 'tracks', ($rootScope, confManager, circosJS) ->
     tracks: {}
     layout:
       id: 'layout'
@@ -41,6 +41,15 @@ do (angular) ->
       delete @tracks[ trackId ]
       $rootScope.$broadcast 'tracks-update'
 
+    deleteAll: ->
+      circosJS.easyCircos._heatmaps = []
+      circosJS.easyCircos._chords = []
+      circosJS.easyCircos._histograms = []
+      circosJS.easyCircos._scatters = []
+      circosJS.easyCircos._lines = []
+      @tracks = []
+      $rootScope.$broadcast 'tracks-update'
+
     getTrack: (trackId) ->
       return @tracks[ trackId ]
 
@@ -59,4 +68,4 @@ do (angular) ->
         currentTrack.conf = confManager.getConf @currentTrackId, currentTrack.type
         callback(currentTrack)
 
-    
+

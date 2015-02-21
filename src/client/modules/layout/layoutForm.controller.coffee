@@ -30,7 +30,7 @@ do (angular) ->
       #     minor: 2
       #     major: 5
       # cornerRadius: 10
-    
+
       # get the list of available layouts on server
 
       # si pas de data: on initialize
@@ -71,7 +71,7 @@ do (angular) ->
     $scope.parseData = ($fileContent) ->
       dataParser.parse($fileContent, (parsedData) ->
         $scope.layout.data = parsedData
-        $scope.render()
+        $scope.render(true)
       )
 
     $scope.selectLayout = ->
@@ -80,14 +80,17 @@ do (angular) ->
         $scope.layout = layout
         $scope.layout.conf = defaults(layout.conf, buffer)
         tracks.layout.library_id = layout._id
-        $scope.render()
+        $scope.render(true)
 
-    $scope.render = ->
+    $scope.render = (removeTracks) ->
       conf = angular.copy($scope.layout.conf)
-      conf.labels.size = conf.labels.size.toString() + 'px' 
-      conf.ticks.labels.size = conf.ticks.labelSize.toString() + 'px' 
-      circosJS.easyCircos.layout(conf, $scope.layout.data).render()
-    
+      conf.labels.size = conf.labels.size.toString() + 'px'
+      conf.ticks.labels.size = conf.ticks.labelSize.toString() + 'px'
+      circosJS.easyCircos.layout(conf, $scope.layout.data).render(['layout'], removeTracks)
+
+      if removeTracks
+        tracks.deleteAll()
+
     $scope.showLayoutDataModal = ->
       modalInstance = $modal.open
         templateUrl: 'modules/help/layoutData.modal.html'
