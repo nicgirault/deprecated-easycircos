@@ -102,3 +102,7 @@ do (angular) ->
         $scope.currentTrack.conf = defaults(track.conf, $scope.currentTrack.conf)
         $scope.currentTrack.data = track.data
         $scope.render()
+
+    $scope.delete = ->
+      tracks.delete($scope.currentTrack.id)
+      $scope.showLayout()

@@ -2,11 +2,13 @@ form.easy-circos-form
   accordion(close-others='true')
     accordion-group.easy-circos-green(is-open='true')
       accordion-heading Track Name
-      input.form-control(
-        ng-model = 'currentTrack.name'
-        type = 'text'
-        ng-change='updateTrackName()'
-      )
+      .form-inline
+        input.form-control(
+          ng-model = 'currentTrack.name'
+          type = 'text'
+          ng-change='updateTrackName()'
+        )
+        confirm-delete(on-confirm="delete()")
 
     accordion-group.easy-circos-blue
       accordion-heading Data

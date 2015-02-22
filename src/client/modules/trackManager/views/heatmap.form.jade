@@ -2,11 +2,13 @@ form#heatmap-form.easy-circos-form
   accordion(close-others='true')
     accordion-group.easy-circos-green(is-open='true')
       accordion-heading Track Name
-      input.form-control(
-        ng-model = 'currentTrack.name'
-        type = 'text'
-        ng-change='updateTrackName()'
-      )
+      .form-inline
+        input.form-control(
+          ng-model = 'currentTrack.name'
+          type = 'text'
+          ng-change='updateTrackName()'
+        )
+        confirm-delete(on-confirm="delete()")
 
     accordion-group.easy-circos-blue
       accordion-heading Data
@@ -17,7 +19,7 @@ form#heatmap-form.easy-circos-form
           ng-options = 'track.title group by track.group for track in tracks'
           ng-change = 'selectTrack()'
         )
-      p {{ selected.track.description }} 
+      p {{ selected.track.description }}
         span.source(ng-if='selected.track.source') Source: {{ selected.track.source }}
       div.form-group
         div.input-group
@@ -54,7 +56,7 @@ form#heatmap-form.easy-circos-form
             ng-change = 'render()'
           )
           span.input-group-addon px
-    
+
     accordion-group.easy-circos-yellow
       accordion-heading Color & Scale
       div.form-group

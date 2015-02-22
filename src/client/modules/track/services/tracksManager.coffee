@@ -37,18 +37,15 @@ do (angular) ->
       $rootScope.$broadcast 'track-name-update'
 
 
-    deleteTrack: (trackId) ->
+    delete: (trackId) ->
+      circosJS.easyCircos.removeTracks(trackId)
       delete @tracks[ trackId ]
-      $rootScope.$broadcast 'tracks-update'
+      $rootScope.$broadcast 'track-name-update'
 
     deleteAll: ->
-      circosJS.easyCircos._heatmaps = []
-      circosJS.easyCircos._chords = []
-      circosJS.easyCircos._histograms = []
-      circosJS.easyCircos._scatters = []
-      circosJS.easyCircos._lines = []
+      circosJS.easyCircos.removeTracks()
       @tracks = []
-      $rootScope.$broadcast 'tracks-update'
+      $rootScope.$broadcast 'track-name-update'
 
     getTrack: (trackId) ->
       return @tracks[ trackId ]
