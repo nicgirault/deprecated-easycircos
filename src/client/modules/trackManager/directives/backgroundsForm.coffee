@@ -24,7 +24,7 @@ do (angular) ->
           index = $scope.backgrounds.indexOf($scope.currentBackground)
           if index > -1
             $scope.backgrounds.splice index, 1
-          $scope.currentBackground = null
+          $scope.currentBackground = $scope.backgrounds[..].pop()
           $scope.onChangeCallback()
         $scope.updateModel = ->
           $scope.onChangeCallback()

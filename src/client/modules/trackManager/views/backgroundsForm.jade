@@ -1,6 +1,5 @@
 .backgrounds-form
   div.form-group
-    label Track backgrounds
     .form-inline
       select.form-control(
         ng-model = 'currentBackground'
@@ -8,18 +7,23 @@
       )
       button.btn.btn-primary.btn-sm(
         ng-click='newBackground()'
+        tooltip-placement="top"
+        tooltip-append-to-body='true'
+        tooltip-trigger='mouseenter : mouseleave'
+        tooltip-html-unsafe='Add a new background'
+        aria-hidden='true'
       )
         i.glyphicon.glyphicon-plus
       confirm-delete(ng-if='currentBackground' on-confirm="deleteBackground()" popup='Delete this background')
 
-  div.form-group
+  div.form-group(ng-if='currentBackground')
     label Name
     input.form-control(
       ng-model='currentBackground.name'
       type='text'
     )
 
-  div.form-group
+  div.form-group(ng-if='currentBackground')
     label Start
       span.glyphicon.glyphicon-question-sign(
         tooltip-placement="right"
@@ -38,7 +42,7 @@
         ng-change='updateModel()'
       )
 
-  div.form-group
+  div.form-group(ng-if='currentBackground')
     label End
       span.glyphicon.glyphicon-question-sign(
         tooltip-placement="right"
@@ -57,7 +61,7 @@
         ng-change = 'updateModel()'
       )
 
-  div.form-group
+  div.form-group(ng-if='currentBackground')
     label Color
     input.form-control(
       ng-model = 'currentBackground.color'
@@ -65,7 +69,7 @@
       ng-change = 'updateModel()'
     )
 
-  div.form-group
+  div.form-group(ng-if='currentBackground')
     label Opacity
       span.glyphicon.glyphicon-question-sign(
         tooltip-placement="right"

@@ -18,6 +18,7 @@ do (angular) ->
         $scope.cancel = ->
           $scope.isDeleting = false
         $scope.confirm = ->
+          $scope.isDeleting = false
           $scope.onConfirm()
     }
   )
