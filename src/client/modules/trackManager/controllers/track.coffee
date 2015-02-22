@@ -22,7 +22,7 @@ do (angular) ->
           $scope.tracks = tracks
           $scope.selected =
             track: null
-
+        $scope.currentTrack.conf.backgrounds = []
 
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
@@ -52,19 +52,25 @@ do (angular) ->
         circosJS.easyCircos.histogram(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data
+          $scope.currentTrack.data,
+          [],
+          $scope.currentTrack.conf.backgrounds
         )
       else if $scope.currentTrack.type == 'scatter'
         circosJS.easyCircos.scatter(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data
+          $scope.currentTrack.data,
+          [],
+          $scope.currentTrack.conf.backgrounds
         )
       else if $scope.currentTrack.type == 'line'
         circosJS.easyCircos.line(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data
+          $scope.currentTrack.data,
+          [],
+          $scope.currentTrack.conf.backgrounds
         )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 

@@ -1,0 +1,85 @@
+.backgrounds-form
+  div.form-group
+    label Track backgrounds
+    .form-inline
+      select.form-control(
+        ng-model = 'currentBackground'
+        ng-options = 'background.name for background in backgrounds'
+      )
+      button.btn.btn-primary.btn-sm(
+        ng-click='newBackground()'
+      )
+        i.glyphicon.glyphicon-plus
+      confirm-delete(ng-if='currentBackground' on-confirm="deleteBackground()" popup='Delete this background')
+
+  div.form-group
+    label Name
+    input.form-control(
+      ng-model='currentBackground.name'
+      type='text'
+    )
+
+  div.form-group
+    label Start
+      span.glyphicon.glyphicon-question-sign(
+        tooltip-placement="right"
+        tooltip-append-to-body='true'
+        tooltip-trigger='mouseenter : mouseleave'
+        tooltip-html-unsafe='{{ help.backgrounds.start }}'
+        aria-hidden='true'
+      )
+    div
+      input.form-control(
+        ng-model='currentBackground.start'
+        type='number'
+        step=0.05
+        min=0
+        max=1
+        ng-change='updateModel()'
+      )
+
+  div.form-group
+    label End
+      span.glyphicon.glyphicon-question-sign(
+        tooltip-placement="right"
+        tooltip-append-to-body='true'
+        tooltip-trigger='mouseenter : mouseleave'
+        tooltip-html-unsafe='{{ help.backgrounds.end }}'
+        aria-hidden='true'
+      )
+    div
+      input.form-control(
+        ng-model = 'currentBackground.end'
+        type = 'number'
+        step=0.05
+        min=0
+        max=1
+        ng-change = 'updateModel()'
+      )
+
+  div.form-group
+    label Color
+    input.form-control(
+      ng-model = 'currentBackground.color'
+      type = 'color'
+      ng-change = 'updateModel()'
+    )
+
+  div.form-group
+    label Opacity
+      span.glyphicon.glyphicon-question-sign(
+        tooltip-placement="right"
+        tooltip-append-to-body='true'
+        tooltip-trigger='mouseenter : mouseleave'
+        tooltip-html-unsafe='{{ help.backgrounds.opacity }}'
+        aria-hidden='true'
+      )
+    div
+      input.form-control(
+        ng-model = 'currentBackground.opacity'
+        type = 'number'
+        step=0.05
+        min=0
+        max=1
+        ng-change = 'updateModel()'
+      )

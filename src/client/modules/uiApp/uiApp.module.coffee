@@ -9,6 +9,7 @@ do (angular) ->
       templateUrl: 'modules/uiApp/views/deleteConfirmation.html',
       scope: {
         onConfirm: '&'
+        popup: '@'
       }
       controller: ($scope) ->
         $scope.isDeleting = false

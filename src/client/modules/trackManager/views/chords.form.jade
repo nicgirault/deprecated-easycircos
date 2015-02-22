@@ -16,7 +16,7 @@ form#chords-form.easy-circos-form
           type = 'text'
           ng-change='updateTrackName()'
         )
-        confirm-delete(on-confirm="delete()")
+        confirm-delete(on-confirm="delete()"  popup='Delete this track')
 
     accordion-group.easy-circos-blue
       accordion-heading Data

@@ -1,17 +1,18 @@
 .deleteConfirmation(style='display:inline-block;')
   div(ng-hide='isDeleting')
-    button.btn.btn-danger(
+    button.btn.btn-danger.btn-sm(
       type='button'
       ng-click='startDelete()'
       tooltip-placement="top"
       tooltip-append-to-body='true'
       tooltip-trigger='mouseenter : mouseleave'
-      tooltip-html-unsafe='Delete this track'
+      tooltip-html-unsafe='{{ popup }}'
       aria-hidden='true'
+      style='padding: 5px 30px;'
     )
-      span.glyphicon.glyphicon-trash
+      i.glyphicon.glyphicon-trash
   div(ng-show='isDeleting')
-    button.btn.btn-default(
+    button.btn.btn-default.btn-sm(
       type='button'
       ng-click='cancel()'
       tooltip-placement="top"
@@ -20,8 +21,8 @@
       tooltip-html-unsafe='Abort deletion'
       aria-hidden='true'
     )
-      span.glyphicon.glyphicon-remove-circle
-    button.btn.btn-danger(
+      i.glyphicon.glyphicon-remove-circle
+    button.btn.btn-danger.btn-sm(
       type='button'
       ng-click='confirm()'
       tooltip-placement="top"
@@ -30,4 +31,4 @@
       tooltip-html-unsafe='Confirm deletion'
       aria-hidden='true'
     )
-      span.glyphicon.glyphicon-ok-circle
+      i.glyphicon.glyphicon-ok-circle

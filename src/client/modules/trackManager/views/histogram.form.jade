@@ -8,7 +8,7 @@ form#heatmap-form.easy-circos-form
           type = 'text'
           ng-change='updateTrackName()'
         )
-        confirm-delete(on-confirm="delete()")
+        confirm-delete(on-confirm="delete()"  popup='Delete this track')
 
     accordion-group.easy-circos-blue
       accordion-heading Data
@@ -111,7 +111,7 @@ form#heatmap-form.easy-circos-form
 
       div.form-group
         label Min
-          span.glyphicon.glyphicon-question-sign(
+          span.glyphicon.glyphicon-question-sign.easycircos-info(
             tooltip-placement="right"
             tooltip-append-to-body='true'
             tooltip-trigger='mouseenter : mouseleave'
@@ -127,7 +127,7 @@ form#heatmap-form.easy-circos-form
 
       div.form-group
         label Max
-          span.glyphicon.glyphicon-question-sign(
+          span.glyphicon.glyphicon-question-sign.easycircos-info(
             tooltip-placement="right"
             tooltip-append-to-body='true'
             tooltip-trigger='mouseenter : mouseleave'
@@ -148,4 +148,11 @@ form#heatmap-form.easy-circos-form
           ng-change = 'render()'
         )
         label Log scale
+
+    accordion-group.easy-circos-green
+      accordion-heading Backgrounds
+      backgrounds-form(
+        backgrounds='currentTrack.conf.backgrounds'
+        on-change-callback='render()'
+      )
   a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank') Missing a parameter?
