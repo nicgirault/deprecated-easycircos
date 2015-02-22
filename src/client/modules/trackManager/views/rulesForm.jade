@@ -1,0 +1,45 @@
+.rules-form
+  button.btn.btn-link(
+    ng-click='toggleForm()'
+    tooltip-placement="right"
+    tooltip-append-to-body='true'
+    tooltip-trigger='mouseenter : mouseleave'
+    tooltip-html-unsafe='{{ help.rules }}'
+    aria-hidden='true'
+  ) Rules
+  .form(ng-if='showForm' style='margin-left: 20px;')
+    div.form-group
+      .form-inline
+        select.form-control(
+          ng-model = 'currentRule'
+          ng-options = 'rule.name for rule in rawRules'
+        )
+          option(value='') Default
+        button.btn.btn-primary.btn-sm(
+          ng-click='newRule()'
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='Add a new rule'
+          aria-hidden='true'
+        )
+          i.glyphicon.glyphicon-plus
+        confirm-delete(ng-if='currentRule' on-confirm="deleteRule()" popup='Delete this rule')
+
+    div.form-group(ng-if='currentRule')
+      | If Datum
+      select.form-control(
+        ng-model='builder'
+        ng-options='element.subject for element in conditionBuilder'
+        ng-change='currentRule.condition.subject = element.subject'
+      )
+      select.form-control(
+        ng-model='currentRule.condition.comparison'
+        ng-options='element.label for element in builder.comparison'
+      )
+      input.form-control(
+        type='{{ builder.object }}'
+        ng-model='currentRule.condition.object'
+      )
+      | then {{ parameterName }} is
+      button(ng-click='updateModel()')

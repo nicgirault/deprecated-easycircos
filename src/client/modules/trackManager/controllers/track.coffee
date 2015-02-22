@@ -22,8 +22,8 @@ do (angular) ->
           $scope.tracks = tracks
           $scope.selected =
             track: null
-        $scope.currentTrack.conf.backgrounds = []
-
+        $scope.currentTrack.conf.backgrounds = [] unless $scope.currentTrack.conf.backgrounds?
+        $scope.currentTrack.conf.rules = [] unless $scope.currentTrack.conf.rules?
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
@@ -61,7 +61,7 @@ do (angular) ->
           $scope.currentTrack.id,
           conf,
           $scope.currentTrack.data,
-          [],
+          $scope.currentTrack.conf.rules,
           $scope.currentTrack.conf.backgrounds
         )
       else if $scope.currentTrack.type == 'line'
@@ -100,6 +100,19 @@ do (angular) ->
         templateUrl: 'modules/help/scatterData.modal.html'
         controller: 'ModalCancelCtrl'
         backdrop: true
+
+    $scope.openRulesModal = (configurationParameter) ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/rules/views/rules.html'
+        controller: 'modalRuleController'
+        resolve:
+          configurationParameter: () ->
+            configurationParameter
+        backdrop: true
+      modalInstance.close = (rules) ->
+        $scope.currentTrack.conf.rules = rules
+        $scope.render()
+        modalInstance.dismiss()
 
     $scope.help = helpStore
 
