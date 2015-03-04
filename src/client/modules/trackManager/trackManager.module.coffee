@@ -4,4 +4,3 @@ module.exports = do(angular) ->
   require './controllers/track.js'
   require './services/dataParser.js'
   require './directives/backgroundsForm.js'
-  require './directives/rulesForm.js'

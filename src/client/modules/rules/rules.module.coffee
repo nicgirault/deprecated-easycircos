@@ -3,3 +3,4 @@ module.exports = do(angular) ->
 
   require './controllers/modal.js'
   require './services/rulesManager.js'
+  require './services/conditionBuilder.js'

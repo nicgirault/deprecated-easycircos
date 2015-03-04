@@ -129,7 +129,6 @@ form.easy-circos-form
           type = 'number'
           ng-change = 'render()'
         )
-        button.btn.btn-link(ng-click='openRulesModal("glyph_strokeColor")') Rules
 
       div.form-group
         label Color
@@ -146,6 +145,7 @@ form.easy-circos-form
             type = 'color'
             ng-change = 'render()'
           )
+        button.btn.btn-link(ng-click='openRulesModal("glyph_color", "color")') Rules
 
       div.form-group
         label Stroke width
@@ -155,6 +155,7 @@ form.easy-circos-form
           step = '1'
           ng-change = 'render()'
         )
+        button.btn.btn-link(ng-click='openRulesModal("glyph_strokeWidth", "number")') Rules
 
       div.form-group
         label Stroke color
@@ -163,6 +164,7 @@ form.easy-circos-form
           type = 'color'
           ng-change = 'render()'
         )
+        button.btn.btn-link(ng-click='openRulesModal("glyph_strokeColor")') Rules
 
     accordion-group.easy-circos-green
       accordion-heading Backgrounds

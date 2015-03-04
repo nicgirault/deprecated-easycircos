@@ -1,71 +1,40 @@
 do (angular) ->
-  angular.module('rules').controller 'modalRuleController', ($scope, $modalInstance, configurationParameter, rulesManager) ->
+  angular.module('rules').controller 'modalRuleController', ($scope, $modalInstance, configurationParameter, rulesManager, rawRules, conditionBuilder, parameterType) ->
 
-    $scope.rawRules = []
+    $scope.rawRules = rawRules
+
+    $scope.conditionBuilder = conditionBuilder
+
     $scope.configurationParameter = configurationParameter
+    $scope.valueType = parameterType
     $scope.newRule = ->
       $scope.rawRules.push {
         condition:
           subject: null
-          comparison: null
+          operator: null
           object: null
         parameter: configurationParameter
         value: null
       }
 
+    $scope.newRule() unless $scope.rawRules.length
+
     $scope.deleteRule = (index) ->
       $scope.rawRules.splice index, 1
 
-    $scope.conditionBuilder = [
-      {
-        subject: 'value'
-        comparison: [
-          {label: 'is higher than', code: '>'}
-          {label: 'is lower than', code: '<'}
-          {label: 'is', code: '='}
-        ]
-        object: 'number'
-      }
-      {
-        subject: 'position'
-        comparison: [
-          {label: 'is before', code: '<'}
-          {label: 'is after', code: '>'}
-          {label: 'is', code: '='}
-        ]
-        object: 'number'
-      }
-      {
-        subject: 'parentId'
-        comparison: [
-          {label: 'is', code: '='}
-          {label: 'is not', code: '!='}
-          {label: 'is in', code: '[]'}
-          {label: 'is not in', code: '[]'}
-        ]
-        object: 'text'
-      }
-      {
-        subject: 'index'
-        comparison: [
-          {label: 'is higher than', code: '>'}
-          {label: 'is lower than', code: '<'}
-          {label: 'is', code: '='}
-        ]
-        object: 'number'
-      }
-    ]
-
     $scope.save = () ->
       rules = []
+      rawRules = []
       for rule in $scope.rawRules
-        rules.push {
-          parameter: configurationParameter
-          condition: rulesManager.conditionBuilder rule
-          value: rule.value
-        }
-      console.log rules
-      $modalInstance.close(rules)
+        condition = rulesManager.conditionBuilder rule
+        if condition?
+          rules.push {
+            parameter: configurationParameter
+            condition: condition
+            value: rule.value
+          }
+          rawRules.push rule
+      $modalInstance.close(rules, rawRules)
 
     $scope.cancel = ->
       $modalInstance.dismiss 'cancel'

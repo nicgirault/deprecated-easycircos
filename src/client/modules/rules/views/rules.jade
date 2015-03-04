@@ -1,36 +1,60 @@
 form
     .modal-header
         h3.modal-title Rules
+            button.btn.btn-primary.btn-sm(
+                type='button'
+                ng-click='newRule()'
+            )
+                i.glyphicon.glyphicon-plus
     .modal-body
-        table.table
-            tr
-                th Datum parameter
-                th Compared
-                th Comparison
-                th Then {{ configurationParameter }} is equal to
-            tr(ng-repeat='rule in rawRules')
-                td
-                    select(
-                        ng-model='rule.condition.subject'
-                        ng-options='element.subject for element in conditionBuilder'
-                    )
-                td
-                    select(
-                        ng-model='rule.condition.comparison'
-                        ng-options='element.label for element in rule.condition.subject.comparison'
-                    )
-                td
+        ul
+            li(ng-repeat='rule in rawRules')
+                | If datum
+                select(
+                    ng-model='rule.condition.subject'
+                    ng-options='item as item.label for item in conditionBuilder.datumParameters'
+                )
+                select(
+                    ng-model='rule.condition.operator'
+                    ng-options='item for item in conditionBuilder.operators[rule.condition.subject.type]'
+                )
+                span(ng-switch='rule.condition.subject.type')
                     input(
                         ng-model='rule.condition.object'
-                        type='{{ rule.condition.subject.object }}'
+                        type='number'
+                        ng-switch-when='number'
                     )
-                td
                     input(
+                        ng-model='rule.condition.object'
+                        type='text'
+                        ng-switch-default='text'
+                    )
+                | then {{ configurationParameter }} is
+                span(ng-switch='valueType')
+                    input(
+                        ng-switch-when='text'
                         ng-model='rule.value'
                         type='text'
                     )
+                    input(
+                        ng-switch-when='number'
+                        ng-model='rule.value'
+                        type='number'
+                    )
+                    input(
+                        ng-switch-when='color'
+                        ng-model='rule.value'
+                        type='color'
+                    )
+                    color-brewer-picker-select(
+                        ng-switch-when='palette'
+                        cb-initial-palette-name='{{ rule.value }}'
+                        cb-size='20'
+                        cb-initial-range='{{ rule.valueBis }}'
+                        cb-picker-callback='updatePalette(paletteName, range, palette)'
+                    )
+                confirm-delete(on-confirm="deleteRule($index)" popup='Delete this rule' styl)
 
     .modal-footer
-        button.btn.btn-primary(ng-click='newRule()') Add a rule
         button.btn.btn-warning(ng-click='save()') Save
-        button.btn.btn-warning(ng-click='cancel()') Cancel
+        button.btn(ng-click='cancel()') Cancel

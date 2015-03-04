@@ -24,6 +24,7 @@ do (angular) ->
             track: null
         $scope.currentTrack.conf.backgrounds = [] unless $scope.currentTrack.conf.backgrounds?
         $scope.currentTrack.conf.rules = [] unless $scope.currentTrack.conf.rules?
+        $scope.currentTrack.conf.rawRules = [] unless $scope.currentTrack.conf.rawRules?
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
@@ -101,16 +102,23 @@ do (angular) ->
         controller: 'ModalCancelCtrl'
         backdrop: true
 
-    $scope.openRulesModal = (configurationParameter) ->
+    $scope.openRulesModal = (configurationParameter, parameterType) ->
       modalInstance = $modal.open
         templateUrl: 'modules/rules/views/rules.html'
         controller: 'modalRuleController'
         resolve:
-          configurationParameter: () ->
+          configurationParameter: ->
             configurationParameter
+          parameterType: ->
+            parameterType
+          rawRules: ->
+            $scope.currentTrack.conf.rawRules.filter((element) ->
+              element.parameter == configurationParameter
+            )
         backdrop: true
-      modalInstance.close = (rules) ->
+      modalInstance.close = (rules, rawRules) ->
         $scope.currentTrack.conf.rules = rules
+        $scope.currentTrack.conf.rawRules = rawRules
         $scope.render()
         modalInstance.dismiss()
 
