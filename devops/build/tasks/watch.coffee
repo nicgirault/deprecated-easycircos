@@ -1,13 +1,13 @@
 gulp = require 'gulp'
 server = require 'gulp-express'
+gulpSequence = require 'gulp-sequence'
 
 gulp.task('server', ['build'], ->
-  # Restart the server when file changes
-  # gulp.watch ['build/**'], server.run
-  gulp.watch ['build/server/app.js'], server.run
-  gulp.watch 'src/**', ['build']
+  server.run ['build/server/app.js']
+)
 
-  # Start the server at the beginning of the task
-  server.run
-    file: 'build/server/app.js'
+gulp.task('default', ['build'], ->
+  server.run ['build/server/app.js']
+  # Restart the server when file changes
+  gulp.watch 'src/**', ['server']
 )
