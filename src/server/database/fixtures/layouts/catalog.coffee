@@ -5,6 +5,7 @@ exports.data = [
       type: 'karyotype'
       species: 'Homo Sapiens'
     title: 'Homo Sapiens GRCh37 - hg19'
+    code: 'GRCh37'
     default: true
     description: 'Human genome with cytobands'
     source: 'Circos v0.64'
@@ -17,6 +18,7 @@ exports.data = [
     category:
       field: 'maths'
     title: 'Digits'
+    code: 'digits'
     default: false
     description: 'Digits to play with arithmetic'
     source: ''
@@ -29,6 +31,7 @@ exports.data = [
   {
     category:
       field: 'time'
+    code: 'months'
     title: 'Months'
     default: false
     description: 'Months to display data over the year. Each month has a length equal to the number of days in the month.'
@@ -43,6 +46,7 @@ exports.data = [
     category:
       field: 'time'
     title: 'Weekdays'
+    code: 'weekdays'
     default: false
     description: 'Weekdays to display data over the week. Each day has length 24'
     source: 'N/A'
@@ -56,6 +60,7 @@ exports.data = [
     category:
       field: 'time'
     title: 'Hours'
+    code: 'hours'
     default: false
     description: 'Hours to display data over the day. Each hour has length 60'
     source: 'N/A'

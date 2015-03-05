@@ -2,6 +2,7 @@ exports.model = (mongoose) ->
   layoutSchema = mongoose.Schema
     category: Object
     title: String
+    code: String
     description: String
     source: String
     version: String
@@ -19,7 +20,7 @@ exports.model = (mongoose) ->
     version: String
     data: Object
     conf: Object
-      
+
   return {
     Layout: mongoose.model 'Layout', layoutSchema
     Track: mongoose.model 'Track', TrackSchema
