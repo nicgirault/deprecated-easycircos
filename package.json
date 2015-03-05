@@ -17,6 +17,7 @@
     "gulp-require": "^0.1.4",
     "gulp-watch": "^3.0.0",
     "gulp-webserver": "^0.9.0",
+    "gulp-sequence": "^0.3.2",
     "js-yaml": "^3.2.5",
     "mongoose": "3.8.21",
     "wiredep": "^2.2.0"
@@ -28,8 +29,5 @@
     "deploy:prod": "cd devops/deploy && ansible-playbook -i prod playbook.yml",
     "provision:prod": "cd devops/provisioning && ansible-playbook -i prod playbook.yml",
     "provisioning:init": "cd devops/provisioning && ansible-galaxy install -r requirements.txt --force"
-  },
-  "devDependencies": {
-    "gulp-sequence": "^0.3.2"
   }
 }
