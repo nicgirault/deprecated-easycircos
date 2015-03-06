@@ -4,7 +4,7 @@ do (angular) ->
     layout:
       id: 'layout'
       type: 'layout'
-      library_id: undefined
+      code: undefined
     counter: 0
     circosSize: Math.min(window.innerHeight, window.innerWidth) - 60
     currentTrackId: 'layout'
@@ -64,5 +64,3 @@ do (angular) ->
         currentTrack = @tracks[ @currentTrackId ]
         currentTrack.conf = confManager.getConf @currentTrackId, currentTrack.type
         callback(currentTrack)
-
-

@@ -18,7 +18,7 @@ require './modules/help/help.module.js'
 require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
 
-angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'ui.app']
+angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 

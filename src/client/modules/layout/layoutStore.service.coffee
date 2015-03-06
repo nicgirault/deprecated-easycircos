@@ -4,9 +4,14 @@ do (angular) ->
       $http.get('/layouts').
         success (layouts) ->
           callback layouts
-        
+
     getLayout: (id, callback) ->
       $http.get('/layout/' + id).
+        success (layout) ->
+          callback layout
+
+    getDefaultLayout: (callback) ->
+      $http.get('/layout/default').
         success (layout) ->
           callback layout
 

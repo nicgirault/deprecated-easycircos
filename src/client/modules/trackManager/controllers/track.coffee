@@ -18,7 +18,7 @@ do (angular) ->
         $scope.currentTrack = currentTrack
         # dealing with track library
         $scope.tracks = []
-        trackStore.getStore currentTrack.type, (tracks) ->
+        trackStore.getStore currentTrack.type, tracks.layout.code, (tracks) ->
           $scope.tracks = tracks
           $scope.selected =
             track: null
@@ -128,6 +128,7 @@ do (angular) ->
       trackStore.getTrack $scope.selected.track._id, (track) ->
         $scope.currentTrack.conf = defaults(track.conf, $scope.currentTrack.conf)
         $scope.currentTrack.data = track.data
+        $scope.currentTrack.code = track.code
         $scope.render()
 
     $scope.delete = ->
