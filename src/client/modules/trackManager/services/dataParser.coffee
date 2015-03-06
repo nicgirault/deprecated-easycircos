@@ -18,13 +18,15 @@ do (angular) ->
         else
           @format = @formats[key+1]
       parse: (content, callback) ->
-        if @format.ext == 'yml'
+        try
           callback(yaml.load(content))
-        else
+        catch
           Papa.parse(content, {
             complete: (results) ->
               callback results.data
             delimiter: @format.delimiter
+            dynamicTyping: true
+            skipEmptyLines: true
           })
     }
-      
+
