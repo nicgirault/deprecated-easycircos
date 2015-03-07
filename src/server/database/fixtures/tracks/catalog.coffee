@@ -66,4 +66,132 @@ exports.data = [
       colorPalette: 'Blues'
       colorPaletteSize: 9
   }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2014'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2014'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2014.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2013'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2013'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2013.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2012'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2012'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2012.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2011'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2011'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2011.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2010'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2010'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2010.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2009'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2009'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2009.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2008'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2008'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2008.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['heatmap', 'histogram']
+    title: 'Temperatures in Paris in 2007'
+    group: 'Temperature'
+    description: 'Temperatures in Paris in 2007'
+    source: 'http://www.wunderground.com/personal-weather-station/dashboard?ID=I75003PA1#history/s20121230/e20131231/myear'
+    version: '1'
+    data: require('./data/temperature_paris_2007.js').data
+    conf:
+      colorPalette: 'Spectral'
+      colorPaletteSize: 10
+      colorPaletteReverse: true
+      min: -10
+      max: 30
+  }
 ]
