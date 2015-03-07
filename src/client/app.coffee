@@ -22,4 +22,7 @@ angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track'
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 
+angular.module('easyCircos').constant 'NOTIFICATION_DELAY', 10000
+
+
 require './analytics.js'
