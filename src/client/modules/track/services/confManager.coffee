@@ -25,7 +25,11 @@ do (angular) ->
         if trackId of circosJS.easyCircos._heatmaps
           return angular.copy circosJS.easyCircos._heatmaps[ trackId ]._conf
         else
-          return angular.copy circosJS.Heatmap.prototype._defaultConf
+          conf = angular.copy circosJS.Heatmap.prototype._defaultConf
+          borders = circosJS.easyCircos.smartBorders()
+          conf.innerRadius = borders.in
+          conf.outerRadius = borders.out
+          return conf
 
       if trackType == 'chords'
         if trackId of circosJS.easyCircos._chords
@@ -37,19 +41,31 @@ do (angular) ->
         if trackId of circosJS.easyCircos._histograms
           return angular.copy circosJS.easyCircos._histograms[ trackId ]._conf
         else
-          return angular.copy circosJS.Histogram.prototype._defaultConf
+          conf = angular.copy circosJS.Histogram.prototype._defaultConf
+          borders = circosJS.easyCircos.smartBorders()
+          conf.innerRadius = borders.in
+          conf.outerRadius = borders.out
+          return conf
 
       if trackType == 'scatter'
         if trackId of circosJS.easyCircos._scatters
           return angular.copy circosJS.easyCircos._scatters[ trackId ]._conf
         else
-          return angular.copy circosJS.Scatter.prototype._defaultConf
+          conf = angular.copy circosJS.Scatter.prototype._defaultConf
+          borders = circosJS.easyCircos.smartBorders()
+          conf.innerRadius = borders.in
+          conf.outerRadius = borders.out
+          return conf
 
       if trackType == 'line'
         if trackId of circosJS.easyCircos._lines
           return angular.copy circosJS.easyCircos._lines[ trackId ]._conf
         else
-          return angular.copy circosJS.Line.prototype._defaultConf
+          conf = angular.copy circosJS.Line.prototype._defaultConf
+          borders = circosJS.easyCircos.smartBorders()
+          conf.innerRadius = borders.in
+          conf.outerRadius = borders.out
+          return conf
 
     getData: (trackId, trackType) ->
       if trackId == 'layout'

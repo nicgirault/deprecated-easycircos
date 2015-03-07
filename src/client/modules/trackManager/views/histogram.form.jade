@@ -92,6 +92,15 @@ form#heatmap-form.easy-circos-form
             cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
             cb-picker-callback='updatePalette(paletteName, range, palette)'
           )
+
+      div.form-group(ng-if='currentTrack.conf.usePalette')
+        input(
+          ng-model = 'currentTrack.conf.colorPaletteReverse'
+          type = 'checkbox'
+          ng-change = 'render()'
+        )
+        label Reverse palette
+
       div.form-group
         label Color
         div.input-group

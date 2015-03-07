@@ -70,6 +70,14 @@ form#heatmap-form.easy-circos-form
         )
 
       div.form-group
+        input(
+          ng-model = 'currentTrack.conf.colorPaletteReverse'
+          type = 'checkbox'
+          ng-change = 'render()'
+        )
+        label Reverse palette
+
+      div.form-group
         label Min
           span.glyphicon.glyphicon-question-sign.easycircos-info(
             tooltip-placement="right"
