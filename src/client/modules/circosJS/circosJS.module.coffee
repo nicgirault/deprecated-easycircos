@@ -19,6 +19,12 @@ module.exports = do(angular, circosJS) ->
           message: message
           delay: NOTIFICATION_DELAY
         , levels[1]
+      else if code in ['datum', 'start', 'end', 'value']
+        message = '"' + data.value + '" is not a number line ' + data.line
+        Notification
+          message: message
+          delay: NOTIFICATION_DELAY
+        , levels[1]
       else
         Notification.warning
           message: message
