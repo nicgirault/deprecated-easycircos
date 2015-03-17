@@ -7,3 +7,4 @@ project_version: "master"
 project_has_npm: true
 project_has_bower: true
 project_bower_binary: node_modules/bower/bin/bower
+project_copy_previous_npm_modules: true
