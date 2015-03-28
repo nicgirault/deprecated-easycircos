@@ -21,6 +21,20 @@ do (angular) ->
       $scope.data.map (datum, i) ->
         datum.color = palette[i%range]
 
+    $scope.parseClipboard = (event, index) ->
+      item = event.clipboardData.items[0]
+      item.getAsString (data) ->
+        result = Papa.parse(data)
+        $scope.data.splice index, result.data.length
+        result.data.map (row, i) ->
+          $scope.data.splice index + i, 0, {
+            id: row[0]
+            len: parseInt row[1]
+            label: row[2]
+            color: row[3]
+          }
+        $scope.$apply()
+
     $scope.deleteDatum = (index) ->
       $scope.data.splice index, 1
 

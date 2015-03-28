@@ -14,6 +14,7 @@ form
         cb-picker-callback='updatePalette(paletteName, range, palette)'
       )
   .modal-body
+    p Note: you can paste an excel file in a 'region id' field. Color should be something like #ff00ff. 
     table.layout-data-list
       tr
         th region id
@@ -26,6 +27,7 @@ form
             ng-model='datum.id'
             type='text'
             size=8
+            ng-paste='parseClipboard($event.originalEvent, $index)'
           )
         td
           input(
