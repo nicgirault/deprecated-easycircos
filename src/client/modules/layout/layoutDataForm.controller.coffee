@@ -3,7 +3,7 @@ do (angular) ->
 
     $scope.data = data
     $scope.newDatum = ->
-      color = if $scope.colorPalette? then $scope.palette[$scope.data.length%$scope.colorPaletteSize] else null
+      color = if $scope.palette? then $scope.palette[$scope.data.length%$scope.colorPaletteSize] else null
       $scope.data.push {
         id: null
         len: null
@@ -13,7 +13,6 @@ do (angular) ->
 
     $scope.newDatum() unless $scope.data.length
 
-    $scope.colorPalette = 'Blues'
     $scope.colorPaletteSize = 9
     $scope.updatePalette = (paletteName, range, palette) ->
       $scope.palette = palette
