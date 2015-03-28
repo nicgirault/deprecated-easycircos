@@ -18,19 +18,9 @@ form.easy-circos-form(ng-controller='layoutCtrl')
       p {{ selected.layout.description }}
         span.source(ng-if='selected.layout.source') Source: {{ selected.layout.source }}
       div.form-group
-        label Custom layout
-        div.input-group
-          label.custom-upload
-            input(
-              type="file"
-              id="import-heatmap-file"
-              on-read-file="parseData($fileContent)"
-            )
-            | Select a file...
-          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
-          span.glyphicon.glyphicon-question-sign.tcell(
-            ng-click='showLayoutDataModal()'
-          )
+        button.btn.btn-primary(
+          ng-click="showLayoutDataFormModal()"
+        ) Edit
 
     accordion-group.easy-circos-red
       accordion-heading Style

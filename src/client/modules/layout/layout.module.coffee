@@ -3,6 +3,7 @@ module.exports = do(angular) ->
 
   require './layoutStore.service.js'
   require './layoutForm.controller.js'
+  require './layoutDataForm.controller.js'
 
   angular.module 'layoutInit', ['track', 'layout']
   require './layoutInit.js'

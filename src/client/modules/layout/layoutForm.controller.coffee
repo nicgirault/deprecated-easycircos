@@ -36,11 +36,18 @@ do (angular) ->
       if removeTracks
         tracks.deleteAll()
 
-    $scope.showLayoutDataModal = ->
+    $scope.showLayoutDataFormModal = () ->
       modalInstance = $modal.open
-        templateUrl: 'modules/help/layoutData.modal.html'
-        controller: 'ModalCancelCtrl'
+        templateUrl: 'modules/layout/views/layoutData.form.html'
+        controller: 'layoutDataCtrl'
+        resolve:
+          data: -> $scope.layout.data
         backdrop: true
+      modalInstance.close = (data) ->
+        $scope.layout.data = data
+        $scope.render()
+        modalInstance.dismiss()
+
 
     $scope.labelAlignement = null
     $scope.help = helpStore
