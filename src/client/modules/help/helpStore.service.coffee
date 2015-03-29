@@ -9,3 +9,4 @@ do (angular) ->
     cardinal: 'a Cardinal spline, with control point duplication on the ends'
     monotone: 'cubic interpolation that preserves monotonicity in y'
     rules: 'Rules allow you to define specific values according to datum characteristics'
+    layout: 'Control the circular axis layout'

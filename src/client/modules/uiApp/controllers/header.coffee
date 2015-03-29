@@ -1,9 +1,5 @@
-angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser) ->
-  # buttons state in header
-  $scope.status =
-    new_track_isopen: false
-    track_isopen: false
-    active: 'layout'
+angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser, helpStore) ->
+  $scope.help = helpStore
 
   $scope.atLeastOne =
     heatmap: false
@@ -12,9 +8,14 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     scatter: false
     line: false
 
-  $scope.showLayout = ->
-    $scope.status.active = 'layout'
-    tracks.setCurrentTrack 'layout'
+  $scope.sidebar = null
+
+  $scope.toggleLayout = ->
+    if $scope.sidebar == 'layout'
+      $scope.sidebar = null
+    else
+      $scope.sidebar = 'layout'
+      tracks.setCurrentTrack 'layout'
 
   $scope.$on 'track-name-update', ->
     $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
@@ -29,11 +30,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
 
       $scope.atLeastOne[trackType] = true
     )
-    $scope.status.active = ''
+    $scope.sidebar = trackType
 
   $scope.editTrack = (trackId) ->
     tracks.setCurrentTrack trackId
-    $scope.status.active = ''
+    $scope.sidebar = tracks.getTrack(trackId).type
 
   $scope.trackTypes = [
     {
@@ -98,11 +99,3 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     modalInstance = $modal.open
       templateUrl: 'modules/uiApp/views/help.html'
       controller: 'feedbackCtrl'
-    # modalInstance.result.then ((selectedItem) ->
-    #   $scope.selected = selectedItem
-    #   return
-    # ), ->
-    #   $log.info "Modal dismissed at: " + new Date()
-    #   return
-
-    # return

@@ -4,8 +4,12 @@ div.branding
 div
   button.btn.btn-primary.dropdown-toggle(
     type='button'
-    ng-click='showLayout()'
-    ng-class='{active: status.active == "layout"}'
+    ng-click='toggleLayout()'
+    tooltip-placement="bottom"
+    tooltip-append-to-body='true'
+    tooltip-trigger='mouseenter : mouseleave'
+    tooltip-html-unsafe='{{ help.layout }}'
+    aria-hidden='true'
   ) Layout
 
   .btn-group(

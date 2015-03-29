@@ -1,10 +1,3 @@
-# A heatmap configuration
-# innerRadius: 200
-# outerRadius: 250
-# min: 'smart'
-# max: 'smart'
-# colorPalette: 'YlGnBu'
-# colorPaletteSize: 9
 do (angular) ->
   angular.module('trackManager').controller 'trackCtrl', ($scope, circosJS, tracks, helpStore, $modal, trackStore, defaults, dataParser) ->
     $scope.currentForm = 'layout'

@@ -18,6 +18,6 @@ html(lang='en', ng-app='easyCircos')
         close='closeAlert($index)'
       ) {{ alert.message }}
     header(ng-include='"modules/uiApp/views/header.html"')
-    aside(ng-include='"modules/uiApp/views/sidebar.html"')
+    aside(ng-include='"modules/uiApp/views/sidebar.html"' ng-if='sidebar')
     .circos
       svg#chart

@@ -30,7 +30,15 @@
     }
   }
 }
-
+.width-100 {
+  width: 100%;
+}
+.description, .source {
+  font-size: small;
+  font-style: italic;
+  margin-top: -10px;
+  margin-left: 10px;
+}
 .rules-form {
   label {
     font-weight: normal;
@@ -271,4 +279,23 @@ aside {
 
 table.layout-data-list td {
   padding: 3px;
+}
+
+aside.ng-enter, aside.ng-leave {
+  -webkit-transition:all 0.5s;
+  transition:all 0.5s;
+}
+
+aside.ng-enter,
+aside.ng-leave.ng-leave-active {
+  visibility: visible;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+aside.ng-leave,
+aside.ng-enter.ng-enter-active {
+  visibility: visible;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }

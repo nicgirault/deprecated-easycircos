@@ -41,6 +41,19 @@ exports.data = [
     conf:
       ticks:
         display: false
+        spacing: 1,
+        labels: false,
+        labelSpacing: 10,
+        labelSuffix: '',
+        labelDenominator: 1,
+        labelDisplay0: false,
+        labelSize: 10,
+        labelColor: '#000000',
+        labelFont: 'default',
+        majorSpacing: 10,
+        size:
+          minor: 2,
+          major: 4,
   }
   {
     category:

@@ -1,13 +1,7 @@
 form.easy-circos-form(ng-controller='layoutCtrl')
   accordion(close-others='true')
-    accordion-group.easy-circos-pink(is-open='true')
-      accordion-heading Help
-      p {{ help.layoutMenu }}
-
-    accordion-group.easy-circos-blue
+    accordion-group.easy-circos-blue(is-open='true')
       accordion-heading Data
-      p
-        span.warning Warning: changing layout data will delete all circos tracks
       div.form-group
         label Select a layout
         select.form-control(
@@ -15,10 +9,14 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           ng-options = 'layout.title group by layout.category.field for layout in layouts'
           ng-change = 'selectLayout()'
         )
-      p {{ selected.layout.description }}
-        span.source(ng-if='selected.layout.source') Source: {{ selected.layout.source }}
+      p.description
+        b description: 
+        | {{ selected.layout.description }}
+      p.source(ng-if='selected.layout.source')
+        b Source: 
+        | {{ selected.layout.source }}
       div.form-group
-        button.btn.btn-primary(
+        button.btn.btn-primary.width-100(
           ng-click="showLayoutDataFormModal()"
         ) Edit
 

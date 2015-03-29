@@ -19,7 +19,7 @@ require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
 require './modules/news/news.module.js'
 
-angular.module 'easyCircos', ['ngResource', 'colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news']
+angular.module 'easyCircos', ['ngResource', 'ngAnimate', 'colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 
