@@ -1,0 +1,8 @@
+.modal-header
+  h3.modal-title News
+.modal-body
+  ul
+    li(ng-repeat='note in news')
+      | {{ note.date }}: {{ note.message }}
+.modal-footer
+  button.btn(ng-click='cancel()') Cancel

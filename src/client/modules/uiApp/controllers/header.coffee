@@ -88,6 +88,12 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     modalInstance = $modal.open
       templateUrl: 'modules/uiApp/views/feedback.html'
       controller: 'feedbackCtrl'
+
+  $scope.openNews = ->
+    modalInstance = $modal.open
+      templateUrl: 'modules/news/views/news.html'
+      controller: 'newsCtrl'
+
   $scope.openHelpModal = ->
     modalInstance = $modal.open
       templateUrl: 'modules/uiApp/views/help.html'
@@ -100,4 +106,3 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     #   return
 
     # return
-

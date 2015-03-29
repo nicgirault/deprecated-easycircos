@@ -11,7 +11,7 @@ db.on 'error', console.error.bind(console, 'connection error:')
 app.use '/bower_components', express.static 'bower_components'
 app.use '/', express.static 'www/client'
 
-db.once 'open', -> 
+db.once 'open', ->
   model = require('./database/model.js').model mongoose
 
   # if layout collection is empty, import fixtures
@@ -23,8 +23,12 @@ db.once 'open', ->
   model.Track.remove {}, ->
     model.Track.create require('./database/fixtures/tracks/catalog.js').data
 
+  model.News.remove {}, ->
+    model.News.create require('./database/fixtures/news/news.js').data
+
   # define routes
   require('./database/layoutManager.js').init app, model.Layout
   require('./database/tracksManager.js').init app, model.Track
+  require('./database/news.js').init app, model.News
 
 app.listen 3000

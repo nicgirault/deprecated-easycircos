@@ -17,12 +17,13 @@ require './modules/uiApp/uiApp.module.js'
 require './modules/help/help.module.js'
 require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
+require './modules/news/news.module.js'
 
-angular.module 'easyCircos', ['colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification']
+angular.module 'easyCircos', ['ngResource', 'colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 
-angular.module('easyCircos').constant 'NOTIFICATION_DELAY', 10000
+angular.module('easyCircos').constant 'NOTIFICATION_DELAY', 5000
 
 
 require './analytics.js'

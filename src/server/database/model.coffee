@@ -21,7 +21,12 @@ exports.model = (mongoose) ->
     data: Object
     conf: Object
 
+  NewsSchema = mongoose.Schema
+    date: Date
+    message: String
+
   return {
     Layout: mongoose.model 'Layout', layoutSchema
     Track: mongoose.model 'Track', TrackSchema
+    News: mongoose.model 'News', NewsSchema
   }
