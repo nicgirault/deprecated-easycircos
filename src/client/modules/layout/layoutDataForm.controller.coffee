@@ -14,12 +14,12 @@ do (angular) ->
     $scope.newDatum() unless $scope.data.length
 
     $scope.colorPaletteSize = 9
-    $scope.updatePalette = (paletteName, range, palette) ->
-      $scope.palette = palette
-      $scope.colorPalette = paletteName
-      $scope.colorPaletteSize = range
+    $scope.updatePalette = (palette, isReversed) ->
+      $scope.palette = palette.colors
+      $scope.colorPalette = palette.name
+      $scope.colorPaletteSize = palette.colors.length
       $scope.data.map (datum, i) ->
-        datum.color = palette[i%range]
+        datum.color = palette.colors[i%palette.colors.length]
 
     $scope.parseClipboard = (event, index) ->
       item = event.clipboardData.items[0]

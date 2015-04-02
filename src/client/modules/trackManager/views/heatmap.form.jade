@@ -61,21 +61,12 @@ form#heatmap-form.easy-circos-form
       accordion-heading Color & Scale
       div.form-group
         label Palette
-        div {{currentTrack.conf.colorPalette}}
-        color-brewer-picker-select(
-          cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
-          cb-size='20'
-          cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
-          cb-picker-callback='updatePalette(paletteName, range, palette)'
+        palette-picker(
+          initial-name='{{ currentTrack.conf.colorPalette }}'
+          initial-range='{{ currentTrack.conf.colorPaletteSize }}'
+          initial-reverse='false'
+          on-select='updatePalette(item, isReverse)'
         )
-
-      div.form-group
-        input(
-          ng-model = 'currentTrack.conf.colorPaletteReverse'
-          type = 'checkbox'
-          ng-change = 'render()'
-        )
-        label Reverse palette
 
       div.form-group
         label Min

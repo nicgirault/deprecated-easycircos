@@ -54,11 +54,11 @@ form#chords-form.easy-circos-form
               ng-value='true'
               ng-change='render()'
             )
-          color-brewer-picker-select(
-            cb-initial-palette-name='{{ currentTrack.conf.colorPalette }}'
-            cb-size='15'
-            cb-initial-range='{{ currentTrack.conf.colorPaletteSize }}'
-            cb-picker-callback='updatePalette(paletteName, range, palette)'
+          palette-picker(
+            initial-name='{{ currentTrack.conf.colorPalette }}'
+            initial-range='{{ currentTrack.conf.colorPaletteSize }}'
+            initial-reverse='false'
+            on-select='updatePalette(item, isReverse)'
           )
 
       div.form-group(ng-if='currentTrack.conf.usePalette')

@@ -7,11 +7,11 @@ form
       )
         i.glyphicon.glyphicon-plus
       confirm-delete(on-confirm="deleteData()" popup='Delete all data')
-      color-brewer-picker-select(
-        cb-initial-palette-name='{{ colorPalette }}'
-        cb-size='20'
-        cb-initial-range='{{ colorPaletteSize }}'
-        cb-picker-callback='updatePalette(paletteName, range, palette)'
+      palette-picker(
+        initial-name='{{ colorPalette }}'
+        initial-range='{{ colorPaletteSize }}'
+        initial-reverse='false'
+        on-select='updatePalette(item, isReverse)'
       )
   .modal-body
     p Note: you can paste an excel file in a 'region id' field. Color should be something like #ff00ff. 

@@ -7,7 +7,6 @@ angular.module 'easyCircos.config', []
 yaml = require 'js-yaml'
 
 # Load modules
-require './modules/angular-colorBrewer-picker/src/colorBrewer.module.js'
 require './modules/track/track.module.js'
 require './modules/layout/layout.module.js'
 require './modules/circosJS/circosJS.module.js'
@@ -19,7 +18,7 @@ require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
 require './modules/news/news.module.js'
 
-angular.module 'easyCircos', ['ngResource', 'ngAnimate', 'colorBrewer', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news']
+angular.module 'easyCircos', ['ngResource', 'ngAnimate', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news', 'colorBrewer']
 
 angular.module('easyCircos').factory 'yaml', -> yaml
 

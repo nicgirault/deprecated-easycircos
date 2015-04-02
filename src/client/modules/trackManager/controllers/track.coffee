@@ -69,9 +69,10 @@ do (angular) ->
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
     # TODO: move trackType dependency in confManager
-    $scope.updatePalette = (paletteName, range, palette) ->
-      $scope.currentTrack.conf.colorPalette = paletteName #**************************
-      $scope.currentTrack.conf.colorPaletteSize = range #**************************
+    $scope.updatePalette = (palette, isReversed) ->
+      $scope.currentTrack.conf.colorPalette = palette.name #**************************
+      $scope.currentTrack.conf.colorPaletteSize = palette.colors.length #**************************
+      $scope.currentTrack.conf.colorPaletteReverse = isReversed
       $scope.render()
 
     $scope.glyph_shapes = d3.svg.symbolTypes
