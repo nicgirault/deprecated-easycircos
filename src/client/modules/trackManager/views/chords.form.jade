@@ -27,6 +27,13 @@ form#chords-form.easy-circos-form
           ng-options = 'track.title group by track.group for track in tracks'
           ng-change = 'selectTrack()'
         )
+      p.description
+        b description: 
+        | {{ selected.track.description }}
+      p.source(ng-if='selected.track.source')
+        b Source: 
+        | {{ selected.track.source }}
+
       div.form-group
         div.input-group
           label.custom-upload
