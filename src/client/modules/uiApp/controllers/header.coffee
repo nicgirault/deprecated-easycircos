@@ -95,6 +95,14 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       templateUrl: 'modules/news/views/news.html'
       controller: 'newsCtrl'
 
+  $scope.$on 'new-notification', ->
+    $scope.hightlightNotifications = true
+  $scope.openNotifications = ->
+    $scope.hightlightNotifications = false
+    modalInstance = $modal.open
+      templateUrl: 'modules/circosNotifications/views/notificationHistory.html'
+      controller: 'notificationHistoryCtrl'
+
   $scope.openHelpModal = ->
     modalInstance = $modal.open
       templateUrl: 'modules/uiApp/views/help.html'

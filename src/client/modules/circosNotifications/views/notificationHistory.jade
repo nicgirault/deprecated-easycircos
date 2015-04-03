@@ -1,0 +1,8 @@
+.modal-header
+  h3.modal-title Notifications
+.modal-body
+  ul
+    li(ng-repeat='note in notifications')
+      b(ng-class='note.level') {{ note.timelapse }}: {{ note.message }}
+.modal-footer
+  button.btn(ng-click='cancel()') Cancel

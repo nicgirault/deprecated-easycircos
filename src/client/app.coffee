@@ -1,8 +1,6 @@
 angular.module 'easyCircos.config', []
     .constant 'APP_NAME','EasyCircos'
-    .constant 'ITEM_INFO_PATH','info/attributes'
-    .constant 'TRACK_DIR','info/track'
-    .constant 'APP_VERSION','alpha-0.1'
+    .constant 'NOTIFICATION_DELAY', 2000
 
 yaml = require 'js-yaml'
 
@@ -17,12 +15,23 @@ require './modules/help/help.module.js'
 require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
 require './modules/news/news.module.js'
+require './modules/circosNotifications/circosNotifications.module.js'
 
-angular.module 'easyCircos', ['ngResource', 'ngAnimate', 'circosJS', 'trackManager', 'track', 'layout', 'layoutInit', 'ui.app', 'ui-notification', 'news', 'colorBrewer']
+angular.module 'easyCircos', [
+  'ngResource',
+  'ngAnimate',
+  'circosJS',
+  'trackManager',
+  'track',
+  'layout',
+  'layoutInit',
+  'ui.app',
+  'ui-notification',
+  'circos-notification',
+  'news',
+  'colorBrewer'
+]
 
 angular.module('easyCircos').factory 'yaml', -> yaml
-
-angular.module('easyCircos').constant 'NOTIFICATION_DELAY', 5000
-
 
 require './analytics.js'

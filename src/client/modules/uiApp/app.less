@@ -8,6 +8,12 @@
 @red: #fd6a62;
 @pink: #f68dbb;
 
+.bug-report {
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+  right: 0;
+}
 .modal-content, .btn {
   border-radius: 1px;
 }
@@ -93,22 +99,33 @@ header {
       cursor: pointer;
     }
   }
-  .feedback {
+  // .feedback {
+  //   right: 10px;
+  //   span:hover {
+  //     color: @greenish;
+  //   }
+  // }
+  // .help {
+  //   right: 50px;
+  //   span:hover {
+  //     color: @green;
+  //   }
+  // }
+  .news {
     right: 10px;
     span:hover {
-      color: @greenish;
+      color: @blue;
     }
   }
-  .help {
+  .notifications {
     right: 50px;
     span:hover {
       color: @red;
     }
   }
-  .news {
-    right: 90px;
-    span:hover {
-      color: @blue;
+  .notifications.highlight {
+    span {
+      color: @red;
     }
   }
   div {
@@ -123,6 +140,13 @@ header {
       color:#aaa !important;
       cursor: default;
   }
+}
+
+.warning{
+  color: @yellow;
+}
+.error{
+  color: @red;
 }
 
 aside {
@@ -154,9 +178,7 @@ aside {
     color: @pink;
   }
 
-  .warning{
-    color: @red;
-  }
+
 
   .panel-heading {
     color: #333;
