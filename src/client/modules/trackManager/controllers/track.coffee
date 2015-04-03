@@ -2,10 +2,7 @@ do (angular) ->
   angular.module('trackManager').controller 'trackCtrl', ($scope, circosJS, tracks, helpStore, $modal, trackStore, defaults, dataParser) ->
     $scope.currentForm = 'layout'
 
-    $scope.$on 'current-track-update', ->
-      # clear input type "file" to force triggering data parsing if file is identical
-      document.getElementsByClassName('import-file').value = null
-
+    setTrack = () ->
       tracks.getCurrentTrack (currentTrack) ->
         $scope.currentForm = currentTrack.type
         $scope.currentTrack = currentTrack
@@ -18,6 +15,13 @@ do (angular) ->
         $scope.currentTrack.conf.backgrounds = [] unless $scope.currentTrack.conf.backgrounds?
         $scope.currentTrack.conf.rules = [] unless $scope.currentTrack.conf.rules?
         $scope.currentTrack.conf.rawRules = [] unless $scope.currentTrack.conf.rawRules?
+
+    setTrack()
+    $scope.$on 'current-track-update', ->
+      # clear input type "file" to force triggering data parsing if file is identical
+      document.getElementsByClassName('import-file').value = null
+      setTrack()
+
     $scope.updateTrackName = () ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
@@ -68,10 +72,9 @@ do (angular) ->
         )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
-    # TODO: move trackType dependency in confManager
     $scope.updatePalette = (palette, isReversed) ->
-      $scope.currentTrack.conf.colorPalette = palette.name #**************************
-      $scope.currentTrack.conf.colorPaletteSize = palette.colors.length #**************************
+      $scope.currentTrack.conf.colorPalette = palette.name
+      $scope.currentTrack.conf.colorPaletteSize = palette.colors.length
       $scope.currentTrack.conf.colorPaletteReverse = isReversed
       $scope.render()
 
