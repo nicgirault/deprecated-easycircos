@@ -10,3 +10,6 @@ do (angular) ->
     monotone: 'cubic interpolation that preserves monotonicity in y'
     rules: 'Rules allow you to define specific values according to datum characteristics'
     layout: 'Control the circular axis layout'
+    svg: 'Vector image format to save all information about your Circos image'
+    png: 'Save a screenshot of your Circos image'
+    html: 'To embed on your website and be able to visualize animations. Ask for it in the feedback form'

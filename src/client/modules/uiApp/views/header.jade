@@ -81,6 +81,8 @@ div
       )
         a(href='#') {{ track.name }}
 
+div.header-icons.download(ng-click='openExport()')
+  span.glyphicon.glyphicon-download
 div.header-icons.notifications(ng-click='openNotifications()' ng-class='{highlight: hightlightNotifications}')
   span.glyphicon.glyphicon-flag
 div.header-icons.news(ng-click='openNews()')

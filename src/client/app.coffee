@@ -16,6 +16,7 @@ require './modules/utils/utils.module.js'
 require './modules/rules/rules.module.js'
 require './modules/news/news.module.js'
 require './modules/circosNotifications/circosNotifications.module.js'
+require './modules/export/export.module.js'
 
 angular.module 'easyCircos', [
   'ngResource',
@@ -29,6 +30,7 @@ angular.module 'easyCircos', [
   'ui-notification',
   'circos-notification',
   'news',
+  'export',
   'colorBrewer'
 ]
 

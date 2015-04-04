@@ -27,4 +27,5 @@ module.exports = do(angular, circosJS) ->
         radialOffset: 10
         display: true
     },[])
+    circosJS.size = size
     circosJS

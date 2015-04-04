@@ -5,6 +5,10 @@ exports.data = [
   }
   {
     date: '2015-04-03'
-    message: 'Improved the notification system and the palette picker'
+    message: 'There is a new notification system and palette picker'
+  }
+  {
+    date: '2015-04-04'
+    message: 'You can now export your Circos as a PNG or SVG image'
   }
 ]

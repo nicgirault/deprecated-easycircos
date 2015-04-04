@@ -1,0 +1,28 @@
+.modal-header
+  h3.modal-title Export
+.modal-body(style='text-align: center;')
+  button.btn.btn-primary(
+    tooltip-placement="bottom"
+    tooltip-append-to-body='true'
+    tooltip-trigger='mouseenter : mouseleave'
+    tooltip-html-unsafe='{{ help.svg }}'
+    aria-hidden='true'
+    ng-click='exportSvg()'
+  ) SVG
+  button.btn.btn-warning(
+    tooltip-placement="bottom"
+    tooltip-append-to-body='true'
+    tooltip-trigger='mouseenter : mouseleave'
+    tooltip-html-unsafe='{{ help.png }}'
+    aria-hidden='true'
+    ng-click='exportPng()'
+  ) PNG
+  button.btn.btn-danger(
+    tooltip-placement="bottom"
+    tooltip-append-to-body='true'
+    tooltip-trigger='mouseenter : mouseleave'
+    tooltip-html-unsafe='{{ help.html }}'
+    aria-hidden='true'
+  ) HTML
+.modal-footer
+  button.btn(ng-click='cancel()') Cancel

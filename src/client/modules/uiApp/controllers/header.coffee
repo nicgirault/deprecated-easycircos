@@ -90,6 +90,11 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       templateUrl: 'modules/uiApp/views/feedback.html'
       controller: 'feedbackCtrl'
 
+  $scope.openExport = ->
+    modalInstance = $modal.open
+      templateUrl: 'modules/export/views/export.html'
+      controller: 'exportCtrl'
+
   $scope.openNews = ->
     modalInstance = $modal.open
       templateUrl: 'modules/news/views/news.html'
@@ -103,7 +108,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       templateUrl: 'modules/circosNotifications/views/notificationHistory.html'
       controller: 'notificationHistoryCtrl'
 
-  $scope.openHelpModal = ->
-    modalInstance = $modal.open
-      templateUrl: 'modules/uiApp/views/help.html'
-      controller: 'feedbackCtrl'
+  # $scope.openHelpModal = ->
+  #   modalInstance = $modal.open
+  #     templateUrl: 'modules/uiApp/views/help.html'
+  #     controller: 'feedbackCtrl'
