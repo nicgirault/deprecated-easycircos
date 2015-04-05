@@ -1,6 +1,5 @@
 do (angular) ->
   angular.module('layout').controller 'layoutDataCtrl', ($scope, $modalInstance, data) ->
-
     $scope.data = data
     $scope.newDatum = ->
       color = if $scope.palette? then $scope.palette[$scope.data.length%$scope.colorPaletteSize] else null

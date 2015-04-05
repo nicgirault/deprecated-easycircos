@@ -38,7 +38,7 @@ do (angular) ->
 
     $scope.showLayoutDataFormModal = () ->
       modalInstance = $modal.open
-        templateUrl: 'modules/layout/views/layoutData.form.html'
+        templateUrl: 'modules/layout/views/edit.html'
         controller: 'layoutDataCtrl'
         resolve:
           data: -> $scope.layout.data
@@ -48,6 +48,15 @@ do (angular) ->
         $scope.render()
         modalInstance.dismiss()
 
+    $scope.share = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/share/views/share.html'
+        controller: 'shareCtrl'
+        resolve:
+          data: -> $scope.layout.data
+          conf: -> $scope.layout.conf
+          type: -> 'layout'
+        backdrop: true
 
     $scope.labelAlignement = null
     $scope.help = helpStore

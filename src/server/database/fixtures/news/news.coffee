@@ -11,4 +11,8 @@ exports.data = [
     date: '2015-04-04'
     message: 'You can now export your Circos as a PNG or SVG image'
   }
+  {
+    date: '2015-04-05'
+    message: 'You can now share your layouts and datasets'
+  }
 ]

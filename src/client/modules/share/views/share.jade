@@ -1,0 +1,31 @@
+.modal-header
+  h3.modal-title Share
+  .modal-body
+    p {{help.share2}}
+      form(name="form")
+        .form-group.required(show-errors)
+          label.control-label Track/Layout name
+          input.form-control(
+            ng-model="name"
+            name="uName"
+            required=""
+          )
+        .form-group(show-errors)
+          label Details
+          textarea.form-control(
+            ng-model="details"
+            rows=3
+            placeholder="{{help.shareDetails}}"
+            name="uDetails"
+          )
+        .form-group.required(show-errors)
+          label.control-label(for="uEmail") Email address
+          input.form-control(
+            type="email"
+            ng-model="email"
+            name="uEmail"
+            required=""
+          )
+  .modal-footer
+    button.btn(ng-click='cancel()') Cancel
+    button.btn.btn-primary(ng-click='share()') Share

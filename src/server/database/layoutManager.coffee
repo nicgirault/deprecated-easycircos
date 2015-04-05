@@ -1,5 +1,5 @@
 exports.init = (app, Layout) ->
-  app.get '/layouts', (req, res) ->
+  app.get '/layout', (req, res) ->
     Layout.find().select('title description source version default category code').lean().exec (err, docs) ->
       if err
         res.send err

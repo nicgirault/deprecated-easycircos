@@ -128,6 +128,16 @@ do (angular) ->
         $scope.currentTrack.code = track.code
         $scope.render()
 
+    $scope.share = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/share/views/share.html'
+        controller: 'shareCtrl'
+        resolve:
+          data: -> $scope.currentTrack.data
+          conf: -> $scope.currentTrack.conf
+          type: ->$scope.currentForm
+        backdrop: true
+
     $scope.delete = ->
       tracks.delete($scope.currentTrack.id)
       $scope.showLayout()

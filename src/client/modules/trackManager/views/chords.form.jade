@@ -47,6 +47,14 @@ form#chords-form.easy-circos-form
           span.glyphicon.glyphicon-question-sign.tcell(
             ng-click='showChordDataModal()'
           )
+      button.btn.btn-warning.width-100(
+        ng-click='share()'
+        tooltip-placement="bottom"
+        tooltip-append-to-body='true'
+        tooltip-trigger='mouseenter : mouseleave'
+        tooltip-html-unsafe='{{ help.share }}'
+        aria-hidden='true'
+      ) Share
 
     accordion-group.easy-circos-yellow
       accordion-heading Color & Scale

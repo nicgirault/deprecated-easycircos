@@ -25,8 +25,18 @@ exports.model = (mongoose) ->
     date: Date
     message: String
 
+  propositionSchema = mongoose.Schema
+    name: String
+    type: String # layout or tracktype
+    details: String
+    data: Object
+    conf: Object
+    userMeta: Object
+    date: Date
+
   return {
     Layout: mongoose.model 'Layout', layoutSchema
     Track: mongoose.model 'Track', TrackSchema
     News: mongoose.model 'News', NewsSchema
+    Proposition: mongoose.model 'Proposition', propositionSchema
   }

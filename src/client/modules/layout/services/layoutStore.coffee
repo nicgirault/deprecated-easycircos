@@ -1,7 +1,7 @@
 do (angular) ->
   angular.module('layout').factory 'layoutStore', ($http) ->
     getStore: (callback) ->
-      $http.get('/layouts').
+      $http.get('/layout').
         success (layouts) ->
           callback layouts
 

@@ -13,3 +13,6 @@ do (angular) ->
     svg: 'Vector image format to save all information about your Circos image'
     png: 'Save a screenshot of your Circos image'
     html: 'To embed on your website and be able to visualize animations. Ask for it in the feedback form'
+    share: 'Propose this layout (and its configuration) to appear in the librairy of layouts'
+    shareDetails: 'describe the layout, the source of the data or other information for the moderator'
+    share2: 'You can share layouts and tracks that other users might be interested to use. Once accepted, it will appear on the select box in the data tab.'
