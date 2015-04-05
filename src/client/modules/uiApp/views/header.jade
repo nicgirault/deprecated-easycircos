@@ -20,8 +20,11 @@ div
     button.btn.btn-warning.dropdown-toggle(
       dropdown-toggle
       type='button'
-      ng-class='{active: status.active == "newTrack"}'
-      ng-disabled='false'
+      tooltip-placement="bottom"
+      tooltip-append-to-body='true'
+      tooltip-trigger='mouseenter : mouseleave'
+      tooltip-html-unsafe='{{ help.newTrack }}'
+      aria-hidden='true'
     )
       | New track
       span.caret
@@ -37,6 +40,11 @@ div
       dropdown-toggle
       type='button'
       ng-disabled='false'
+      tooltip-placement="bottom"
+      tooltip-append-to-body='true'
+      tooltip-trigger='mouseenter : mouseleave'
+      tooltip-html-unsafe='{{ help.editTrack }}'
+      aria-hidden='true'
     )
       | Edit track
       span.caret
