@@ -18,3 +18,4 @@ do (angular) ->
     share: 'Propose this layout (and its configuration) to appear in the librairy of layouts'
     shareDetails: 'describe the layout, the source of the data or other information for the moderator'
     share2: 'You can share layouts and tracks that other users might be interested to use. Once accepted, it will appear on the select box in the data tab.'
+    trackDataPrefix: 'One data point per line. Each data point property should be separated by a space or tab or comma etc. e.g.:\n'

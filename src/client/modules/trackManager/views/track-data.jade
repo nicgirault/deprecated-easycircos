@@ -1,0 +1,20 @@
+accordion-group.easy-circos-blue
+  accordion-heading Data
+  div.form-group(ng-if="tracks.length")
+    label Library
+    select.form-control(
+      ng-model = "selected.track"
+      ng-options = "track.title group by track.group for track in tracks"
+      ng-change = "selectTrack()"
+    )
+  p.description(ng-if="selected.track.description")
+    b description: 
+    | {{ selected.track.description }}
+  p.source(ng-if="selected.track.source")
+    b Source: 
+    | {{ selected.track.source }}
+
+  button.btn.btn-primary.width-100(
+    ng-click="editData()"
+  )
+    i.glyphicon.glyphicon-pencil

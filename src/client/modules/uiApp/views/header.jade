@@ -89,9 +89,31 @@ div
       )
         a(href='#') {{ track.name }}
 
-div.header-icons.download(ng-click='openExport()')
+div.header-icons.download(
+  ng-click='openExport()'
+  tooltip-placement="bottom"
+  tooltip-append-to-body='true'
+  tooltip-trigger='mouseenter : mouseleave'
+  tooltip-html-unsafe='Download'
+  aria-hidden='true'
+)
   span.glyphicon.glyphicon-download
-div.header-icons.notifications(ng-click='openNotifications()' ng-class='{highlight: hightlightNotifications}')
+div.header-icons.notifications(
+  ng-click='openNotifications()'
+  ng-class='{highlight: hightlightNotifications}'
+  tooltip-placement="bottom"
+  tooltip-append-to-body='true'
+  tooltip-trigger='mouseenter : mouseleave'
+  tooltip-html-unsafe='Notifications'
+  aria-hidden='true'
+)
   span.glyphicon.glyphicon-flag
-div.header-icons.news(ng-click='openNews()')
+div.header-icons.news(
+  ng-click='openNews()'
+  tooltip-placement="bottom"
+  tooltip-append-to-body='true'
+  tooltip-trigger='mouseenter : mouseleave'
+  tooltip-html-unsafe='News'
+  aria-hidden='true'
+)
   span.glyphicon.glyphicon-comment

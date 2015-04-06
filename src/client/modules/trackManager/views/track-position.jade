@@ -1,0 +1,37 @@
+accordion-group.easy-circos-red
+  accordion-heading Position
+  div.form-group
+    label Inner radius
+    div.input-group
+      input.form-control(
+        ng-model = "currentTrack.conf.innerRadius"
+        type = "number"
+        ng-change = "render()"
+      )
+      span.input-group-addon px
+
+  div.form-group
+    label Outer radius
+    div.input-group
+      input.form-control(
+        ng-model = "currentTrack.conf.outerRadius"
+        type = "number"
+        ng-change = "render()"
+      )
+      span.input-group-addon px
+
+  div.form-group(ng-if="currentTrack.type != 'heatmap'")
+    label Direction
+    .onoffswitch
+      input#x1.onoffswitch-checkbox(
+        type="checkbox",
+        name="onoffswitch",
+        checked=""
+        ng-model = "currentTrack.conf.direction"
+        ng-change = "render()"
+        ng-true-value="'in'"
+        ng-false-value="'out'"
+      )
+      label.onoffswitch-label(for="x1")
+        span.onoffswitch-inner
+        span.onoffswitch-switch

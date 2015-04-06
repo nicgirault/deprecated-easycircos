@@ -1,0 +1,21 @@
+accordion-group.easy-circos-green(is-open="true")
+  accordion-heading Settings
+  div.form-group
+    label Track name
+    input.form-control(
+      ng-model = "currentTrack.name"
+      type = "text"
+      ng-change="updateTrackName()"
+    )
+  button.btn.btn-warning.width-100(
+    ng-click="share()"
+    tooltip-placement="top"
+    tooltip-append-to-body="true"
+    tooltip-trigger="mouseenter : mouseleave"
+    tooltip-html-unsafe="{{ help.share }}"
+    aria-hidden="true"
+  ) Share
+  confirm-delete.width-100(
+    on-confirm="delete()"
+    popup="Delete this track"
+  )

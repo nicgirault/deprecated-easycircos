@@ -1,0 +1,36 @@
+.confirm-delete
+  .step1(ng-hide="isDeleting")
+    button.btn.btn-danger(
+      type="button"
+      ng-click="startDelete()"
+      ng-class="buttonClass"
+      tooltip-placement="top"
+      tooltip-append-to-body="true"
+      tooltip-trigger="mouseenter : mouseleave"
+      tooltip-html-unsafe="{{ popup }}"
+      aria-hidden="true"
+    )
+      i.glyphicon.glyphicon-trash
+  .step2(ng-show="isDeleting")
+    button.btn.btn-default(
+      type="button"
+      ng-click="cancel()"
+      ng-class="buttonClass"
+      tooltip-placement="top"
+      tooltip-append-to-body="true"
+      tooltip-trigger="mouseenter : mouseleave"
+      tooltip-html-unsafe="Abort deletion"
+      aria-hidden="true"
+    )
+      i.glyphicon.glyphicon-remove-circle
+    button.btn.btn-danger(
+      type="button"
+      ng-click="confirm()"
+      ng-class="buttonClass"
+      tooltip-placement="top"
+      tooltip-append-to-body="true"
+      tooltip-trigger="mouseenter : mouseleave"
+      tooltip-html-unsafe="Confirm deletion"
+      aria-hidden="true"
+    )
+      i.glyphicon.glyphicon-ok-circle

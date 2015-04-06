@@ -1,6 +1,26 @@
 exports.data = [
   {
     category:
+      field: 'general'
+    title: 'New layout from scratch'
+    code: 'new'
+    default: false
+    description: 'Click on "edit" to describe the layout'
+    source: null
+    version: null
+    data: []
+    conf:
+      labels:
+        radialOffset: -15
+      ticks:
+        display: false
+        spacing: 1
+        labels: false
+        labelSuffix: ''
+        labelDenominator: 1
+  }
+  {
+    category:
       field: 'genomics'
       type: 'karyotype'
       species: 'Homo Sapiens'

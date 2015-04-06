@@ -1,7 +1,8 @@
 do (angular) ->
-  angular.module('layout').controller 'layoutDataCtrl', ($scope, $modalInstance, data) ->
+  angular.module('layout').controller 'layoutDataCtrl', ($scope, $modalInstance, data, $timeout) ->
     $scope.data = data
-    $scope.newDatum = ->
+    $scope.newDatum = ($event) ->
+      $event.preventDefault() if $event
       color = if $scope.palette? then $scope.palette[$scope.data.length%$scope.colorPaletteSize] else null
       $scope.data.push {
         id: null
@@ -9,7 +10,10 @@ do (angular) ->
         color: color
         label: null
       }
-
+      $timeout ->
+        angular.element('.layout-data-list tr:last-child td:nth-child(1) input').focus()
+      , 100
+      return
     $scope.newDatum() unless $scope.data.length
 
     $scope.colorPaletteSize = 9

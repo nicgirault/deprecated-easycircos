@@ -1,123 +1,57 @@
 form#heatmap-form.easy-circos-form
-  accordion(close-others='true')
-    accordion-group.easy-circos-green(is-open='true')
-      accordion-heading Track Name
-      .form-inline
-        input.form-control(
-          ng-model = 'currentTrack.name'
-          type = 'text'
-          ng-change='updateTrackName()'
-        )
-        confirm-delete(on-confirm="delete()" popup='Delete this track')
-
-    accordion-group.easy-circos-blue
-      accordion-heading Data
-      div.form-group
-        label Library
-        select.form-control(
-          ng-model = 'selected.track'
-          ng-options = 'track.title group by track.group for track in tracks'
-          ng-change = 'selectTrack()'
-        )
-      p.description
-        b description: 
-        | {{ selected.track.description }}
-      p.source(ng-if='selected.track.source')
-        b Source: 
-        | {{ selected.track.source }}
-
-      div.form-group
-        div.input-group
-          label.custom-upload
-            input(
-              type="file"
-              id="import-heatmap-file"
-              on-read-file="parseData($fileContent)"
-            )
-            | Select a file...
-          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
-          span.glyphicon.glyphicon-question-sign.tcell(
-            ng-click='showHeatmapDataModal()'
-          )
-      button.btn.btn-warning.width-100(
-        ng-click='share()'
-        tooltip-placement="bottom"
-        tooltip-append-to-body='true'
-        tooltip-trigger='mouseenter : mouseleave'
-        tooltip-html-unsafe='{{ help.share }}'
-        aria-hidden='true'
-      ) Share
-
-    accordion-group.easy-circos-red
-      accordion-heading Position
-      div.form-group
-        label Inner radius
-        div.input-group
-          input.form-control(
-            ng-model = 'currentTrack.conf.innerRadius'
-            type = 'number'
-            ng-change = 'render()'
-          )
-          span.input-group-addon px
-
-      div.form-group
-        label Outer radius
-        div.input-group
-          input.form-control(
-            ng-model = 'currentTrack.conf.outerRadius'
-            type = 'number'
-            ng-change = 'render()'
-          )
-          span.input-group-addon px
+  accordion(close-others="true")
+    track-settings
+    track-data
+    track-position
 
     accordion-group.easy-circos-yellow
       accordion-heading Color & Scale
       div.form-group
         label Palette
         palette-picker(
-          initial-name='{{ currentTrack.conf.colorPalette }}'
-          initial-range='{{ currentTrack.conf.colorPaletteSize }}'
-          initial-reverse='false'
-          on-select='updatePalette(item, isReverse)'
+          initial-name="{{ currentTrack.conf.colorPalette }}"
+          initial-range="{{ currentTrack.conf.colorPaletteSize }}"
+          initial-reverse="false"
+          on-select="updatePalette(item, isReverse)"
         )
 
       div.form-group
         label Min
           span.glyphicon.glyphicon-question-sign.easycircos-info(
             tooltip-placement="right"
-            tooltip-append-to-body='true'
-            tooltip-trigger='mouseenter : mouseleave'
-            tooltip-html-unsafe='{{ help.min }}'
-            aria-hidden='true'
+            tooltip-append-to-body="true"
+            tooltip-trigger="mouseenter : mouseleave"
+            tooltip-html-unsafe="{{ help.min }}"
+            aria-hidden="true"
           )
         div
           input.form-control(
-            ng-model = 'currentTrack.conf.min'
-            type = 'text'
-            ng-change = 'render()'
+            ng-model = "currentTrack.conf.min"
+            type = "text"
+            ng-change = "render()"
           )
 
       div.form-group
         label Max
           span.glyphicon.glyphicon-question-sign.easycircos-info(
             tooltip-placement="right"
-            tooltip-append-to-body='true'
-            tooltip-trigger='mouseenter : mouseleave'
-            tooltip-html-unsafe='{{ help.max }}'
-            aria-hidden='true'
+            tooltip-append-to-body="true"
+            tooltip-trigger="mouseenter : mouseleave"
+            tooltip-html-unsafe="{{ help.max }}"
+            aria-hidden="true"
           )
         div
           input.form-control(
-            ng-model = 'currentTrack.conf.max'
-            type = 'text'
-            ng-change = 'render()'
+            ng-model = "currentTrack.conf.max"
+            type = "text"
+            ng-change = "render()"
           )
 
       div.form-group
         input(
-          ng-model = 'currentTrack.conf.logScale'
-          type = 'checkbox'
-          ng-change = 'render()'
+          ng-model = "currentTrack.conf.logScale"
+          type = "checkbox"
+          ng-change = "render()"
         )
         label Log scale
-  a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank') Missing a parameter?
+  a(href="https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form" target="_blank") Missing a parameter?

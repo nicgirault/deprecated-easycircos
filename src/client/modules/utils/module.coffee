@@ -1,6 +1,8 @@
 module.exports = do(angular) ->
   angular.module 'utils', []
 
+  require './directives/deleteConfirmation.js'
+
   angular.module('utils').factory 'browser', ($window) ->
       return ->
         userAgent = $window.navigator.userAgent

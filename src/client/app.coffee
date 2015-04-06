@@ -8,11 +8,11 @@ yaml = require 'js-yaml'
 require './modules/track/track.module.js'
 require './modules/layout/module.js'
 require './modules/circosJS/circosJS.module.js'
-require './modules/trackManager/trackManager.module.js'
+require './modules/trackManager/module.js'
 require './modules/html5FileReader/html5FileReader.module.js'
 require './modules/uiApp/uiApp.module.js'
 require './modules/help/help.module.js'
-require './modules/utils/utils.module.js'
+require './modules/utils/module.js'
 require './modules/rules/rules.module.js'
 require './modules/news/news.module.js'
 require './modules/circosNotifications/circosNotifications.module.js'
@@ -29,6 +29,7 @@ angular.module 'easyCircos', [
   'layoutInit',
   'ui.app',
   'ui-notification',
+  'ui.utils',
   'circos-notification',
   'export',
   'news',

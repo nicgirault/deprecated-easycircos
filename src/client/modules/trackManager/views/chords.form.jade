@@ -1,61 +1,7 @@
-//- innerRadius: 150
-//- outerRadius: 200
-//- min: 'smart'
-//- max: 'smart'
-//- direction: 'out'
-//- color: 'green'
-//- colorPaletteSize: 9
-//- colorPalette: 'YlGnBu'
 form#chords-form.easy-circos-form
   accordion(close-others='true')
-    accordion-group.easy-circos-green(is-open='true')
-      accordion-heading Track Name
-      .form-inline
-        input.form-control(
-          ng-model = 'currentTrack.name'
-          type = 'text'
-          ng-change='updateTrackName()'
-        )
-        confirm-delete(on-confirm="delete()"  popup='Delete this track')
-
-    accordion-group.easy-circos-blue
-      accordion-heading Data
-      div.form-group
-        label Library
-        select.form-control(
-          ng-model = 'selected.track'
-          ng-options = 'track.title group by track.group for track in tracks'
-          ng-change = 'selectTrack()'
-        )
-      p.description
-        b description: 
-        | {{ selected.track.description }}
-      p.source(ng-if='selected.track.source')
-        b Source: 
-        | {{ selected.track.source }}
-
-      div.form-group
-        div.input-group
-          label.custom-upload
-            input(
-              type="file"
-              id="import-heatmap-file"
-              on-read-file="parseData($fileContent)"
-            )
-            | Select a file...
-          span.input-group-addon.hover-cursor(ng-click='data.toggleFormat()') {{ data.format.label }}
-          span.glyphicon.glyphicon-question-sign.tcell(
-            ng-click='showChordDataModal()'
-          )
-      button.btn.btn-warning.width-100(
-        ng-click='share()'
-        tooltip-placement="bottom"
-        tooltip-append-to-body='true'
-        tooltip-trigger='mouseenter : mouseleave'
-        tooltip-html-unsafe='{{ help.share }}'
-        aria-hidden='true'
-      ) Share
-
+    track-settings
+    track-data
     accordion-group.easy-circos-yellow
       accordion-heading Color & Scale
       div.form-group

@@ -2,52 +2,56 @@ form
   .modal-header
     h3.modal-title Layout data
       button.btn.btn-primary.btn-sm(
-        type='button'
-        ng-click='newDatum()'
+        type="button"
+        ng-click="newDatum()"
       )
         i.glyphicon.glyphicon-plus
-      confirm-delete(on-confirm="deleteData()" popup='Delete all data')
       palette-picker(
-        initial-name='{{ colorPalette }}'
-        initial-range='{{ colorPaletteSize }}'
-        initial-reverse='false'
-        on-select='updatePalette(item, isReverse)'
+        initial-name="{{ colorPalette }}"
+        initial-range="{{ colorPaletteSize }}"
+        initial-reverse="false"
+        on-select="updatePalette(item, isReverse)"
       )
   .modal-body
-    p Note: you can paste an excel file in a 'region id' field. Color should be something like #ff00ff. 
+    p Note: you can paste an excel file in a "region id" field. Color should be something like #ff00ff. 
     table.layout-data-list
       tr
         th region id
         th length
         th label
         th color
-      tr(ng-repeat='datum in data')
+      tr(ng-repeat="datum in data")
         td
           input(
-            ng-model='datum.id'
-            type='text'
+            ng-model="datum.id"
+            type="text"
             size=8
-            ng-paste='parseClipboard($event.originalEvent, $index)'
+            ng-paste="parseClipboard($event.originalEvent, $index)"
           )
         td
           input(
-            ng-model='datum.len'
-            type='number'
+            ng-model="datum.len"
+            type="number"
             size=5
           )
         td
           input(
-            ng-model='datum.label'
-            type='text'
+            ng-model="datum.label"
+            type="text"
             size=10
+            ui-keypress="{'enter': 'newDatum($event)'}"
           )
         td
           input(
-            ng-model='datum.color'
-            type='color'
+            ng-model="datum.color"
+            type="color"
           )
         td
-          confirm-delete(on-confirm="deleteDatum($index)" popup='Delete this data point')
+          confirm-delete(
+            on-confirm="deleteDatum($index)"
+            popup="Delete this data point"
+            button-class="btn-sm"
+          )
   .modal-footer
-    button.btn.btn-warning(ng-click='save()') Save
-    button.btn(ng-click='cancel()') Cancel
+    button.btn.btn-warning(ng-click="save()") Save
+    button.btn(ng-click="cancel()") Cancel

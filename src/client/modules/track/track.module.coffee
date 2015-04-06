@@ -3,4 +3,3 @@ module.exports = do (angular) ->
   require './services/tracksManager.js'
   require './services/trackStore.js'
   require './services/confManager.js'
-  require './services/smartBorders.js'

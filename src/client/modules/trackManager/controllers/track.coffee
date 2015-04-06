@@ -26,11 +26,14 @@ do (angular) ->
       tracks.updateName($scope.currentTrack.id, $scope.currentTrack.name)
 
     $scope.data = dataParser
-    $scope.parseData = ($fileContent) ->
-      dataParser.parse($fileContent, (parsedData) ->
-        $scope.currentTrack.data = parsedData
+    $scope.parseData = (dataString) ->
+      if dataString
+        dataParser.parse dataString, (parsedData) ->
+          $scope.currentTrack.data = parsedData
+          $scope.render()
+      else
+        $scope.currentTrack.data = []
         $scope.render()
-      )
 
     $scope.render = ->
       conf = angular.copy($scope.currentTrack.conf)
@@ -81,24 +84,6 @@ do (angular) ->
     $scope.glyph_shapes = d3.svg.symbolTypes
     $scope.interpolationTypes = ['linear', 'monotone', 'cardinal', 'basis']
 
-    $scope.showHeatmapDataModal = ->
-      modalInstance = $modal.open
-        templateUrl: 'modules/help/heatmapData.modal.html'
-        controller: 'ModalCancelCtrl'
-        backdrop: true
-
-    $scope.showChordDataModal = ->
-      modalInstance = $modal.open
-        templateUrl: 'modules/help/chordData.modal.html'
-        controller: 'ModalCancelCtrl'
-        backdrop: true
-
-    $scope.showScatterDataModal = ->
-      modalInstance = $modal.open
-        templateUrl: 'modules/help/scatterData.modal.html'
-        controller: 'ModalCancelCtrl'
-        backdrop: true
-
     $scope.openRulesModal = (configurationParameter, parameterType) ->
       modalInstance = $modal.open
         templateUrl: 'modules/rules/views/rules.html'
@@ -138,6 +123,21 @@ do (angular) ->
           type: ->$scope.currentForm
         backdrop: true
 
+    $scope.editData = ->
+      modalInstance = $modal.open
+        templateUrl: 'modules/trackManager/views/edit-data.html'
+        controller: 'editTrackDataCtrl'
+        resolve:
+          data: -> $scope.currentTrack.data
+          conf: -> $scope.currentTrack.conf
+          type: ->$scope.currentForm
+        backdrop: true
+      modalInstance.close = (dataString) ->
+        $scope.parseData dataString
+        modalInstance.dismiss()
+
     $scope.delete = ->
       tracks.delete($scope.currentTrack.id)
-      $scope.showLayout()
+      $scope.toggleLayout()
+
+    return
