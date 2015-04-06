@@ -33,6 +33,7 @@ exports.data = [
     data: require('./data/GRCh37.js').data
     conf:
       gap: 0.04
+      cornerRadius: 0
   }
   {
     category:
@@ -59,6 +60,7 @@ exports.data = [
     version: '1'
     data: require('./data/months.js').data
     conf:
+      cornerRadius: 2
       ticks:
         display: false
         spacing: 1,

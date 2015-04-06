@@ -20,18 +20,6 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
   $scope.$on 'track-name-update', ->
     $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
 
-  $scope.newTrack = (trackType) ->
-    tracks.addTrack(null, trackType, (trackId) ->
-      # the new track becomes the currentTrack
-      tracks.setCurrentTrack trackId
-
-      # update list of tracks in edit button
-      $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
-
-      $scope.atLeastOne[trackType] = true
-    )
-    $scope.sidebar = trackType
-
   $scope.editTrack = (trackId) ->
     tracks.setCurrentTrack trackId
     $scope.sidebar = tracks.getTrack(trackId).type
@@ -85,11 +73,6 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
   ]
   $scope.trackType = null
 
-  $scope.openFeedbackModal = ->
-    modalInstance = $modal.open
-      templateUrl: 'modules/uiApp/views/feedback.html'
-      controller: 'feedbackCtrl'
-
   $scope.openExport = ->
     modalInstance = $modal.open
       templateUrl: 'modules/export/views/export.html'
@@ -108,7 +91,21 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
       templateUrl: 'modules/circosNotifications/views/notificationHistory.html'
       controller: 'notificationHistoryCtrl'
 
-  # $scope.openHelpModal = ->
-  #   modalInstance = $modal.open
-  #     templateUrl: 'modules/uiApp/views/help.html'
-  #     controller: 'feedbackCtrl'
+  $scope.openNewTrack = ->
+    modalInstance = $modal.open
+      templateUrl: 'modules/uiApp/views/track-types.html'
+      controller: 'newTrackCtrl'
+      resolve:
+        trackTypes: -> $scope.trackTypes
+    modalInstance.close = (trackType) ->
+      tracks.addTrack(null, trackType, (trackId) ->
+        # the new track becomes the currentTrack
+        tracks.setCurrentTrack trackId
+
+        # update list of tracks in edit button
+        $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)
+
+        $scope.atLeastOne[trackType] = true
+      )
+      $scope.sidebar = trackType
+      modalInstance.dismiss()

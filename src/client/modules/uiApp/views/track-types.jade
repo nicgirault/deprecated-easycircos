@@ -1,0 +1,29 @@
+.modal-header
+  h3.modal-title Select a track type
+.modal-body
+  .container-fluid.track-types
+    .row
+      .col-md-4.col-xs-4.col-sm-4
+        a(ng-click="select('heatmap')")
+          img(src="img/heatmap.png")
+          p Heatmap
+      .col-md-4.col-xs-4.col-sm-4
+        a(ng-click="select('histogram')")
+          img(src="img/histogram.png")
+          p Histogram
+      .col-md-4.col-xs-4.col-sm-4
+        a(ng-click="select('chords')")
+          img(src="img/chords.png")
+          p Chords
+    //- .row
+    //-   .col-md-4.col-xs-4.col-sm-4
+    //-     a(ng-click="select('scatter')")
+    //-       img(src="img/heatmap.png")
+    //-       p Scatter
+    //-   .col-md-4.col-xs-4.col-sm-4
+    //-     a(ng-click="select('scatter')")
+    //-       img(src="img/heatmap.png")
+    //-       p Line
+      
+.modal-footer
+  button.btn(ng-click='cancel()') Cancel

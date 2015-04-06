@@ -61,6 +61,18 @@ form.easy-circos-form(ng-controller='layoutCtrl')
             aria-describedby = 'basic-addon1'
           )
           span.input-group-addon rad
+      
+      div.form-group
+        label Corner radius
+        div.input-group
+          input.form-control(
+            ng-model = 'layout.conf.cornerRadius'
+            type = 'number'
+            step = '1'
+            ng-change = 'render()'
+            aria-describedby = 'basic-addon1'
+          )
+          span.input-group-addon px
 
     accordion-group.easy-circos-green
       accordion-heading Labels

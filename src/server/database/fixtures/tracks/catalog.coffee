@@ -194,4 +194,17 @@ exports.data = [
       min: -10
       max: 30
   }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['chords']
+    title: 'Test chords'
+    group: 'Test'
+    description: 'dummy data to test chords'
+    source: ''
+    version: '0'
+    data: require('./data/chords_months.js').data
+    conf:
+      colorPalette: 'Blues'
+      colorPaletteSize: 9
+  }
 ]

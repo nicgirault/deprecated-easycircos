@@ -25,12 +25,13 @@ div
       tooltip-trigger='mouseenter : mouseleave'
       tooltip-html-unsafe='{{ help.newTrack }}'
       aria-hidden='true'
+      ng-click="openNewTrack()"
     )
       | New track
-      span.caret
-    ul.dropdown-menu(role='menu')
-      li(ng-repeat='trackType in trackTypes' ng-click='newTrack(trackType.type);')
-        a(href='#' ng-class='{"disabled-link": !trackType.enabled}') {{ trackType.label }}
+    //-   span.caret
+    //- ul.dropdown-menu(role='menu')
+    //-   li(ng-repeat='trackType in trackTypes' ng-click='newTrack(trackType.type);')
+    //-     a(href='#' ng-class='{"disabled-link": !trackType.enabled}') {{ trackType.label }}
 
   .btn-group(
     dropdown

@@ -17,51 +17,51 @@ do (angular) ->
     getConf: (trackId, trackType) ->
       if trackId == 'layout'
           return defaults(
-            angular.copy(circosJS.easyCircos._layout._conf),
-            circosJS.Layout.prototype._defaultConf
+            angular.copy(circosJS.easyCircos._layout.conf),
+            circosJS.Layout.prototype.defaultConf
           )
 
       if trackType == 'heatmap'
-        if trackId of circosJS.easyCircos._heatmaps
-          return angular.copy circosJS.easyCircos._heatmaps[ trackId ]._conf
+        if trackId of circosJS.easyCircos.tracks.heatmaps
+          return angular.copy circosJS.easyCircos.tracks.heatmaps[ trackId ].conf
         else
-          conf = angular.copy circosJS.Heatmap.prototype._defaultConf
+          conf = angular.copy circosJS.Heatmap.prototype.defaultConf
           borders = circosJS.easyCircos.smartBorders()
           conf.innerRadius = borders.in
           conf.outerRadius = borders.out
           return conf
 
       if trackType == 'chords'
-        if trackId of circosJS.easyCircos._chords
-          return angular.copy circosJS.easyCircos._chords[ trackId ]._conf
+        if trackId of circosJS.easyCircos.tracks.chords
+          return angular.copy circosJS.easyCircos.tracks.chords[ trackId ].conf
         else
-          return angular.copy circosJS.Chord.prototype._defaultConf
+          return angular.copy circosJS.Chord.prototype.defaultConf
 
       if trackType == 'histogram'
-        if trackId of circosJS.easyCircos._histograms
-          return angular.copy circosJS.easyCircos._histograms[ trackId ]._conf
+        if trackId of circosJS.easyCircos.tracks.histograms
+          return angular.copy circosJS.easyCircos.tracks.histograms[ trackId ].conf
         else
-          conf = angular.copy circosJS.Histogram.prototype._defaultConf
+          conf = angular.copy circosJS.Histogram.prototype.defaultConf
           borders = circosJS.easyCircos.smartBorders()
           conf.innerRadius = borders.in
           conf.outerRadius = borders.out
           return conf
 
       if trackType == 'scatter'
-        if trackId of circosJS.easyCircos._scatters
-          return angular.copy circosJS.easyCircos._scatters[ trackId ]._conf
+        if trackId of circosJS.easyCircos.tracks.scatters
+          return angular.copy circosJS.easyCircos.tracks.scatters[ trackId ].conf
         else
-          conf = angular.copy circosJS.Scatter.prototype._defaultConf
+          conf = angular.copy circosJS.Scatter.prototype.defaultConf
           borders = circosJS.easyCircos.smartBorders()
           conf.innerRadius = borders.in
           conf.outerRadius = borders.out
           return conf
 
       if trackType == 'line'
-        if trackId of circosJS.easyCircos._lines
-          return angular.copy circosJS.easyCircos._lines[ trackId ]._conf
+        if trackId of circosJS.easyCircos.tracks.lines
+          return angular.copy circosJS.easyCircos.tracks.lines[ trackId ].conf
         else
-          conf = angular.copy circosJS.Line.prototype._defaultConf
+          conf = angular.copy circosJS.Line.prototype.defaultConf
           borders = circosJS.easyCircos.smartBorders()
           conf.innerRadius = borders.in
           conf.outerRadius = borders.out
@@ -69,14 +69,14 @@ do (angular) ->
 
     getData: (trackId, trackType) ->
       if trackId == 'layout'
-          return angular.copy circosJS.easyCircos._layout._data
+          return angular.copy circosJS.easyCircos._layout.data
       if trackType == 'heatmap'
-        return angular.copy circosJS.easyCircos._heatmaps[ trackId ]._data
+        return angular.copy circosJS.easyCircos.tracks.heatmaps[ trackId ].data
       if trackType == 'chords'
-        return angular.copy circosJS.easyCircos._chords[ trackId ]._data
+        return angular.copy circosJS.easyCircos.tracks.chords[ trackId ].data
       if trackType == 'histogram'
-        return angular.copy circosJS.easyCircos._histograms[ trackId ]._data
+        return angular.copy circosJS.easyCircos.tracks.histograms[ trackId ].data
       if trackType == 'scatter'
-        return angular.copy circosJS.easyCircos._scatters[ trackId ]._data
+        return angular.copy circosJS.easyCircos.tracks.scatters[ trackId ].data
       if trackType == 'line'
-        return angular.copy circosJS.easyCircos._lines[ trackId ]._data
+        return angular.copy circosJS.easyCircos.tracks.lines[ trackId ].data

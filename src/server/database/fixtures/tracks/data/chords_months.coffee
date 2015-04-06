@@ -1,0 +1,11 @@
+exports.data = [
+    ['january', 1, 10, 'march', 1, 10, 0]
+    ['january', 15, 20, 'october', 1, 20, 1]
+    ['january', 20, 22, 'august', 10, 13, 2]
+    ['january', 12, 17, 'april', 1, 3, 3]
+    ['march', 1, 20, 'april', 1, 7, 4]
+    ['september', 1, 14, 'december', 1, 9, 5]
+    ['october', 10, 12, 'february', 1, 3, 5]
+    ['august', 10, 14, 'july', 10, 13, 6]
+    ['august', 8, 10, 'september', 1, 5, 7]
+]
