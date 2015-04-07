@@ -53,25 +53,19 @@ do (angular) ->
         circosJS.easyCircos.histogram(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data,
-          [],
-          $scope.currentTrack.conf.backgrounds
+          $scope.currentTrack.data
         )
       else if $scope.currentTrack.type == 'scatter'
         circosJS.easyCircos.scatter(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data,
-          $scope.currentTrack.conf.rules,
-          $scope.currentTrack.conf.backgrounds
+          $scope.currentTrack.data
         )
       else if $scope.currentTrack.type == 'line'
         circosJS.easyCircos.line(
           $scope.currentTrack.id,
           conf,
-          $scope.currentTrack.data,
-          [],
-          $scope.currentTrack.conf.backgrounds
+          $scope.currentTrack.data
         )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
