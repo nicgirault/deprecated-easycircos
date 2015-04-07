@@ -15,4 +15,8 @@ exports.data = [
     date: '2015-04-05'
     message: 'You can now share your layouts and datasets'
   }
+  {
+    date: '2015-04-07'
+    message: 'I released a new track type: tiles'
+  }
 ]

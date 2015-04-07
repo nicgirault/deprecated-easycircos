@@ -67,6 +67,12 @@ do (angular) ->
           conf,
           $scope.currentTrack.data
         )
+      else if $scope.currentTrack.type == 'tiles'
+        circosJS.easyCircos.stack(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
     $scope.updatePalette = (palette, isReversed) ->

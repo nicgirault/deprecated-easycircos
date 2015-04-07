@@ -26,7 +26,7 @@ exports.data = [
       species: 'Homo Sapiens'
     title: 'Homo Sapiens GRCh37 - hg19'
     code: 'GRCh37'
-    default: true
+    default: false
     description: 'Human genome with cytobands'
     source: 'Circos v0.64'
     version: 'GRCh37'
@@ -54,7 +54,7 @@ exports.data = [
       field: 'time'
     code: 'months'
     title: 'Months'
-    default: false
+    default: true
     description: 'Months to display data over the year. Each month has a length equal to the number of days in the month.'
     source: 'N/A'
     version: '1'

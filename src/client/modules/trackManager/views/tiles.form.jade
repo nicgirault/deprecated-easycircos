@@ -1,0 +1,54 @@
+form.easy-circos-form
+  accordion(close-others="true")
+    track-settings
+    track-data
+    track-position deirection...
+    track-color-scale
+
+    accordion-group.easy-circos-greenish
+      accordion-heading Tiles
+      div.form-group
+        label.control-label Thickness
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.thickness'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+      div.form-group
+        label.control-label Radial margin
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.radialMargin'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+      div.form-group
+        label.control-label Margin
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.margin'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon unit
+      div.form-group
+        label.control-label Stroke width
+        div.input-group
+          input.form-control(
+            ng-model = 'currentTrack.conf.strokeWidth'
+            type = 'number'
+            ng-change = 'render()'
+          )
+          span.input-group-addon px
+      div.form-group
+        label Stroke color
+        input.form-control(
+          ng-model = 'currentTrack.conf.strokeColor'
+          type = 'color'
+          ng-change = 'render()'
+        )
+      
+  a(href="https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form" target="_blank") Missing a parameter?

@@ -18,3 +18,8 @@ do (angular) ->
     restrict: 'E'
     templateUrl: 'modules/trackManager/views/track-axes.html'
     scope: true
+
+  angular.module('trackManager').directive 'trackColorScale', ->
+    restrict: 'E'
+    templateUrl: 'modules/trackManager/views/track-color-scale.html'
+    scope: true

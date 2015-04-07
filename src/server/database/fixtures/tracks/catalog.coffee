@@ -207,4 +207,17 @@ exports.data = [
       colorPalette: 'Blues'
       colorPaletteSize: 9
   }
+  {
+    layout_compatibility: ['months']
+    track_compatibility: ['tiles']
+    title: 'Test tiles'
+    group: 'Test'
+    description: 'dummy data to test tiles'
+    source: ''
+    version: '0'
+    data: require('./data/tiles.js').data
+    conf:
+      colorPalette: 'Blues'
+      colorPaletteSize: 9
+  }
 ]

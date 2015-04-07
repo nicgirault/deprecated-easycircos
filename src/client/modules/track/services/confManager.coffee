@@ -67,6 +67,16 @@ do (angular) ->
           conf.outerRadius = borders.out
           return conf
 
+      if trackType == 'tiles'
+        if trackId of circosJS.easyCircos.tracks.stacks
+          return angular.copy circosJS.easyCircos.tracks.stacks[ trackId ].conf
+        else
+          conf = angular.copy circosJS.Stack.prototype.defaultConf
+          borders = circosJS.easyCircos.smartBorders()
+          conf.innerRadius = borders.in
+          conf.outerRadius = borders.out
+          return conf
+
     getData: (trackId, trackType) ->
       if trackId == 'layout'
           return angular.copy circosJS.easyCircos._layout.data
@@ -80,3 +90,5 @@ do (angular) ->
         return angular.copy circosJS.easyCircos.tracks.scatters[ trackId ].data
       if trackType == 'line'
         return angular.copy circosJS.easyCircos.tracks.lines[ trackId ].data
+      if trackType == 'tiles'
+        return angular.copy circosJS.easyCircos.tracks.tiles[ trackId ].data

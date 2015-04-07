@@ -57,8 +57,8 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     }
     {
       label: 'Tiles'
-      type: 'Tiles'
-      enabled: false
+      type: 'tiles'
+      enabled: true
     }
     {
       label: 'Highlight'

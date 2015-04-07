@@ -5,7 +5,7 @@ do (angular) ->
         datum.join(',')
       .join('\n')
 
-    if type in ['heatmap', 'histogram']
+    if type in ['heatmap', 'histogram', 'tiles']
       $scope.header = 'layout_block_id,start_position,end_position,value'
     if type in ['line', 'scatter']
       $scope.header = 'layout_block_id,position,value'
