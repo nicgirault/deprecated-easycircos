@@ -1,0 +1,61 @@
+accordion-group.easy-circos-pink
+  accordion-heading Axes
+  div.form-group
+    div
+      input(
+        type='checkbox'
+        ng-model = 'currentTrack.conf.axes.display'
+        ng-change = 'render()'
+      )
+      label Display
+      
+  div(ng-show='currentTrack.conf.axes.display')
+    div.form-group
+      label Minor spacing
+      div.input-group
+        input.form-control(
+          ng-model = 'currentTrack.conf.axes.minor.spacing'
+          type = 'number'
+          ng-change = 'render()'
+        )
+        span.input-group-addon px
+    div.form-group
+      label Minor color
+      input.form-control(
+        ng-model = 'currentTrack.conf.axes.minor.color'
+        type = 'color'
+        ng-change = 'render()'
+      )
+    div.form-group
+      label Minor thickness
+      div.input-group
+        input.form-control(
+          ng-model = 'currentTrack.conf.axes.minor.thickness'
+          type = 'number'
+          ng-change = 'render()'
+        )
+        span.input-group-addon px
+        
+    div.form-group
+      label Major spacing
+      input.form-control(
+        ng-model = 'currentTrack.conf.axes.major.spacing'
+        type = 'number'
+        ng-change = 'render()'
+      )
+    div.form-group
+      label Major color
+      input.form-control(
+        ng-model = 'currentTrack.conf.axes.major.color'
+        type = 'color'
+        ng-change = 'render()'
+      )
+    div.form-group
+      label Major thickness
+      div.input-group
+        input.form-control(
+          ng-model = 'currentTrack.conf.axes.major.thickness'
+          type = 'number'
+          ng-change = 'render()'
+        )
+        span.input-group-addon px

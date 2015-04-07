@@ -13,3 +13,8 @@ do (angular) ->
     restrict: 'E'
     templateUrl: 'modules/trackManager/views/track-position.html'
     scope: true
+
+  angular.module('trackManager').directive 'trackAxes', ->
+    restrict: 'E'
+    templateUrl: 'modules/trackManager/views/track-axes.html'
+    scope: true
