@@ -17,6 +17,10 @@ exports.data = [
   }
   {
     date: '2015-04-07'
-    message: 'I released a new track type: tiles'
+    message: 'I released the tiles track type'
+  }
+  {
+    date: '2015-04-08'
+    message: 'I released the highlight track type (you can for example visualize karyotype cytobands thanks to it)'
   }
 ]

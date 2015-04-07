@@ -220,4 +220,16 @@ exports.data = [
       colorPalette: 'Blues'
       colorPaletteSize: 9
   }
+  {
+    layout_compatibility: ['GRCh37']
+    track_compatibility: ['highlight']
+    title: 'Cytobands'
+    group: 'genomics'
+    description: 'Karyotype cytobands'
+    source: 'GRCh37'
+    version: '0'
+    data: require('./data/cytobands-hg19.js').data
+    conf:
+      opacity: 0.7
+  }
 ]

@@ -89,6 +89,22 @@ div
         ng-click='editTrack(track.id)'
       )
         a(href='#') {{ track.name }}
+      li.divider(ng-if='atLeastOne.tiles')
+      li(ng-if='atLeastOne.tiles')
+        a.disabled-link(href='#') Tiles
+      li(
+        ng-repeat='track in tracks | filter:{type: "tiles"}'
+        ng-click='editTrack(track.id)'
+      )
+        a(href='#') {{ track.name }}
+      li.divider(ng-if='atLeastOne.highlight')
+      li(ng-if='atLeastOne.highlight')
+        a.disabled-link(href='#') Highlights
+      li(
+        ng-repeat='track in tracks | filter:{type: "highlight"}'
+        ng-click='editTrack(track.id)'
+      )
+        a(href='#') {{ track.name }}
 
 div.header-icons.download(
   ng-click='openExport()'

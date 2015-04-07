@@ -20,7 +20,7 @@ accordion-group.easy-circos-red
       )
       span.input-group-addon px
 
-  div.form-group(ng-if="currentTrack.type != 'heatmap'")
+  div.form-group(ng-if="currentTrack.type != 'heatmap' && currentTrack.type != 'highlight'")
     label Direction
     .onoffswitch
       input#x1.onoffswitch-checkbox(
@@ -35,3 +35,28 @@ accordion-group.easy-circos-red
       label.onoffswitch-label(for="x1")
         span.onoffswitch-inner
         span.onoffswitch-switch
+        
+  div.form-group
+    label.label-control(
+      tooltip-placement="right"
+      tooltip-append-to-body='true'
+      tooltip-trigger='mouseenter : mouseleave'
+      tooltip-html-unsafe='{{ help.zIndex }}'
+      aria-hidden='true'
+    ) Z-index
+    input.form-control(
+      ng-model = "currentTrack.conf.zIndex"
+      type = "number"
+      ng-change = "render()"
+    )
+  
+  div.form-group
+    label.label-control Opacity
+    input(
+      ng-model="currentTrack.conf.opacity"
+      min="0"
+      max="1"
+      step="0.01"
+      type="range"
+      ng-change="render()"
+    )

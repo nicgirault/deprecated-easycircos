@@ -7,6 +7,8 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     histogram: false
     scatter: false
     line: false
+    highlight: false
+    stack: false
 
   $scope.sidebar = null
 
@@ -63,7 +65,7 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     {
       label: 'Highlight'
       type: 'Highlight'
-      enabled: false
+      enabled: true
     }
     {
       label: 'Text'

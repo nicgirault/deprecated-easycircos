@@ -73,6 +73,12 @@ do (angular) ->
           conf,
           $scope.currentTrack.data
         )
+      else if $scope.currentTrack.type == 'highlight'
+        circosJS.easyCircos.highlight(
+          $scope.currentTrack.id,
+          conf,
+          $scope.currentTrack.data
+        )
       circosJS.easyCircos.render([$scope.currentTrack.id])
 
     $scope.updatePalette = (palette, isReversed) ->

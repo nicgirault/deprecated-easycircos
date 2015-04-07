@@ -77,6 +77,15 @@ do (angular) ->
           conf.outerRadius = borders.out
           return conf
 
+      if trackType == 'highlight'
+        if trackId of circosJS.easyCircos.tracks.highlights
+          return angular.copy circosJS.easyCircos.tracks.highlights[ trackId ].conf
+        else
+          conf = angular.copy circosJS.Highlight.prototype.defaultConf
+          conf.innerRadius = circosJS.easyCircos._layout.conf.innerRadius
+          conf.outerRadius = circosJS.easyCircos._layout.conf.outerRadius
+          return conf
+
     getData: (trackId, trackType) ->
       if trackId == 'layout'
           return angular.copy circosJS.easyCircos._layout.data
@@ -92,3 +101,5 @@ do (angular) ->
         return angular.copy circosJS.easyCircos.tracks.lines[ trackId ].data
       if trackType == 'tiles'
         return angular.copy circosJS.easyCircos.tracks.tiles[ trackId ].data
+      if trackType == 'highlight'
+        return angular.copy circosJS.easyCircos.tracks.highlights[ trackId ].data
