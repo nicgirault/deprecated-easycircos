@@ -105,8 +105,8 @@ exports.data = [
       labels:
         radialOffset: -15
       ticks:
-        display: true
-        spacing: 1
+        display: false
+        spacing: 10
         labels: false
 
   }
