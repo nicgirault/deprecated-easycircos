@@ -15,7 +15,6 @@ do (angular) ->
         $scope.currentTrack.conf.backgrounds = [] unless $scope.currentTrack.conf.backgrounds?
         $scope.currentTrack.conf.rules = [] unless $scope.currentTrack.conf.rules?
         $scope.currentTrack.conf.rawRules = [] unless $scope.currentTrack.conf.rawRules?
-
     setTrack()
     $scope.$on 'current-track-update', ->
       # clear input type "file" to force triggering data parsing if file is identical

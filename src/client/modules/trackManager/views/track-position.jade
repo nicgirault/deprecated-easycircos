@@ -20,7 +20,7 @@ accordion-group.easy-circos-red
       )
       span.input-group-addon px
 
-  div.form-group(ng-if="currentTrack.type != 'heatmap' && currentTrack.type != 'highlight'")
+  div.form-group(ng-if="typeof(currentTrack.conf.direction) !== 'undefined'")
     label Direction
     .onoffswitch
       input#x1.onoffswitch-checkbox(

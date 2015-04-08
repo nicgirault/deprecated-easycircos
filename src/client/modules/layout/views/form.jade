@@ -74,6 +74,22 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           )
           span.input-group-addon px
 
+      div.form-group
+        label.label-control(
+          tooltip-placement="right"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.zIndex }}'
+          aria-hidden='true'
+        ) Z-index
+        input.form-control(
+          ng-model = 'layout.conf.zIndex'
+          type = 'number'
+          step = '1'
+          ng-change = 'render()'
+          aria-describedby = 'basic-addon1'
+        )
+
     accordion-group.easy-circos-green
       accordion-heading Labels
         //- LABELS
