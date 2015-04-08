@@ -4,33 +4,82 @@
   .container-fluid.track-types
     .row
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('heatmap')")
+        a(
+          ng-click="select('heatmap')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.heatmap }}'
+          aria-hidden='true'
+        )
           img(src="img/heatmap-small.png")
           p Heatmap
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('histogram')")
+        a(
+          ng-click="select('histogram')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.histogram }}'
+          aria-hidden='true'
+        )
           img(src="img/histogram-small.png")
           p Histogram
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('chords')")
+        a(
+          ng-click="select('chords')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.chords }}'
+          aria-hidden='true'
+        )
           img(src="img/chords-small.png")
           p Chords
     .row
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('tiles')")
+        a(
+          ng-click="select('tiles')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.tiles }}'
+          aria-hidden='true'
+        )
           img(src="img/tiles-small.png")
           p Tiles
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('scatter')")
+        a(
+          ng-click="select('scatter')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.scatter }}'
+          aria-hidden='true'
+        )
           img(src="img/scatter-small.png")
           p Scatter
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('line')")
+        a(
+          ng-click="select('line')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.line }}'
+          aria-hidden='true'
+        )
           img(src="img/line-small.png")
           p Line
     .row
       .col-md-4.col-xs-4.col-sm-4
-        a(ng-click="select('highlight')")
+        a(
+          ng-click="select('highlight')"
+          tooltip-placement="top"
+          tooltip-append-to-body='true'
+          tooltip-trigger='mouseenter : mouseleave'
+          tooltip-html-unsafe='{{ help.highlight }}'
+          aria-hidden='true'
+        )
           img(src="img/highlight-small.png")
           p Highlight
       

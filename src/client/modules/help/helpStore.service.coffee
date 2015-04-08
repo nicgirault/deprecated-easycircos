@@ -20,3 +20,11 @@ do (angular) ->
     shareDetails: 'describe the layout, the source of the data or other information for the moderator'
     share2: 'You can share layouts and tracks that other users might be interested to use. Once accepted, it will appear on the select box in the data tab.'
     trackDataPrefix: 'One data point per line. Each data point property should be separated by a space or tab or comma etc. e.g.:\n'
+
+    highlight: 'To draw colored slices possibly on top of the layout or another track'
+    heatmap: 'To map the value of regions to a color range'
+    tiles: 'To show spans as tiles that will stack within their track to avoid overlap'
+    histogram: 'To show region values as a skyline'
+    line: 'To show values as a line'
+    scatter: 'To show data points as glyphs'
+    chords: 'To show relations between positions of the layout axis'
