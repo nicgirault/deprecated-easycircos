@@ -50,5 +50,11 @@ form.easy-circos-form
           type = 'color'
           ng-change = 'render()'
         )
+        
+    track-axes
+    backgrounds-form(
+      backgrounds='currentTrack.conf.backgrounds'
+      on-change-callback='render()'
+    )
       
   a(href="https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form" target="_blank") Missing a parameter?

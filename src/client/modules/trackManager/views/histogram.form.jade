@@ -5,10 +5,8 @@ form#heatmap-form.easy-circos-form
     track-position
     track-color-scale
     track-axes
-    accordion-group.easy-circos-greenish
-      accordion-heading Backgrounds
-      backgrounds-form(
-        backgrounds='currentTrack.conf.backgrounds'
-        on-change-callback='render()'
-      )
+    backgrounds-form(
+      backgrounds='currentTrack.conf.backgrounds'
+      on-change-callback='render()'
+    )
   a(href='https://docs.google.com/forms/d/1BQP-hnRP-eHL6_EUXWtitTF3CSZaZSpewsnalzot6wM/viewform?usp=send_form' target='_blank') Missing a parameter?

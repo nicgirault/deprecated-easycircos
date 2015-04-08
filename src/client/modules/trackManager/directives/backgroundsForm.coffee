@@ -2,7 +2,6 @@ do (angular) ->
   angular.module('trackManager').directive('backgroundsForm', ->
     return {
       restrict: 'E'
-      replace: true
       templateUrl: 'modules/trackManager/views/backgroundsForm.html'
       scope: {
         backgrounds: '='
