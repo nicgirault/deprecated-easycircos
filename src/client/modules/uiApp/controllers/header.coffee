@@ -1,5 +1,16 @@
-angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser, helpStore) ->
+angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser, helpStore, circosJS) ->
+  $scope.safeApply = (fn) ->
+    phase = @$root.$$phase
+    if phase == '$apply' or phase == '$digest'
+      if fn and typeof fn == 'function'
+        fn()
+    else
+      @$apply fn
+    return
   $scope.help = helpStore
+
+  offset = '' + (circosJS.size / 2 - 15)
+  angular.element('.circos .new-track').css('top', offset + 'px').css('left', offset + 'px')
 
   $scope.atLeastOne =
     heatmap: false
@@ -18,6 +29,9 @@ angular.module('ui.app').controller 'mainCtrl', ($scope, tracks, $modal, browser
     else
       $scope.sidebar = 'layout'
       tracks.setCurrentTrack 'layout'
+  angular.element('.circos').on 'click', '.cs-layout', ->
+    $scope.safeApply ->
+      $scope.toggleLayout()
 
   $scope.$on 'track-name-update', ->
     $scope.tracks = ({id: key, type: track.type, name: track.name} for key,track of tracks.tracks)

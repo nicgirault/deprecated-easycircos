@@ -7,6 +7,24 @@
 @yellow: #fdc162;
 @red: #fd6a62;
 @pink: #f68dbb;
+
+.new-track {
+  font-size: 30px;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  position: absolute;
+}
+.new-track:hover {
+  color: @blue;
+  transform: scale(1.2);
+}
+.cs-layout {
+  cursor: pointer;
+}
+.cs-layout:hover path:first-child {
+  stroke: grey;
+  stroke-width: 2px;
+}
 .track-types {
   img {
     width: 100%;
@@ -64,6 +82,7 @@ body {
   top: @headerHeight;
   right: 100px;
   z-index: 1;
+
 }
 header {
   position: fixed;
