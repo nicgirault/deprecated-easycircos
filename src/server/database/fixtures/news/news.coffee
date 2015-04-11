@@ -23,4 +23,8 @@ exports.data = [
     date: '2015-04-08'
     message: 'I released the highlight track type (you can for example visualize karyotype cytobands thanks to it)'
   }
+  {
+    date: '2015-04-11'
+    message: 'Introducing circos image interactivity'
+  }
 ]
