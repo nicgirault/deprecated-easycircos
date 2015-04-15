@@ -9,7 +9,7 @@ form.easy-circos-form(ng-controller='layoutCtrl')
           ng-options = 'layout.title group by layout.category.field for layout in layouts'
           ng-change = 'selectLayout()'
         )
-      p.description
+      p.description(ng-if='selected.layout.description')
         b description: 
         | {{ selected.layout.description }}
       p.source(ng-if='selected.layout.source')
@@ -18,15 +18,13 @@ form.easy-circos-form(ng-controller='layoutCtrl')
       div.form-group
         button.btn.btn-primary.width-100(
           ng-click="showLayoutDataFormModal()"
-        ) Edit
-        button.btn.btn-warning.width-100(
-          ng-click='share()'
           tooltip-placement="bottom"
           tooltip-append-to-body='true'
           tooltip-trigger='mouseenter : mouseleave'
-          tooltip-html-unsafe='{{ help.share }}'
+          tooltip-html-unsafe='{{ help.editLayoutData }}'
           aria-hidden='true'
-        ) Share
+        )
+          i.glyphicon.glyphicon-pencil
 
     accordion-group.easy-circos-red
       accordion-heading Style
@@ -295,3 +293,9 @@ form.easy-circos-form(ng-controller='layoutCtrl')
               type = 'text'
               ng-change = 'render()'
             )
+    accordion-group.easy-circos-greenish(heading='Share')
+      | {{ help.share }}
+      button.btn.btn-warning.width-100(
+        ng-click='share()'
+      )
+        i.glyphicon.glyphicon-share

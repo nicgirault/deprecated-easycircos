@@ -1,5 +1,6 @@
 do (angular) ->
   angular.module('trackManager').controller 'editTrackDataCtrl', ($scope, $modalInstance, type, data, helpStore) ->
+    $scope.help = helpStore
     if data
       $scope.dataString = data.map (datum) ->
         datum.join(',')

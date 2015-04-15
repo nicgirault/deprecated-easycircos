@@ -1,5 +1,6 @@
 do (angular) ->
-  angular.module('layout').controller 'layoutDataCtrl', ($scope, $modalInstance, data, $timeout) ->
+  angular.module('layout').controller 'layoutDataCtrl', ($scope, $modalInstance, data, $timeout, helpStore, layoutStore) ->
+    $scope.help = helpStore
     $scope.data = data
     $scope.newDatum = ($event) ->
       $event.preventDefault() if $event

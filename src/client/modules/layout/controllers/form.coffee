@@ -1,5 +1,6 @@
 do (angular) ->
   angular.module('layout').controller 'layoutCtrl', ($scope, layoutStore, tracks, defaults, helpStore, dataParser, $modal) ->
+    $scope.help = helpStore
     tracks.getCurrentTrack (layout) ->
       $scope.layout = layout
 

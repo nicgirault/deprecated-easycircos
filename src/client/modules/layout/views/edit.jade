@@ -1,19 +1,7 @@
 form
   .modal-header
     h3.modal-title Layout data
-      button.btn.btn-primary.btn-sm(
-        type="button"
-        ng-click="newDatum()"
-      )
-        i.glyphicon.glyphicon-plus
-      palette-picker(
-        initial-name="{{ colorPalette }}"
-        initial-range="{{ colorPaletteSize }}"
-        initial-reverse="false"
-        on-select="updatePalette(item, isReverse)"
-      )
   .modal-body
-    p Note: you can paste an excel file in a "region id" field. Color should be something like #ff00ff. 
     table.layout-data-list
       tr
         th region id
@@ -22,20 +10,30 @@ form
         th color
       tr(ng-repeat="datum in data")
         td
-          input(
-            ng-model="datum.id"
-            type="text"
-            size=8
-            ng-paste="parseClipboard($event.originalEvent, $index)"
-          )
+          div.input-group
+            input.form-control(
+              ng-model="datum.id"
+              type="text"
+              size=8
+              ng-paste="parseClipboard($event.originalEvent, $index)"
+            )
+            span(
+              ng-if='$first'
+              tooltip-placement="bottom"
+              tooltip-append-to-body='true'
+              tooltip-trigger='mouseenter : mouseleave'
+              tooltip-html-unsafe='{{ help.paste }}'
+              aria-hidden='true'
+            ).input-group-addon
+              i.glyphicon.glyphicon-paste
         td
-          input(
+          input.form-control(
             ng-model="datum.len"
             type="number"
             size=5
           )
         td
-          input(
+          input.form-control(
             ng-model="datum.label"
             type="text"
             size=10
@@ -52,6 +50,17 @@ form
             popup="Delete this data point"
             button-class="btn-sm"
           )
+    button.btn.btn-primary.btn-sm(
+      type="button"
+      ng-click="newDatum()"
+    )
+      i.glyphicon.glyphicon-plus
+    palette-picker(
+      initial-name="{{ colorPalette }}"
+      initial-range="{{ colorPaletteSize }}"
+      initial-reverse="false"
+      on-select="updatePalette(item, isReverse)"
+    )
   .modal-footer
     button.btn.btn-warning(ng-click="save()") Save
     button.btn(ng-click="cancel()") Cancel

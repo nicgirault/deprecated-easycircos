@@ -16,7 +16,7 @@ do (angular) ->
     svg: 'Vector image format to save all information about your Circos image'
     png: 'Save a screenshot of your Circos image'
     html: 'To embed on your website and be able to visualize animations. Ask for it in the feedback form'
-    share: 'Propose this layout (and its configuration) to appear in the librairy of layouts'
+    share: 'If you like this layout and think it can be re-used, you can share it to appear in the librairy of layouts'
     shareDetails: 'describe the layout, the source of the data or other information for the moderator'
     share2: 'You can share layouts and tracks that other users might be interested to use. Once accepted, it will appear on the select box in the data tab.'
     trackDataPrefix: 'One data point per line. Each data point property should be separated by a space or tab or comma etc. e.g.:\n'
@@ -28,3 +28,6 @@ do (angular) ->
     line: 'To show values as a line'
     scatter: 'To show data points as glyphs'
     chords: 'To show relations between positions of the layout axis'
+
+    paste: 'You can paste an excel file with corresponding columns in this field. Color should be something like #FF00FF'
+    editLayoutData: 'Edit the layout data'
